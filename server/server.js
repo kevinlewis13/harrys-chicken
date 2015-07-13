@@ -1,2 +1,3 @@
 'use strict';
-var nm;
+console.log('ello');
+console.log('bye');

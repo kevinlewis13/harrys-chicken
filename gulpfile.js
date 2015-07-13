@@ -3,11 +3,11 @@ var sass = require('gulp-sass');
 var webpack = require('gulp-webpack');
 var jshint = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
+var del = require('del');
 //var copy = require('gulp-copy'); not needed apparently?
 
 //other tasks to consider:
 // minifier/uglifier
-// clean build directory task
 
 gulp.task('default', ['watch']);
 
@@ -22,6 +22,11 @@ gulp.task('sass', function() {
 gulp.task('copy:html', function() {
   var html = ['./app/**/*.html'];
   return gulp.src(html).pipe(gulp.dest('./build/views/'));
+});
+
+// clean build directory task
+gulp.task('clean', function (cb) {
+  del('build/', cb);
 });
 
 //nodemon server restart
