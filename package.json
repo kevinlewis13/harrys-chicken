@@ -23,6 +23,13 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-copy": "0.0.2",
+    "gulp-jshint": "^1.11.2",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-sass": "^2.0.3",
+    "gulp-webpack": "^1.5.0",
+    "jshint-jsx": "^0.4.1",
+    "jsx-loader": "^0.13.2",
     "lodash": "^3.10.0",
     "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
