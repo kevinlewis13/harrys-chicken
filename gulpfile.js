@@ -9,17 +9,17 @@ var del = require('del');
 //other tasks to consider:
 // minifier/uglifier
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['webpack', 'copy', 'sass', 'watch']);
 
 // scss to css conversion
-gulp.task('sass', function() {
+gulp.task('sass', ['clean'], function() {
   gulp.src('./app/stylesheet/application.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./build/stylesheet'))
 });
 
 //file copier
-gulp.task('copy:html', function() {
+gulp.task('copy:html', ['clean'], function() {
   var html = ['./app/**/*.html'];
   return gulp.src(html).pipe(gulp.dest('./build/views/'));
 });
@@ -40,7 +40,7 @@ gulp.task('nodemon', function() {
 });
 
 // webpack build, probably want to break these out to seperate tasks.
-gulp.task('webpack', function() {
+gulp.task('webpack', ['clean'], function() {
   return gulp.src('./app/js/client.jsx')
     .pipe(webpack({
       //watch: true,
