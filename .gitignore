@@ -1,2 +1,7 @@
 node_modules/
 db/
+build/
+
+**/bundle.js
+
+**/application.css
