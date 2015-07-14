@@ -3,12 +3,16 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
+var menuRoutes = express.Router();
+var authRoutes = express.Router();
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/harrys_chicken_dev');
 
-app.get('/api/menu', function(req, res) {
-  res.status(200).json({msg: 'GET request received'});
-});
+require('./routes/menu_routes')(menuRoutes);
+require('./routes/auth_routes')(authRoutes);
+
+app.use('/api/menu', menuRoutes);
+app.use('/api/dish', authRoutes);
 
 app.all('*', function(req, res) {
   res.status(404).json({msg: '404 Page not found'});
