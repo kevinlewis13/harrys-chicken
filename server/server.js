@@ -14,6 +14,8 @@ require('./routes/auth_routes')(authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/dish', authRoutes);
 
+app.use(express.static(__dirname + '/../build'));
+
 app.all('*', function(req, res) {
   res.status(404).json({msg: '404 Page not found'});
 });

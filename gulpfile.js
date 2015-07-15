@@ -48,7 +48,7 @@ gulp.task('clean', function (cb) {
 });
 
 // webpack build, probably want to break these out to seperate tasks.
-gulp.task('webpack:client', ['clean', 'linter:all'], function() {
+gulp.task('webpack:client', ['linter:all'], function() {
   return gulp.src('./app/js/client.jsx')
     .pipe(webpack({
       //watch: true,
@@ -67,7 +67,7 @@ gulp.task('webpack:client', ['clean', 'linter:all'], function() {
     .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('webpack:karma_tests', ['clean', 'linter:all'], function() {
+gulp.task('webpack:karma_tests', ['linter:all'], function() {
   return gulp.src('./app/tests/karma_tests/test_entry.js')
     .pipe(webpack({
       //watch: true,
@@ -79,13 +79,13 @@ gulp.task('webpack:karma_tests', ['clean', 'linter:all'], function() {
 });
 
 //file copier
-gulp.task('copy:html', ['clean'], function() {
+gulp.task('copy:html', function() {
   var html = ['./app/**/*.html'];
-  return gulp.src(html).pipe(gulp.dest('./build/views/'));
+  return gulp.src(html).pipe(gulp.dest('./build/'));
 });
 
 // scss to css conversion
-gulp.task('sass', ['clean'], function() {
+gulp.task('sass', function() {
   gulp.src('./app/stylesheet/application.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./build/stylesheet/'));
@@ -125,7 +125,9 @@ gulp.task('watch', ['html:watch', 'sass:watch', 'app:watch']);
 
 // linters
 gulp.task('linter:client_jsx', function() {
-  var options = {node:true, linter: require('jshint-jsx').JSXHINT};
+  var options = {
+    node:true, globals: {document: true}, linter: require('jshint-jsx').JSXHINT
+  };
   return gulp.src('./app/js/**/*.jsx')
     .pipe(jshint(options))
     .pipe(jshint.reporter('jshint-stylish'))
