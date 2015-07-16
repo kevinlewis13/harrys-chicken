@@ -6,7 +6,6 @@ var nodemon = require('gulp-nodemon');
 var del = require('del');
 var jsxhint = require('jshint-jsx').JSXHINT;
 var merge = require('merge-stream');
-var livereload = require('gulp-livereload');
 
 // run client tasks
 gulp.task('client', ['lint:client'], function() {
@@ -60,9 +59,6 @@ gulp.task('clean', function(cb) {
 // watchers
 gulp.task('watch', function() {
   gulp.watch('./app/**/*', ['client']);
-
-  livereload.listen();
-  gulp.watch(['./build/**/*']).on('change', livereload.changed);
 });
 
 gulp.task('lint', ['lint:server', 'lint:client']);
