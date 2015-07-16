@@ -35,7 +35,7 @@ gulp.task('lint:server', function() {
 });
 
 gulp.task('lint:client', function() {
-  gulp.src('./app/js/**/*.jsx')
+  return gulp.src('./app/js/**/*.jsx')
     .pipe(jshint({ node:true, globals: { document: true }, linter: jsxhint }))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
