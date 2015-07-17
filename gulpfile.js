@@ -9,7 +9,7 @@ var merge = require('merge-stream');
 var plumber = require('gulp-plumber');
 
 // run client tasks
-gulp.task('client', ['lint:client'], function() {
+gulp.task('client',  function() {
   var styles = gulp.src('./app/stylesheet/application.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('./build/stylesheet/'));
@@ -38,7 +38,7 @@ gulp.task('lint:server', function() {
 gulp.task('lint:client', function() {
   return gulp.src('./app/js/**/*.jsx')
     .pipe(plumber())
-    .pipe(jshint({ node:true, globals: { document: true }, linter: jsxhint }))
+    .pipe(jshint({ node:true, globals: { document: true, google: true }, linter: jsxhint }))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
 });
