@@ -6,6 +6,7 @@ var nodemon = require('gulp-nodemon');
 var del = require('del');
 var jsxhint = require('jshint-jsx').JSXHINT;
 var merge = require('merge-stream');
+var plumber = require('gulp-plumber');
 
 // run client tasks
 gulp.task('client', ['lint:client'], function() {
@@ -28,6 +29,7 @@ gulp.task('client', ['lint:client'], function() {
 
 gulp.task('lint:server', function() {
   return gulp.src(['./server/**/*.js', './gulpfile.js'])
+    .pipe(plumber())
     .pipe(jshint({ node: true }))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
@@ -35,6 +37,7 @@ gulp.task('lint:server', function() {
 
 gulp.task('lint:client', function() {
   return gulp.src('./app/js/**/*.jsx')
+    .pipe(plumber())
     .pipe(jshint({ node:true, globals: { document: true }, linter: jsxhint }))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
@@ -59,6 +62,7 @@ gulp.task('clean', function(cb) {
 // watchers
 gulp.task('watch', function() {
   gulp.watch('./app/**/*', ['client']);
+  gulp.watch('./server/**/*', ['lint:server']);
 });
 
 gulp.task('lint', ['lint:server', 'lint:client']);
