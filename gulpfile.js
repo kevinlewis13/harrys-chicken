@@ -61,8 +61,8 @@ gulp.task('clean', function(cb) {
 
 // watchers
 gulp.task('watch', function() {
-  gulp.watch('./app/**/*', ['client']);
-  gulp.watch('./server/**/*', ['lint:server']);
+  gulp.watch('app/**/*', ['client']);
+  gulp.watch('server/**/*', ['lint:server']);
 });
 
 gulp.task('lint', ['lint:server', 'lint:client']);
