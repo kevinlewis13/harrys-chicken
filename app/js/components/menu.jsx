@@ -12,7 +12,7 @@ module.exports = React.createClass({
     return _.map(categories, function(category) {
       return (
         <li key={category}>{category}
-        <Category category={byCategory[category]}/>
+          <Category category={byCategory[category]}/>
         </li>
       );
     });
