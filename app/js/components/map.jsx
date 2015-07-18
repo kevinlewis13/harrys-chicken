@@ -3,37 +3,33 @@
 var React = require('react');
 
 module.exports = React.createClass({
-  map: null,
-  marker: null,
-
-  createMap: function() {
-    var harrys = new google.maps.LatLng(47.547487, -122.386976);
-    var mapProps = {
-      center:harrys,
-      zoom:10,
-      mapTypeId:google.maps.MapTypeId.ROADMAP
+  getDefaultProps: function () {
+    return {
+      initialZoom: 12,
+      mapCenterLat: 47.547487,
+      mapCenterLng: -122.386976
     };
-    return new google.maps.Map(this.refs.map_canvas.getDOMNode(), mapProps);
   },
 
-  createMarker: function() {
-    this.marker = new google.maps.Marker({
-      position: new google.maps.LatLng(47.547487, -122.386976),
-      map: this.map
+  componentDidMount: function(rootNode) {
+    var mapOptions = { center: this.mapCenterLatLng(), zoom: this.props.initialZoom };
+    var map = new google.maps.Map(this.getDOMNode(), mapOptions);
+    var marker = new google.maps.Marker({
+      position: this.mapCenterLatLng(),
+      title: 'Harry\'s Chicken Joint',
+      map: map
     });
+
+    this.setState({map: map});
   },
 
-  componentDidMount: function() {
-    this.map = this.createMap();
-    this.marker = this.createMarker();
-    //this.infoWindow = this.createInfoWindow();
+  mapCenterLatLng: function () {
+    return new google.maps.LatLng(this.props.mapCenterLat, this.props.mapCenterLng);
   },
 
-  render: function() {
+  render: function () {
     return (
-      <div>
-      <section id="map" ref="map_canvas"></section>
-      </div>
+      <section className='map'></section>
     );
   }
 });
