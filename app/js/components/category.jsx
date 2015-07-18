@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 module.exports = React.createClass({
   renderDish: function() {
-    return _.map(this.props.category, function(dish) {
+    return _.map(this.props.categoryDishes, function(dish) {
       return <Dish dish={dish} key={dish._id}/>;
     });
   },

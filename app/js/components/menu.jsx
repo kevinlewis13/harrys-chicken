@@ -4,17 +4,21 @@ var _ = require('lodash');
 
 module.exports = React.createClass({
   renderCategories: function() {
-    var byCategory = _.groupBy(this.props.menu, function(dish) {
-      return dish.category;
-    });
-    var categories = _.keys(byCategory);
+    var categoryGroups = this.groupByCategories();
+    var categoryNames = _.keys(categoryGroups);
 
-    return _.map(categories, function(category) {
+    return _.map(categoryNames, function(categoryName) {
       return (
-        <li key={category}>{category}
-          <Category category={byCategory[category]}/>
+        <li key={categoryName}>{categoryName}
+          <Category categoryDishes={categoryGroups[categoryName]}/>
         </li>
       );
+    });
+  },
+
+  groupByCategories: function() {
+    return _.groupBy(this.props.menu, function(dish) {
+      return dish.category;
     });
   },
 
