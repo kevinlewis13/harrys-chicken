@@ -10,7 +10,7 @@ module.exports = React.createClass({
     var harrys = new google.maps.LatLng(47.547487, -122.386976);
     var mapProps = {
       center:harrys,
-      zoom:10,
+      zoom:15,
       mapTypeId:google.maps.MapTypeId.ROADMAP
     };
     return new google.maps.Map(this.refs.map_canvas.getDOMNode(), mapProps);
@@ -31,9 +31,34 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div>
       <section id="map" ref="map_canvas"></section>
-      </div>
     );
   }
+
+  // getDefaultProps: function () {
+  //     return {
+  //         initialZoom:15,
+  //         mapCenterLat: 47.547487,
+  //         mapCenterLng: -122.386976,
+  //     };
+  // },
+  // componentDidMount: function (rootNode) {
+  //     var mapOptions = {
+  //         center: this.mapCenterLatLng(),
+  //         zoom: this.props.initialZoom
+  //     },
+  //     map = new google.maps.Map(this.getDOMNode(), mapOptions);
+  //     var marker = new google.maps.Marker({position: this.mapCenterLatLng(), title: 'Hi', map: map});
+  //     this.setState({map: map});
+  // },
+  // mapCenterLatLng: function () {
+  //     var props = this.props;
+  //     return new google.maps.LatLng(props.mapCenterLat, props.mapCenterLng);
+  // },
+  // render: function () {
+  //     return (
+  //       <section id="map" ref="map_canvas"></section>
+  //     );
+  // }
+
 });
