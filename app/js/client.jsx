@@ -3,15 +3,14 @@
 var React = require('react');
 var request = require('superagent');
 var Header = require('./components/header.jsx');
-var Menu = require('./components/menu.jsx');
+//var Menu = require('./components/menu.jsx');
+var Info = require('./components/info.jsx');
 
 var App = React.createClass({
   getInitialState: function() {
-    return {menu: []};
-  },
+    var chickenDetails = {name: 'Harry\'s Chicken Joint', phone: '206.938.9000', address: '6032 California Ave SW, Seattle, WA 98136', hours: 'Tuesday - Saturday, 4-8pm'};
 
-  componentDidMount: function() {
-    this.loadMenu();
+    return {menu: [], details: chickenDetails};
   },
 
   loadMenu: function() {
@@ -24,11 +23,15 @@ var App = React.createClass({
       }.bind(this));
   },
 
+  componentDidMount: function() {
+    this.loadMenu();
+  },
+
   render: function() {
     return (
       <main>
         <Header/>
-        <Menu menu={this.state.menu}/>
+        <Info details={this.state.details} menu={this.state.menu}/>
       </main>
     );
   }
