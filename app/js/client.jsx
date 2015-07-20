@@ -23,15 +23,15 @@ var App = React.createClass({
       }.bind(this));
   },
 
-  componentDidMount: function() {
-    this.loadMenu();
-  },
+  // componentDidMount: function() {
+  //   this.loadMenu();
+  // },
 
   render: function() {
     return (
       <main>
         <Header/>
-        <Info details={this.state.details} menu={this.state.menu}/>
+        <Info details={this.state.details} menu={this.state.menu} loadMenu={this.loadMenu}/>
       </main>
     );
   }
