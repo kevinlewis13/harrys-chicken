@@ -5,13 +5,14 @@ var Menu = require('./menu.jsx')
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {hidden: true}
+    return {hidden: true};
   },
 
   showMenu: function() {
     if (!this.props.menu.length) {
       this.props.loadMenu();
     }
+
     this.setState({hidden: false});
   },
 
@@ -20,18 +21,19 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var menuClass = (this.state.hidden ? 'hide' : '') + " menu"
+    var menuClass = (this.state.hidden ? 'hide' : '') + ' menu';
+
     return (
-      <article>
+      <section>
         <p>Phone: {this.props.details.phone}</p>
         <p>Address: {this.props.details.address}</p>
         <p>Hours: {this.props.details.hours}</p>
         <a onClick={this.showMenu}>Our Menu:</a>
-        <section className={menuClass}>
+        <aside className={menuClass}>
           <a onClick={this.hideMenu}>[x]</a>
           <Menu menu={this.props.menu} />
-        </section>
-      </article>
+        </aside>
+      </section>
     );
   }
 });

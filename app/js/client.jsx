@@ -3,7 +3,6 @@
 var React = require('react');
 var request = require('superagent');
 var Header = require('./components/header.jsx');
-//var Menu = require('./components/menu.jsx');
 var Info = require('./components/info.jsx');
 
 var App = React.createClass({
@@ -22,10 +21,6 @@ var App = React.createClass({
         this.setState({menu: res.body});
       }.bind(this));
   },
-
-  // componentDidMount: function() {
-  //   this.loadMenu();
-  // },
 
   render: function() {
     return (
