@@ -10,7 +10,7 @@ module.exports = React.createClass({
     return (
       <article>
         <Map />
-        <Details details={this.props.details} menu={this.props.menu}/>
+        <Details details={this.props.details} menu={this.props.menu} loadMenu={this.props.loadMenu}/>
       </article>
     );
   }
