@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var Menu = require('./menu.jsx')
+var Menu = require('./menu.jsx');
 
 module.exports = React.createClass({
   getInitialState: function() {
