@@ -49,13 +49,20 @@ gulp.task('lint:server', function() {
 });
 
 gulp.task('lint:client', function() {
-  return gulp.src('./app/js/**/*.jsx')
+  return gulp.src(['./app/js/**/*.jsx', './tests/client/*test.js'])
     .pipe(plumber())
     .pipe(jshint({
       node:true,
       globals: {
         document: true,
-        google: true },
+        google: true,
+        describe: true,
+        it: true,
+        before: true,
+        beforeEach: true,
+        after: true,
+        afterEach: true
+      },
       linter: jsxhint
     }))
     .pipe(jshint.reporter('jshint-stylish'))
