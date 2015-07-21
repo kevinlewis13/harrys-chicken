@@ -4,10 +4,11 @@ var React = require('react');
 var request = require('superagent');
 var Header = require('./components/header.jsx');
 var Info = require('./components/info.jsx');
+var Footer = require('./components/footer.jsx')
 
 var App = React.createClass({
   getInitialState: function() {
-    var chickenDetails = {name: 'Harry\'s Chicken Joint', phone: '206.938.9000', address: '6032 California Ave SW, Seattle, WA 98136', hours: 'Tuesday - Saturday, 4-8pm'};
+    var chickenDetails = {name: 'Harry\'s Chicken Joint', phone: '206.938.9000', address: '6032 California Ave SW, Seattle, WA 98136', hours: 'Tuesday - Saturday, 4-8pm', facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127', tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'};
 
     return {menu: [], details: chickenDetails};
   },
@@ -27,6 +28,7 @@ var App = React.createClass({
       <main>
         <Header/>
         <Info details={this.state.details} menu={this.state.menu} loadMenu={this.loadMenu}/>
+        <Footer details={this.state.details} />
       </main>
     );
   }
