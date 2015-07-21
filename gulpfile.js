@@ -7,9 +7,10 @@ var del = require('del');
 var jsxhint = require('jshint-jsx').JSXHINT;
 var merge = require('merge-stream');
 var plumber = require('gulp-plumber');
+var mocha = require('gulp-mocha');
 
 // run client tasks
-gulp.task('client',  function() {
+gulp.task('client', ['lint:client'], function() {
   var styles = gulp.src('./app/stylesheet/application.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('./build/stylesheet/'));
@@ -30,7 +31,17 @@ gulp.task('client',  function() {
 gulp.task('lint:server', function() {
   return gulp.src(['./server/**/*.js', './gulpfile.js'])
     .pipe(plumber())
-    .pipe(jshint({ node: true }))
+    .pipe(jshint({
+      node: true,
+      globals: {
+        describe: true,
+        it: true,
+        before: true,
+        beforeEach: true,
+        after: true,
+        afterEach: true
+      }
+    }))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
 });
@@ -54,6 +65,11 @@ gulp.task('nodemon', function() {
     });
 });
 
+gulp.task('test:server', ['lint:server'], function() {
+  gulp.src('./server/tests/*test.js')
+    .pipe(mocha());
+});
+
 // clean build dir
 gulp.task('clean', function(cb) {
   del(['build/'], cb);
@@ -66,4 +82,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('lint', ['lint:server', 'lint:client']);
+gulp.task('test', ['test:server']);
 gulp.task('default', ['client', 'watch']);
