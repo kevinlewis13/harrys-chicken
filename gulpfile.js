@@ -113,15 +113,16 @@ gulp.task('test:client', ['compile:tests'], function() {
 
 // clean build dir
 gulp.task('clean', function(cb) {
-  del(['build/'], cb);
+  return del(['build/'], cb);
 });
 
 // watchers
 gulp.task('watch', function() {
   gulp.watch('app/**/*', ['client']);
   gulp.watch('server/**/*', ['lint:server']);
+  gulp.watch('./app/**/*.jsx', ['lint:client']);
 });
 
 gulp.task('lint', ['lint:server', 'lint:client']);
-gulp.task('test', ['test:server']);
+gulp.task('test', ['test:client']);
 gulp.task('default', ['client', 'watch']);
