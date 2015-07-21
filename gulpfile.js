@@ -81,9 +81,29 @@ gulp.task('nodemon', function() {
 });
 
 gulp.task('test:server', ['lint:server'], function() {
-  gulp.src('./server/tests/*test.js')
+  return gulp.src('./tests/server/*test.js')
     .pipe(mocha())
-    .once('error', function() {
+    .once('error', function(err) {
+      console.log(err);
+      process.exit();
+    })
+    .once('end', function() {
+      process.exit();
+    });
+});
+
+gulp.task('compile:tests', ['lint:client'], function() {
+  return gulp.src('./app/**/*.jsx')
+    .pipe(react())
+    .pipe(replace('.jsx', '.js'))
+    .pipe(gulp.dest('./tests/client/'));
+});
+
+gulp.task('test:client', ['compile:tests'], function() {
+  return gulp.src('./tests/client/*test.js')
+    .pipe(mocha())
+    .once('error', function(err) {
+      console.log(err);
       process.exit(1);
     })
     .once('end', function() {
