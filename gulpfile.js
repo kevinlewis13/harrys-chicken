@@ -49,7 +49,13 @@ gulp.task('lint:server', function() {
 gulp.task('lint:client', function() {
   return gulp.src('./app/js/**/*.jsx')
     .pipe(plumber())
-    .pipe(jshint({ node:true, globals: { document: true, google: true }, linter: jsxhint }))
+    .pipe(jshint({
+      node:true,
+      globals: {
+        document: true,
+        google: true },
+      linter: jsxhint
+    }))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
 });
@@ -67,7 +73,13 @@ gulp.task('nodemon', function() {
 
 gulp.task('test:server', ['lint:server'], function() {
   gulp.src('./server/tests/*test.js')
-    .pipe(mocha());
+    .pipe(mocha())
+    .once('error', function() {
+      process.exit(1);
+    })
+    .once('end', function() {
+      process.exit();
+    });
 });
 
 // clean build dir
