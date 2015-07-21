@@ -6,8 +6,8 @@ module.exports = React.createClass({
   render: function() {
     return (
       <footer>
-        <a className="social facebook" href={this.props.details.facebookUrl} target="_blank">Follow us on Facebook</a>
-        <a className="social tumblr" href={this.props.details.tumblrUrl} target="_blank">Follow us on Tumblr</a>
+        <a className="social icon-facebook2" href={this.props.details.facebookUrl} target="_blank"></a>
+        <a className="social icon-tumblr2" href={this.props.details.tumblrUrl} target="_blank"></a>
       </footer>
     );
   }

@@ -23,3 +23,62 @@
 .hide {
   visibility: hidden;
 }
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?kikizs');
+	src:url('../fonts/icomoon.eot?#iefixkikizs') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?kikizs') format('truetype'),
+		url('../fonts/icomoon.woff?kikizs') format('woff'),
+		url('../fonts/icomoon.svg?kikizs#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-glass:before {
+	content: "\e600";
+}
+.icon-glass2:before {
+	content: "\e601";
+}
+.icon-mug:before {
+	content: "\e602";
+}
+.icon-spoon-knife:before {
+	content: "\e603";
+}
+.icon-leaf:before {
+	content: "\e604";
+}
+.icon-fire:before {
+	content: "\e605";
+}
+.icon-cross:before {
+	content: "\e606";
+}
+.icon-facebook:before {
+	content: "\e607";
+}
+.icon-facebook2:before {
+	content: "\e608";
+}
+.icon-tumblr:before {
+	content: "\e609";
+}
+.icon-tumblr2:before {
+	content: "\e60a";
+}
