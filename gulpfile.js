@@ -8,6 +8,8 @@ var jsxhint = require('jshint-jsx').JSXHINT;
 var merge = require('merge-stream');
 var plumber = require('gulp-plumber');
 var mocha = require('gulp-mocha');
+var react = require('gulp-react');
+var replace = require('gulp-replace');
 
 // run client tasks
 gulp.task('client', ['lint:client'], function() {
