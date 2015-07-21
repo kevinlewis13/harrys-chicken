@@ -31,7 +31,7 @@ gulp.task('client', ['lint:client'], function() {
 });
 
 gulp.task('lint:server', function() {
-  return gulp.src(['./server/**/*.js', './gulpfile.js'])
+  return gulp.src(['./server/**/*.js', './tests/server/*test.js'])
     .pipe(plumber())
     .pipe(jshint({
       node: true,
