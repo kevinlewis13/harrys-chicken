@@ -71,7 +71,7 @@ gulp.task('lint:client', function() {
 
 // nodemon server restart
 gulp.task('nodemon', function() {
-  nodemon({
+  return nodemon({
     script: './server/server.js',
     ignore: ['./app/**/*', './build/**/*']
   })
