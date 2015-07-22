@@ -8,6 +8,8 @@ var jsxhint = require('jshint-jsx').JSXHINT;
 var merge = require('merge-stream');
 var plumber = require('gulp-plumber');
 var mocha = require('gulp-mocha');
+var react = require('gulp-react');
+var replace = require('gulp-replace');
 
 // run client tasks
 gulp.task('client', ['lint:client'], function() {
@@ -29,7 +31,7 @@ gulp.task('client', ['lint:client'], function() {
 });
 
 gulp.task('lint:server', function() {
-  return gulp.src(['./server/**/*.js', './gulpfile.js'])
+  return gulp.src(['./server/**/*.js', './tests/server/*test.js'])
     .pipe(plumber())
     .pipe(jshint({
       node: true,
@@ -47,13 +49,20 @@ gulp.task('lint:server', function() {
 });
 
 gulp.task('lint:client', function() {
-  return gulp.src('./app/js/**/*.jsx')
+  return gulp.src(['./app/js/**/*.jsx', './tests/client/*test.js'])
     .pipe(plumber())
     .pipe(jshint({
       node:true,
       globals: {
         document: true,
-        google: true },
+        google: true,
+        describe: true,
+        it: true,
+        before: true,
+        beforeEach: true,
+        after: true,
+        afterEach: true
+      },
       linter: jsxhint
     }))
     .pipe(jshint.reporter('jshint-stylish'))
@@ -62,7 +71,7 @@ gulp.task('lint:client', function() {
 
 // nodemon server restart
 gulp.task('nodemon', function() {
-  nodemon({
+  return nodemon({
     script: './server/server.js',
     ignore: ['./app/**/*', './build/**/*']
   })
@@ -72,9 +81,29 @@ gulp.task('nodemon', function() {
 });
 
 gulp.task('test:server', ['lint:server'], function() {
-  gulp.src('./server/tests/*test.js')
+  return gulp.src('./tests/server/*test.js')
     .pipe(mocha())
-    .once('error', function() {
+    .once('error', function(err) {
+      console.log(err);
+      process.exit();
+    })
+    .once('end', function() {
+      process.exit();
+    });
+});
+
+gulp.task('compile:tests', ['lint:client'], function() {
+  return gulp.src('./app/**/*.jsx')
+    .pipe(react())
+    .pipe(replace('.jsx', '.js'))
+    .pipe(gulp.dest('./tests/client/test_build/'));
+});
+
+gulp.task('test:client', ['compile:tests'], function() {
+  return gulp.src('./tests/client/*test.js')
+    .pipe(mocha())
+    .once('error', function(err) {
+      console.log(err);
       process.exit(1);
     })
     .once('end', function() {
@@ -84,15 +113,16 @@ gulp.task('test:server', ['lint:server'], function() {
 
 // clean build dir
 gulp.task('clean', function(cb) {
-  del(['build/'], cb);
+  return del(['./build/', './tests/client/build/'], cb);
 });
 
 // watchers
 gulp.task('watch', function() {
   gulp.watch('app/**/*', ['client']);
   gulp.watch('server/**/*', ['lint:server']);
+  gulp.watch('./app/**/*.jsx', ['lint:client']);
 });
 
 gulp.task('lint', ['lint:server', 'lint:client']);
-gulp.task('test', ['test:server']);
+gulp.task('test', ['test:client']);
 gulp.task('default', ['client', 'watch']);
