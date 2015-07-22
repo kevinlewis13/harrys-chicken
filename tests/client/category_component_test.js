@@ -3,7 +3,7 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 var shallowRenderer = TestUtils.createRenderer();
-var CategoryComponent = require('./build/js/components/category.js');
+var CategoryComponent = require('./test_build/js/components/category.js');
 var expect = require('chai').expect;
 
 describe('simple component test', function() {
