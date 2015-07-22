@@ -1,7 +1,7 @@
 'use strict';
 
 process.env.MONGOLAB_URI = 'mongodb://localhost/harrys_chicken_dev_test';
-require('../server');
+require('../../server/server');
 
 var mongoose = require('mongoose');
 var chai = require('chai');

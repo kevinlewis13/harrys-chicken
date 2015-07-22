@@ -96,7 +96,7 @@ gulp.task('compile:tests', ['lint:client'], function() {
   return gulp.src('./app/**/*.jsx')
     .pipe(react())
     .pipe(replace('.jsx', '.js'))
-    .pipe(gulp.dest('./tests/client/'));
+    .pipe(gulp.dest('./tests/client/test_build/'));
 });
 
 gulp.task('test:client', ['compile:tests'], function() {
@@ -113,7 +113,7 @@ gulp.task('test:client', ['compile:tests'], function() {
 
 // clean build dir
 gulp.task('clean', function(cb) {
-  return del(['build/'], cb);
+  return del(['./build/', './tests/client/build/'], cb);
 });
 
 // watchers
