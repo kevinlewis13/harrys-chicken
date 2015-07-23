@@ -36,7 +36,7 @@ var App = React.createClass({
 
   render: function() {
     return (
-      <main>
+      <main className="main">
         <Header/>
         <Info details={this.state.details}/>
         <Menu menu={this.state.menu}/>
