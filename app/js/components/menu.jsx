@@ -6,10 +6,13 @@ module.exports = React.createClass({
   renderCategories: function() {
     var categoryGroups = this.groupByCategories();
     var categoryNames = _.keys(categoryGroups);
+    var categoryTitle;
 
     return _.map(categoryNames, function(categoryName) {
+      categoryTitle = categoryName[0].toUpperCase() + categoryName.slice(1) + 's';
+
       return (
-        <li key={categoryName}>{categoryName}
+        <li key={categoryName} className="category">{categoryTitle}
           <Category categoryDishes={categoryGroups[categoryName]}/>
         </li>
       );
