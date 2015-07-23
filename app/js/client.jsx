@@ -4,7 +4,8 @@ var React = require('react');
 var request = require('superagent');
 var Header = require('./components/header.jsx');
 var Info = require('./components/info.jsx');
-var Footer = require('./components/footer.jsx')
+var Menu = require('./components/menu.jsx');
+var Footer = require('./components/footer.jsx');
 
 var App = React.createClass({
   getInitialState: function() {
@@ -16,7 +17,11 @@ var App = React.createClass({
       facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
       tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'};
 
-    return {menu: [], details: chickenDetails};
+    return { menu: [], details: chickenDetails };
+  },
+
+  componentDidMount: function() {
+    this.loadMenu();
   },
 
   loadMenu: function() {
@@ -33,7 +38,8 @@ var App = React.createClass({
     return (
       <main>
         <Header/>
-        <Info details={this.state.details} menu={this.state.menu} loadMenu={this.loadMenu}/>
+        <Info details={this.state.details}/>
+        <Menu menu={this.state.menu}/>
         <Footer details={this.state.details} />
       </main>
     );
