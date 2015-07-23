@@ -8,7 +8,13 @@ var Footer = require('./components/footer.jsx')
 
 var App = React.createClass({
   getInitialState: function() {
-    var chickenDetails = {name: 'Harry\'s Chicken Joint', phone: '206.938.9000', address: '6032 California Ave SW, Seattle, WA 98136', hours: 'Tuesday - Saturday, 4-8pm', facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127', tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'};
+    var chickenDetails = {
+      name: 'Harry\'s Chicken Joint',
+      phone: '206.938.9000',
+      address: '6032 California Ave SW, Seattle, WA 98136',
+      hours: 'Tuesday - Saturday, 4-8pm',
+      facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
+      tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'};
 
     return {menu: [], details: chickenDetails};
   },
