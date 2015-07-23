@@ -24,7 +24,9 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <ul>{this.renderCategories()}</ul>
+      <article id="menu" className="slab menu">
+        <ul>{this.renderCategories()}</ul>
+      </article>
     );
   }
 });

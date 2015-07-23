@@ -7,7 +7,7 @@ var Details = require('./details.jsx');
 module.exports = React.createClass({
   render: function() {
     return (
-      <article>
+      <article id="location" className="slab info">
         <Map/>
         <Details details={this.props.details}/>
       </article>
