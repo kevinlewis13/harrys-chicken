@@ -28,12 +28,14 @@
 }
 
 .clear-header {
-  height: 50px;
-  margin-top: -50px;
+  display: block;
+  height: 54px;
+  margin-top: -54px;
+  visibility: hidden;
 }
 
 .banner {
-  margin-top: 50px;
+  margin-top: 54px;
 }
 
 .map {
