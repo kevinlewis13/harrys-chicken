@@ -55,7 +55,7 @@ var App = React.createClass({
   render: function() {
     return (
       <main className="main">
-        <Header/>
+        <Header phone={this.state.restaurantInfo.phone}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>
         <Menu menu={this.state.menu}/>
