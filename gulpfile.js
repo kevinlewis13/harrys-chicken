@@ -14,11 +14,14 @@ var replace = require('gulp-replace');
 // run client tasks
 gulp.task('client', ['lint:client'], function() {
   var styles = gulp.src('./app/stylesheet/application.scss')
-      .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest('./build/stylesheet/'));
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./build/stylesheet/'));
 
   var copy = gulp.src(['./app/**/*.html'])
-      .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest('./build/'));
+
+  var fonts = gulp.src(['./app/stylesheet/fonts/*'])
+      .pipe(gulp.dest('./build/fonts/'));
 
   var build = gulp.src('./app/js/client.jsx')
       .pipe(webpack({
@@ -27,7 +30,7 @@ gulp.task('client', ['lint:client'], function() {
       }))
       .pipe(gulp.dest('./build/'));
 
-  return merge(styles, copy, build);
+  return merge(styles, copy, fonts, build);
 });
 
 gulp.task('lint:server', function() {
