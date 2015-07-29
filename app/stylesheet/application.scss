@@ -1,4 +1,40 @@
 @import 'baseline';
+@import 'foundation';
+
+.header-container {
+  top: 0px;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 1000;
+}
+
+.slab {
+  padding: 15px;
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.nav {
+  float: right;
+}
+
+.nav a {
+  padding-left: 5px;
+}
+
+.header h1 {
+  display: inline;
+}
+
+.clear-header {
+  height: 50px;
+  margin-top: -50px;
+}
+
+.banner {
+  margin-top: 50px;
+}
 
 .map {
   height: 500px;
