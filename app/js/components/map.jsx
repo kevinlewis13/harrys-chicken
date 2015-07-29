@@ -9,9 +9,9 @@ module.exports = React.createClass({
   createMap: function() {
     var harrys = new google.maps.LatLng(47.547487, -122.386976);
     var mapProps = {
-      center:harrys,
-      zoom:15,
-      mapTypeId:google.maps.MapTypeId.ROADMAP
+      center: harrys,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     return new google.maps.Map(this.refs.map_canvas.getDOMNode(), mapProps);
   },

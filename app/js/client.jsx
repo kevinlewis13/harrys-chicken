@@ -3,26 +3,37 @@
 var React = require('react');
 var request = require('superagent');
 var Header = require('./components/header.jsx');
+var Banner = require('./components/banner.jsx');
 var Info = require('./components/info.jsx');
 var Menu = require('./components/menu.jsx');
-var Footer = require('./components/footer.jsx');
-var Banner = require('./components/banner.jsx');
 var About = require('./components/about.jsx');
+var Footer = require('./components/footer.jsx');
 
 var App = React.createClass({
   getInitialState: function() {
     var chickenDetails = {
-      name: 'Harry\'s Chicken Joint',
-      phone: '206.938.9000',
-      address: '6032 California Ave SW, Seattle, WA 98136',
-      hours: 'Tuesday - Saturday, 4-8pm',
-      facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
-      tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/',
-      partner: 'Harry\'s Coffee Joint',
-      partnerUrl: 'www.amazon.com'
+      restaurantInfo: {
+        name: 'Harry\'s Chicken Joint',
+        phone: '206.938.9000',
+        address: '6032 California Ave SW, Seattle, WA 98136',
+        hours: 'Tuesday - Saturday, 4-8pm',
+      },
+      bannerInfo: {
+        partner: 'Harry\'s Coffee Joint',
+        partnerUrl: 'https://www.amazon.com'
+      },
+      socialInfo: {
+        facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
+        tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
+      }
     };
 
-    return { menu: [], details: chickenDetails };
+    return {
+      menu: [],
+      restaurantInfo: chickenDetails.restaurantInfo,
+      bannerInfo: chickenDetails.bannerInfo,
+      socialInfo: chickenDetails.socialInfo
+    };
   },
 
   componentDidMount: function() {
@@ -33,7 +44,9 @@ var App = React.createClass({
     request
       .get('api/menu')
       .end(function(err, res) {
-        if (err) return console.log(err);
+        if (err) {
+          return console.log(err);
+        }
 
         this.setState({menu: res.body});
       }.bind(this));
@@ -43,11 +56,11 @@ var App = React.createClass({
     return (
       <main className="main">
         <Header/>
-        <Banner details={this.state.details} />
-        <Info details={this.state.details}/>
+        <Banner bannerInfo={this.state.bannerInfo}/>
+        <Info restaurantInfo={this.state.restaurantInfo}/>
         <Menu menu={this.state.menu}/>
-        <About />
-        <Footer details={this.state.details} />
+        <About/>
+        <Footer socialInfo={this.state.socialInfo}/>
       </main>
     );
   }

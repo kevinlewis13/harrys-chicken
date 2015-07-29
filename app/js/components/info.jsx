@@ -9,7 +9,7 @@ module.exports = React.createClass({
     return (
       <article id="location" className="slab info">
         <Map/>
-        <Details details={this.props.details}/>
+        <Details restaurantInfo={this.props.restaurantInfo}/>
       </article>
     );
   }
