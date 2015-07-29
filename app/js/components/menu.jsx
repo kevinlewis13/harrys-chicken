@@ -29,8 +29,9 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <section id="menu" className="slab menu">
-        <ul>{this.renderCategories()}</ul>
+      <section className="slab menu">
+        <span id="menu" className="clear-header"></span>
+          <ul>{this.renderCategories()}</ul>
       </section>
     );
   }

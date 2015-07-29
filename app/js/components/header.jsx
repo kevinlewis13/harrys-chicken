@@ -11,15 +11,17 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <header className="slab header">
-        <h1>Harry's Chicken Joint</h1>
-        <nav className="nav">
-          <a href="#location">Location</a>
-          <a href="#menu">Menu</a>
-          <a href="#about">About</a>
-          <a href={this.state.phoneLink}>{this.props.phone}</a>
-        </nav>
-      </header>
+      <div className="header-container">
+        <header className="slab header">
+          <h1>Harry's Chicken Joint</h1>
+          <nav className="nav">
+            <a href="#location">Location</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href={this.state.phoneLink}>{this.props.phone}</a>
+          </nav>
+        </header>
+      </div>
     );
   }
 });
