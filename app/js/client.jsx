@@ -14,6 +14,7 @@ var App = React.createClass({
     var chickenDetails = {
       name: 'Harry\'s Chicken Joint',
       phone: '206.938.9000',
+      phoneLinker: 'tel:+2069389000',
       address: '6032 California Ave SW, Seattle, WA 98136',
       hours: 'Tuesday - Saturday, 4-8pm',
       facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
@@ -42,7 +43,7 @@ var App = React.createClass({
   render: function() {
     return (
       <main className="main">
-        <Header/>
+        <Header details={this.state.details} />
         <Banner details={this.state.details} />
         <Info details={this.state.details}/>
         <Menu menu={this.state.menu}/>

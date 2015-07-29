@@ -1,6 +1,12 @@
 var React = require('react');
 
 module.exports = React.createClass({
+
+  getInitialState: function() {
+    var phoneLink = 'tel:+' + this.props.details.phone.split('.').join('');
+    return {phoneLink: phoneLink};
+  },
+
   render: function() {
     return (
       <header className="slab header">
@@ -9,7 +15,7 @@ module.exports = React.createClass({
           <a href="#location">Location</a>
           <a href="#menu">Menu</a>
           <a href="#about">About</a>
-          <a href="tel:+2069389000">206.938.9000</a>
+          <a href={this.state.phoneLink}>{this.props.details.phone}</a>
         </nav>
       </header>
     );

@@ -7,7 +7,7 @@ module.exports = React.createClass({
     return (
       <section>
         <h3>We're partnered with {this.props.details.partner}!</h3>
-        <a href={this.props.details.parterUrl}>Check out our sister site!</a>
+        <a href={this.props.details.partnerUrl}>Check out our sister site!</a>
       </section>
     );
   }
