@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var Dish = require('./dish.jsx');
 var _ = require('lodash');

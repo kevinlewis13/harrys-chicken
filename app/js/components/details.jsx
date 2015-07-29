@@ -1,15 +1,22 @@
 'use strict';
 
 var React = require('react');
-var Menu = require('./menu.jsx');
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    var phone = this.props.restaurantInfo.phone;
+    var address = this.props.restaurantInfo.address;
+    var hours = this.props.restaurantInfo.hours;
+
+    return { phone: phone, address: address, hours: hours };
+  },
+
   render: function() {
     return (
       <section className="details">
-        <p>Phone: {this.props.details.phone}</p>
-        <p>Address: {this.props.details.address}</p>
-        <p>Hours: {this.props.details.hours}</p>
+        <p>Phone: {this.state.phone}</p>
+        <p>Address: {this.state.address}</p>
+        <p>Hours: {this.state.hours}</p>
       </section>
     );
   }
