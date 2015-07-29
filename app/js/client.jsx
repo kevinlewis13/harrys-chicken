@@ -6,6 +6,8 @@ var Header = require('./components/header.jsx');
 var Info = require('./components/info.jsx');
 var Menu = require('./components/menu.jsx');
 var Footer = require('./components/footer.jsx');
+var Banner = require('./components/banner.jsx');
+var About = require('./components/about.jsx');
 
 var App = React.createClass({
   getInitialState: function() {
@@ -15,7 +17,10 @@ var App = React.createClass({
       address: '6032 California Ave SW, Seattle, WA 98136',
       hours: 'Tuesday - Saturday, 4-8pm',
       facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
-      tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'};
+      tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/',
+      partner: 'Harry\'s Coffee Joint',
+      partnerUrl: 'www.amazon.com'
+    };
 
     return { menu: [], details: chickenDetails };
   },
@@ -38,8 +43,10 @@ var App = React.createClass({
     return (
       <main className="main">
         <Header/>
+        <Banner details={this.state.details} />
         <Info details={this.state.details}/>
         <Menu menu={this.state.menu}/>
+        <About />
         <Footer details={this.state.details} />
       </main>
     );

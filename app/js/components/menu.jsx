@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var Category = require('./category.jsx');
 var _ = require('lodash');
