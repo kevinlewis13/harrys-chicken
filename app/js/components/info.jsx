@@ -7,10 +7,10 @@ var Details = require('./details.jsx');
 module.exports = React.createClass({
   render: function() {
     return (
-      <article id="location" className="slab info">
+      <section id="location" className="slab info">
         <Map/>
         <Details restaurantInfo={this.props.restaurantInfo}/>
-      </article>
+      </section>
     );
   }
 });
