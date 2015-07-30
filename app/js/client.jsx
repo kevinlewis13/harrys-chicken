@@ -15,7 +15,7 @@ var App = React.createClass({
       restaurantInfo: {
         name: 'Harry\'s Chicken Joint',
         phone: '206.938.9000',
-        address: '6032 California Ave SW, Seattle, WA 98136',
+        address: '6032 California Ave SW\nSeattle, WA 98136',
         hours: 'Tuesday - Saturday, 4-8pm',
       },
       bannerInfo: {
