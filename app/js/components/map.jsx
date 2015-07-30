@@ -30,7 +30,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <section className="map" ref="map_canvas"></section>
+      <section className="map large-6 columns" ref="map_canvas"></section>
     );
   }
 });

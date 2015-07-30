@@ -11,12 +11,26 @@ module.exports = React.createClass({
     return { phone: phone, address: address, hours: hours };
   },
 
+  formatAddress: function() {
+    var splitAddress = this.state.address.split('\n');
+    var numberAndStreet = splitAddress[0];
+    var cityAndState = splitAddress[1];
+
+    return (
+      <p>{numberAndStreet}<br/>{cityAndState}</p>
+    );
+  },
+
   render: function() {
     return (
-      <section className="details">
-        <p>Phone: {this.state.phone}</p>
-        <p>Address: {this.state.address}</p>
-        <p>Hours: {this.state.hours}</p>
+      <section className="details large-5 large-offset-1 columns">
+        <h3>Our Deets</h3>
+        <h4>Phone</h4>
+        <p>{this.state.phone}</p>
+        <h4>Address</h4>
+        {this.formatAddress()}
+        <h4>Hours</h4>
+        <p>{this.state.hours}</p>
       </section>
     );
   }
