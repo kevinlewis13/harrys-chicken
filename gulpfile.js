@@ -13,14 +13,14 @@ var replace = require('gulp-replace');
 
 // run client tasks
 gulp.task('client', ['lint:client'], function() {
-  var styles = gulp.src('./app/stylesheet/application.scss')
+  var styles = gulp.src('./app/styles/application.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./build/stylesheet/'));
+    .pipe(gulp.dest('./build/styles/'));
 
-  var copy = gulp.src(['./app/**/*.html'])
+  var copyHtml = gulp.src(['./app/**/*.html'])
     .pipe(gulp.dest('./build/'));
 
-  var fonts = gulp.src(['./app/stylesheet/fonts/*'])
+  var copyFonts = gulp.src(['./app/styles/fonts/*'])
       .pipe(gulp.dest('./build/fonts/'));
 
   var build = gulp.src('./app/js/client.jsx')
@@ -30,7 +30,7 @@ gulp.task('client', ['lint:client'], function() {
       }))
       .pipe(gulp.dest('./build/'));
 
-  return merge(styles, copy, fonts, build);
+  return merge(styles, copyHtml, copyFonts, build);
 });
 
 gulp.task('lint:server', function() {
