@@ -24,6 +24,7 @@ html {
 
 .nav {
   float: right;
+  padding-top: 15px;
 }
 
 .nav a {
@@ -70,14 +71,15 @@ h4 {
   font-family: 'icomoon';
   src:url('../fonts/icomoon.eot?kikizs');
   src:url('../fonts/icomoon.eot?#iefixkikizs') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?kikizs') format('truetype'),
-    url('../fonts/icomoon.woff?kikizs') format('woff'),
-    url('../fonts/icomoon.svg?kikizs#icomoon') format('svg');
+  url('../fonts/icomoon.ttf?kikizs') format('truetype'),
+  url('../fonts/icomoon.woff?kikizs') format('woff'),
+  url('../fonts/icomoon.svg?kikizs#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
