@@ -105,8 +105,7 @@ h4 {
 }
 
 .title {
-  //this align doesnt seem to be doing anything...
-  text-align: left;
+  float: left;
   color: #c89f2d;
   margin-bottom: 17px;
   display: inline-block;
@@ -118,6 +117,7 @@ h4 {
 
 .description {
   text-align: left;
+  clear: left;
 }
 
 .price {
