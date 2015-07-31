@@ -14,7 +14,7 @@ module.exports = React.createClass({
       categoryTitle = categoryName[0].toUpperCase() + categoryName.slice(1) + 's';
 
       return (
-        <li key={categoryName} className="category">
+        <li key={categoryName} className="category large-6 columns">
           <p className="category-title">{categoryTitle}</p>
           <Category categoryDishes={categoryGroups[categoryName]}/>
         </li>
@@ -34,7 +34,7 @@ module.exports = React.createClass({
         <section className="content menu">
           <span id="menu" className="clear-header"></span>
           <h3>Our Menu</h3>
-          <ul>{this.renderCategories()}</ul>
+          <ul className="row">{this.renderCategories()}</ul>
         </section>
       </article>
     );
