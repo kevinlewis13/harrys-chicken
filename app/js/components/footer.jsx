@@ -12,10 +12,12 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <footer className="slab footer">
-        <a className="social icon-facebook2" href={this.state.facebookUrl} target="_blank"></a>
-        <a className="social icon-tumblr2" href={this.state.tumblrUrl} target="_blank"></a>
-      </footer>
+      <article className="slab footer">
+        <footer className="content footer">
+          <a className="social icon-facebook2" href={this.state.facebookUrl} target="_blank"></a>
+          <a className="social icon-tumblr2" href={this.state.tumblrUrl} target="_blank"></a>
+        </footer>
+      </article>
     );
   }
 });

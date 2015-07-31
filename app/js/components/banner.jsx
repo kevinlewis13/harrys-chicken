@@ -12,10 +12,12 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <section className="slab banner">
-        <h3>We're partnered with {this.state.partner}!</h3>
-        <a href={this.state.partnerUrl}>Check out our sister site!</a>
-      </section>
+      <article className="slab banner">
+        <section className="content banner">
+          <h3>We're partnered with {this.state.partner}!</h3>
+          <a href={this.state.partnerUrl}>Check out our sister site!</a>
+        </section>
+      </article>
     );
   }
 });

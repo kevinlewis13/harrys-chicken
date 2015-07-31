@@ -12,7 +12,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="header-container">
-        <header className="slab header">
+        <header className="content header">
           <h1>Harry's Chicken Joint</h1>
           <nav className="nav">
             <a href="#location">Location</a>

@@ -29,11 +29,13 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <section className="slab menu">
-        <span id="menu" className="clear-header"></span>
-        <h3>Our Menu</h3>
-        <ul>{this.renderCategories()}</ul>
-      </section>
+      <article className="slab menu">
+        <section className="content menu">
+          <span id="menu" className="clear-header"></span>
+          <h3>Our Menu</h3>
+          <ul>{this.renderCategories()}</ul>
+        </section>
+      </article>
     );
   }
 });
