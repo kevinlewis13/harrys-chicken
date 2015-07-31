@@ -7,8 +7,8 @@ module.exports = React.createClass({
     return (
       <li className="dish">
         <p className="title">{this.props.dish.title}</p>
+        <p className="price">{this.props.dish.price}</p>
         <p className="description">{this.props.dish.description}</p>
-        <p className="price">${this.props.dish.price}</p>
       </li>
     );
   }

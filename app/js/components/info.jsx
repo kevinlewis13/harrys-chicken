@@ -7,11 +7,13 @@ var Details = require('./details.jsx');
 module.exports = React.createClass({
   render: function() {
     return (
-      <section className="slab info row">
-        <span id="location" className="clear-header"></span>
-        <Map/>
-        <Details restaurantInfo={this.props.restaurantInfo}/>
-      </section>
+      <article className="slab info">
+        <section className="content info row">
+          <span id="location" className="clear-header"></span>
+          <Map/>
+          <Details restaurantInfo={this.props.restaurantInfo}/>
+        </section>
+      </article>
     );
   }
 });
