@@ -14,7 +14,8 @@ module.exports = React.createClass({
       categoryTitle = categoryName[0].toUpperCase() + categoryName.slice(1) + 's';
 
       return (
-        <li key={categoryName} className="category">{categoryTitle}
+        <li key={categoryName} className="category">
+          <p className="category-title">{categoryTitle}</p>
           <Category categoryDishes={categoryGroups[categoryName]}/>
         </li>
       );

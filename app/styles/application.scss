@@ -95,6 +95,40 @@ h4 {
   font-size: 1.75rem;
 }
 
+.category-title {
+  margin-bottom: 44px;
+}
+
+.dish {
+  width: 40%;
+  margin: 0 auto 44px auto;
+}
+
+.title {
+  //this align doesnt seem to be doing anything...
+  text-align: left;
+  color: #c89f2d;
+  margin-bottom: 17px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.description {
+  text-align: left;
+}
+
+.price {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  color: #c89f2d;
+  float: right;
+  letter-spacing: 1px;
+}
+
 @font-face {
   font-family: 'icomoon';
   src:url('../fonts/icomoon.eot?kikizs');
