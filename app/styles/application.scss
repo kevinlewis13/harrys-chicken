@@ -1,5 +1,9 @@
-@import 'baseline';
-@import 'foundation';
+@import 'scss/reset';
+@import 'scss/foundation-grid';
+@import 'scss/icons';
+@import 'scss/typography';
+@import 'scss/colors';
+@import 'scss/layout';
 
 $header-size: 76px;
 $grey: #495453;
