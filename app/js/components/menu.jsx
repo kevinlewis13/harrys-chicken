@@ -7,11 +7,11 @@ var _ = require('lodash');
 module.exports = React.createClass({
   renderCategories: function() {
     var categoryGroups = this.groupByCategories();
-    var categoryNames = _.keys(categoryGroups);
+    var categoryNames = ['entrees', 'sides', 'sauces', 'drinks'];
     var categoryTitle;
 
     return _.map(categoryNames, function(categoryName) {
-      categoryTitle = categoryName[0].toUpperCase() + categoryName.slice(1) + 's';
+      categoryTitle = categoryName[0].toUpperCase() + categoryName.slice(1);
 
       return (
         <li key={categoryName} className="category">{categoryTitle}
