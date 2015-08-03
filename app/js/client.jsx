@@ -39,7 +39,6 @@ var App = React.createClass({
 
   componentDidMount: function() {
     this.loadMenu();
-    console.log(typeof this.addItem);
   },
 
   loadMenu: function() {
@@ -71,8 +70,16 @@ var App = React.createClass({
 
   },
 
-  deleteItem: function() {
+  deleteItem: function(item) {
+    request
+      .post('/api/dish/' + item._id)
+      .end(function(err, res) {
+        if (err) {
+          return console.log(err);
+        }
 
+        this.loadMenu();
+      }.bind(this));
   },
 
   render: function() {

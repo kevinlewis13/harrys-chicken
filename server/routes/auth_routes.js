@@ -19,4 +19,14 @@ module.exports = function(router) {
       res.json(data);
     });
   });
+  router.delete('/:id', function(req, res) {
+    Dish.remove({'_id': req.params.id}, function(err, data) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({msg: '500 Internal server error'});
+      }
+
+      res.json({msg: 'deleted successfully'});
+    });
+  });
 };
