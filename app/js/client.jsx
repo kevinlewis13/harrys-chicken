@@ -8,6 +8,7 @@ var Info = require('./components/info.jsx');
 var Menu = require('./components/menu.jsx');
 var About = require('./components/about.jsx');
 var Footer = require('./components/footer.jsx');
+var MenuForm = require('./components/form.jsx');
 
 var App = React.createClass({
   getInitialState: function() {
@@ -38,6 +39,7 @@ var App = React.createClass({
 
   componentDidMount: function() {
     this.loadMenu();
+    console.log(typeof this.addItem);
   },
 
   loadMenu: function() {
@@ -52,6 +54,27 @@ var App = React.createClass({
       }.bind(this));
   },
 
+  addItem: function(item) {
+    request
+      .post('/api/dish')
+      .send(item)
+      .end(function(err, res) {
+        if (err) {
+          return console.log(err);
+        }
+
+        this.loadMenu();
+      }.bind(this));
+  },
+
+  editItem: function() {
+
+  },
+
+  deleteItem: function() {
+
+  },
+
   render: function() {
     return (
       <main className="main">
@@ -61,6 +84,7 @@ var App = React.createClass({
         <Menu menu={this.state.menu}/>
         <About/>
         <Footer socialInfo={this.state.socialInfo}/>
+        <MenuForm initialMenu={this.state.menu} add={this.addItem} edit={this.editItem} delete={this.deleteItem}/>
       </main>
     );
   }

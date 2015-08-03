@@ -10,7 +10,7 @@ module.exports = React.createClass({
       <article className="slab info">
         <section className="content info row">
           <span id="location" className="clear-header"></span>
-          <Map/>
+          <Map />
           <Details restaurantInfo={this.props.restaurantInfo}/>
         </section>
       </article>
