@@ -72,7 +72,7 @@ var App = React.createClass({
 
   deleteItem: function(item) {
     request
-      .post('/api/dish/' + item._id)
+      .del('/api/dish/' + item)
       .end(function(err, res) {
         if (err) {
           return console.log(err);

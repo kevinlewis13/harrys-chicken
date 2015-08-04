@@ -73,7 +73,7 @@ module.exports = React.createClass({
               {selectedRestaurant}
               {selectedCategory}
             <button>button to save changes</button>
-            <button onClick={this.handleDelete(item)}>button to delete item altogether</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
           </form>
         );
       }, this);
