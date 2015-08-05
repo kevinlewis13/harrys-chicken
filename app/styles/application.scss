@@ -7,14 +7,23 @@
 
 $header-size: 76px;
 $grey: #495453;
+$plumb: #635f7d;
 $off-white: #eeeeee;
-$mint-green: #A7E3C1;
+$mint-green: darken(#9BB9B0, 10%);
+$underdog-green: #5f797d;
+$white: #f8f8f8;
 $slab-padding: 4em 0;
 $content-padding: 1em;
 $nav-offset: 5em;
+$castle-greyskull: lighten(#929389, 5%);
 
-html {
+body {
   font-size: 100%;
+  font-weight: 300;
+}
+
+h1, h3, h4 {
+  font-weight: 300;
 }
 
 .slab {
@@ -23,12 +32,16 @@ html {
 }
 
 .slab {
-  &.banner, &.footer {
-    background-color: $mint-green;
+  &.banner {
+    background-color: $underdog-green;
   }
 
   &.info, &.about {
     background-color: $off-white;
+  }
+
+  &.footer {
+    background-color: $castle-greyskull;
   }
 }
 
@@ -40,9 +53,9 @@ html {
   top: 0px;
   width: 100%;
   position: fixed;
-  background-color: $mint-green;
+  background-color: $underdog-green;
   z-index: 1000;
-  opacity: 0.95;
+  opacity: 0.93;
 }
 
 .content {
@@ -50,6 +63,12 @@ html {
   padding: $content-padding;
   width: 80%;
   margin: 0 auto;
+}
+
+.content {
+  &.header, &.banner {
+    color: $white;
+  }
 }
 
 .banner, .menu, .about, .footer {
@@ -65,9 +84,37 @@ html {
   padding-top: 1em;
 
   a {
-    padding-left: 1.5em;
+    margin-left: 1.5em;
     font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
+
+  a:hover {
+    color: $white;
+  }
+}
+
+a.button {
+  padding: 0.5em 1em;
+  border: 2px solid $white;
+
+  &:hover {
+    background-color: darken($underdog-green, 5%);
+    color: $white;
+  }
+}
+
+.banner a.button {
+  background-color: $plumb;
+
+  &:hover {
+    background-color: darken($plumb, 5%);
+  }
+}
+
+.details {
+  padding-top: 1.5em;
 }
 
 .details p {
@@ -105,6 +152,11 @@ h4 {
 
 .category-title {
   margin-bottom: 44px;
+  text-transform: uppercase;
+  border-bottom: 1px solid $grey;
+  width: 100%;
+  margin: 0 auto 44px auto;
+  padding-bottom: .5em;
 }
 
 .dish {
@@ -144,18 +196,19 @@ h4 {
   padding-left: 2em;
 }
 
-.drinks, .sides, .sauces {
+.entrees, .drinks, .sides, .sauces {
   font-weight: normal;
 }
 
+.description {
+  font-weight: 300;
+}
 
 .title {
   float: left;
   text-align: left;
-  color: #A37046;
   margin-bottom: 17px;
   display: inline-block;
-  text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -171,7 +224,16 @@ h4 {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
-  color: #A37046;
   float: right;
   letter-spacing: 1px;
+}
+
+.social {
+  color: $grey;
+  font-size: 1.5em;
+  margin: 0.25em;
+
+  &:hover {
+    color: $white;
+  }
 }

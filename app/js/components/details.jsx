@@ -23,7 +23,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <section className="details large-5 large-offset-1 columns">
+      <section className="details large-4 large-offset-2 columns">
         <h3>Our Deets</h3>
         <h4>Phone</h4>
         <p>{this.state.phone}</p>

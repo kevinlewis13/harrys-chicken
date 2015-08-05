@@ -18,7 +18,7 @@ module.exports = React.createClass({
             <a href="#location">Location</a>
             <a href="#menu">Menu</a>
             <a href="#about">About</a>
-            <a href={this.state.phoneLink}>{this.props.phone}</a>
+            <a className="button" href={this.state.phoneLink}>{this.props.phone}</a>
           </nav>
         </header>
       </div>
