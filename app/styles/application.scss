@@ -107,30 +107,52 @@ h4 {
   margin-bottom: 44px;
 }
 
-/* .category { */
-/*   width: 45%; */
-/* } */
-
 .dish {
   margin: 0 auto 44px auto;
 }
 
-.entrees {
-  margin: 0 auto;
-  width: 66%;
+.entrees .dish {
+  width: 50%;
+  height: 7.25em;
 }
 
+.entrees .dish:nth-child(even) {
+  float: left;
+  padding-right: 2em;
+}
+
+.entrees .dish:nth-child(odd) {
+  float: right;
+  padding-left: 2em;
+}
+
+.sides {
+  float: left;
+  width: 50%;
+  padding-right: 2em;
+}
+
+.sauces {
+  float: right;
+  width: 50%;
+  padding-left: 2em;
+}
+
+.drinks {
+  float: right;
+  width: 50%;
+  padding-left: 2em;
+}
 
 .drinks, .sides, .sauces {
-  width: 66%;
   font-weight: normal;
-  margin: 0 auto;
 }
+
 
 .title {
   float: left;
   text-align: left;
-  color: #c89f2d;
+  color: #A37046;
   margin-bottom: 17px;
   display: inline-block;
   text-transform: uppercase;
@@ -149,7 +171,7 @@ h4 {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
-  color: #c89f2d;
+  color: #A37046;
   float: right;
   letter-spacing: 1px;
 }
