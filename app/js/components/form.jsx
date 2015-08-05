@@ -8,6 +8,10 @@ module.exports = React.createClass({
     return { restaurant: 'chicken', category: 'entrees' };
   },
 
+//maybe instead of the below, we could create four empty arrays, one for each category
+//we could then loop through the entire menu and push items to the appropriate arrays
+//then we'd have to have a render function for each category, so it might
+//be more overhead, but would help up organize the update forms section
   renderOrigMenuForms: function() {
       return _.map(this.props.menu, function(item) {
         var selectedRestaurant;
