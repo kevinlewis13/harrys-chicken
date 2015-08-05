@@ -1,12 +1,15 @@
 'use strict';
 
 var React = require('react');
-var Menu = require('./menu.jsx');
 var _ = require('lodash');
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    return { restaurant: 'chicken', category: 'entrees' };
+  },
+
   renderOrigMenuForms: function() {
-      return _.map(this.props.initialMenu, function(item) {
+      return _.map(this.props.menu, function(item) {
         var selectedRestaurant;
         var selectedCategory;
         if (item.category === 'entrees') {
@@ -84,30 +87,24 @@ module.exports = React.createClass({
     this.props.delete(item);
   },
 
-  getInitialState: function() {
-    //why is this returning empty to start with? async? weird, right?
-    return {origMenu: this.props.initialMenu};
-  },
-
-  componentDidMount: function() {
-    console.log(this.props.initialMenu);
-    console.log(this.state.origMenu);
-  },
-
-  handleNewSubmit: function(evt) {
+  handleAdd: function(evt) {
     evt.preventDefault();
     var name = React.findDOMNode(this.refs.name).value.trim();
     var price = parseFloat(React.findDOMNode(this.refs.price).value.trim());
     var description = React.findDOMNode(this.refs.description).value.trim();
-    var restaurant = React.findDOMNode(this.refs.restaurant).value;
-    var category = React.findDOMNode(this.refs.category).value;
+    var restaurant = this.state.restaurant;
+    var category = this.state.category;
     var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category};
-    this.setState({origMenu: this.props.initialMenu});
-    console.log(this.state.origMenu);
-    console.log(this.props.initialMenu);
-    this.state.origMenu.push(newItem);
     this.props.add(newItem);
 
+  },
+
+  handleCategoryChange: function(evt) {
+    this.setState({category: evt.target.value});
+  },
+
+  handleRestaurantChange: function(evt) {
+    this.setState({restaurant: evt.target.value});
   },
 
   render: function() {
@@ -115,12 +112,12 @@ module.exports = React.createClass({
       <article className="slab form">
         <section className="content form">
           <p>Add a new menu Item</p>
-          <form onSubmit={this.handleNewSubmit}>
-            <select name="restaurant" ref="restaurant">
+          <form onSubmit={this.handleAdd}>
+            <select name="restaurant" ref="restaurant" onChange={this.handleRestaurantChange}>
               <option value="chicken">Chicken Joint</option>
               <option value="coffee">Coffee Joint</option>
             </select>
-            <select name="category" ref="category">
+            <select name="category" ref="category" onChange={this.handleCategoryChange}>
               <option value="entrees">Entree</option>
               <option value="sides">Side</option>
               <option value="sauces">Sauce</option>
@@ -130,7 +127,6 @@ module.exports = React.createClass({
             <input required type="text" placeholder="item price" ref="price" />
             <input type="text" placeholder="item description" ref="description" />
             <input type="submit" value="Add menu item" />
-            <button onClick={this.props.delete}>Delete Button</button>
           </form>
         </section>
         <section className="content form">
