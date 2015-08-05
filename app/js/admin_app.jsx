@@ -50,10 +50,23 @@ module.exports = React.createClass({
       }.bind(this));
   },
 
+  editItem: function(id, item) {
+    request
+      .put('/api/dish/' + id)
+      .send(item)
+      .end(function(err, res) {
+        if (err) {
+          return console.log(err);
+        }
+
+        this.loadMenu();
+      }.bind(this));
+  },
+
 
   render: function() {
     return (
-      <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem}/>
+      <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}/>
     );
   }
 });
