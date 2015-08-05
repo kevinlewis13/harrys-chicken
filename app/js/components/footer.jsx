@@ -1,21 +1,20 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 module.exports = React.createClass({
-  getInitialState: function() {
+  render: function() {
     var facebookUrl = this.props.socialInfo.facebookUrl;
     var tumblrUrl = this.props.socialInfo.tumblrUrl;
 
-    return { facebookUrl: facebookUrl, tumblrUrl: tumblrUrl };
-  },
-
-  render: function() {
     return (
       <article className="slab footer">
         <footer className="content footer">
-          <a className="social icon-facebook2" href={this.state.facebookUrl} target="_blank"></a>
-          <a className="social icon-tumblr2" href={this.state.tumblrUrl} target="_blank"></a>
+          <a className="social icon-facebook2" href={facebookUrl} target="_blank"></a>
+          <a className="social icon-tumblr2" href={tumblrUrl} target="_blank"></a>
+          <Link to="/admin" className="admin">Admin</Link>
         </footer>
       </article>
     );
