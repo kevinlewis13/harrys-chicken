@@ -1,21 +1,19 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 module.exports = React.createClass({
-  getInitialState: function() {
+  render: function() {
     var partner = this.props.bannerInfo.partner;
     var partnerUrl = this.props.bannerInfo.partnerUrl;
 
-    return { partner: partner, partnerUrl: partnerUrl };
-  },
-
-  render: function() {
     return (
-      <article className="slab banner">
+      <article id="banner" className="slab banner">
         <section className="content banner">
-          <h3>We're partnered with {this.state.partner}!</h3>
-          <a className="button" href={this.state.partnerUrl}>Check out our sister site!</a>
+          <h3>We're partnered with {partner}!</h3>
+          <Link className="button" to={partnerUrl}>Check out our sister site!</Link>
         </section>
       </article>
     );
