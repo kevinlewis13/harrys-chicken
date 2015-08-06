@@ -19,7 +19,7 @@ module.exports = React.createClass({
     var hours = this.props.restaurantInfo.hours;
 
     return (
-      <section className="details large-4 large-offset-2 columns">
+      <section className="details large-4 large-offset-2 medium-12 small-12 columns">
         <h3>Our Deets</h3>
         <h4>Phone</h4>
         <p>{phone}</p>

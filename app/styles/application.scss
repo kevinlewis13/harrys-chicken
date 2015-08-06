@@ -91,7 +91,9 @@ h1, h3, h4 {
   }
 
   a:hover {
-    color: $white;
+    color: darken($white, 5%);
+    border-bottom: 2px solid $white;
+    padding-bottom: 0.5em;
   }
 }
 
@@ -119,6 +121,10 @@ a.button {
 
 .details p {
   margin-bottom: 1em;
+}
+
+.drinks {
+  margin-top: 4px;
 }
 
 .header h1 {
@@ -151,6 +157,7 @@ h4 {
 }
 
 .category-title {
+  font-size: 1.25em;
   margin-bottom: 44px;
   text-transform: uppercase;
   border-bottom: 1px solid $grey;
@@ -168,18 +175,19 @@ h4 {
   height: 7.25em;
 }
 
-.entrees .dish:nth-child(even) {
+.entrees .dish:nth-child(odd) {
   float: left;
   padding-right: 2em;
 }
 
-.entrees .dish:nth-child(odd) {
+.entrees .dish:nth-child(even) {
   float: right;
   padding-left: 2em;
 }
 
 .sides {
   float: left;
+  clear: both;
   width: 50%;
   padding-right: 2em;
 }
@@ -235,5 +243,94 @@ h4 {
 
   &:hover {
     color: $white;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nav {
+    padding-top: 6px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .entrees .dish:nth-child(odd) {
+    float: none;
+    padding: 0;
+  }
+
+  .entrees .dish:nth-child(even) {
+    float: none;
+    padding: 0;
+  }
+
+  .entrees, .sides, .sauces, .drinks {
+    float: none;
+    width: 80%;
+    padding: 0;
+    margin: 0 auto 44px auto;
+  }
+
+  .entrees .dish {
+    margin: 0 auto 44px auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .details {
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    float: none;
+    margin: .5em auto 0 auto;
+  }
+
+  .entrees .dish {
+    height: auto;
+  }
+
+  .nav, .header h1 {
+    text-align: center;
+  }
+
+  .header h1 {
+    display: block;
+  }
+
+  .header-container {
+    position: static;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .entrees, .sides, .sauces, .drinks {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .content {
+    width: 95%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .map {
+    max-width: 100%;
+    height: 300px;
   }
 }
