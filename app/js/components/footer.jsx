@@ -14,7 +14,7 @@ module.exports = React.createClass({
         <footer className="content footer">
           <a className="social icon-facebook2" href={facebookUrl} target="_blank"></a>
           <a className="social icon-tumblr2" href={tumblrUrl} target="_blank"></a>
-          <Link to="/admin" className="admin">Admin</Link>
+          <p className="copy">&copy; 2015 Harry's Chicken Joint, LLC</p>
         </footer>
       </article>
     );
