@@ -4,7 +4,7 @@ var React = require('react');
 var $ = require('jquery');
 
 module.exports = React.createClass({
-  handleClick: function(id, evt) {
+  handleClick: function(id) {
     $('body')
       .animate({ scrollTop: $(id).offset().top }, 800);
   },
