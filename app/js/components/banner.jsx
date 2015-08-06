@@ -10,7 +10,8 @@ module.exports = React.createClass({
     var partnerUrl = this.props.bannerInfo.partnerUrl;
 
     return (
-      <article id="banner" className="slab banner">
+      <article className="slab banner">
+        <span id="top" className="clear-header"></span>
         <section className="content banner">
           <h3>We're partnered with {partner}!</h3>
           <Link className="button" to={partnerUrl}>Check out our sister site!</Link>
