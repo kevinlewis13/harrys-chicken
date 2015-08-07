@@ -5,16 +5,15 @@
 @import 'scss/colors';
 @import 'scss/layout';
 
-$header-size: 76px;
 $grey: #495453;
 $plumb: #635f7d;
 $off-white: #eeeeee;
 $mint-green: darken(#9BB9B0, 10%);
 $underdog-green: #5f797d;
 $white: #f8f8f8;
-$slab-padding: 4em 0;
-$content-padding: 1em;
-$nav-offset: 5em;
+$slab-padding: 64px 0;
+$content-padding: 16px;
+$nav-offset: 80px;
 $castle-greyskull: lighten(#929389, 5%);
 
 body {
@@ -133,8 +132,8 @@ a.button {
 
 .clear-header {
   display: block;
-  height: $header-size;
-  margin-top: -$header-size;
+  height: 76px;
+  margin-top: -76px;
   visibility: hidden;
   transform: translateY(-$nav-offset);
 }
@@ -251,6 +250,11 @@ h4 {
 }
 
 @media (max-width: 1100px) {
+  .clear-header {
+    height: 52px;
+    margin-top: -52px;
+  }
+
   .nav {
     padding-top: 6px;
   }
@@ -283,6 +287,11 @@ h4 {
 }
 
 @media (max-width: 1024px) {
+  .clear-header {
+    height: 0;
+    margin-top: -0;
+  }
+
   .details {
     text-align: center;
   }
@@ -338,4 +347,3 @@ h4 {
     height: 300px;
   }
 }
-
