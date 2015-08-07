@@ -17,7 +17,7 @@ app.use('/api/dish', authRoutes);
 app.use(express.static(__dirname + '/../build'));
 
 app.all('*', function(req, res) {
-  res.redirect('/');
+  res.status(404).json({msg: 'page not found'});
 });
 
 app.listen(process.env.PORT || 3000, function() {
