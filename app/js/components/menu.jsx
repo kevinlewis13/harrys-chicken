@@ -12,9 +12,11 @@ module.exports = React.createClass({
 
     return _.map(categoryNames, function(categoryName) {
       categoryTitle = categoryName[0].toUpperCase() + categoryName.slice(1);
+      var categoryClass = categoryName + ' category';
 
       return (
-        <li key={categoryName} className="category">{categoryTitle}
+        <li key={categoryName} className={categoryClass}>
+          <p className="category-title">{categoryTitle}</p>
           <Category categoryDishes={categoryGroups[categoryName]}/>
         </li>
       );

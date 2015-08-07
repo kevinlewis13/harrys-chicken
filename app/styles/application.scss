@@ -7,14 +7,23 @@
 
 $header-size: 76px;
 $grey: #495453;
+$plumb: #635f7d;
 $off-white: #eeeeee;
-$mint-green: #A7E3C1;
+$mint-green: darken(#9BB9B0, 10%);
+$underdog-green: #5f797d;
+$white: #f8f8f8;
 $slab-padding: 4em 0;
 $content-padding: 1em;
 $nav-offset: 5em;
+$castle-greyskull: lighten(#929389, 5%);
 
-html {
+body {
   font-size: 100%;
+  font-weight: 300;
+}
+
+h1, h3, h4 {
+  font-weight: 300;
 }
 
 .slab {
@@ -23,22 +32,30 @@ html {
 }
 
 .slab {
-  &.banner, &.footer {
-    background-color: $mint-green;
+  &.banner {
+    background-color: $underdog-green;
   }
 
   &.info, &.about {
     background-color: $off-white;
   }
+
+  &.footer {
+    background-color: $castle-greyskull;
+  }
+}
+
+.about {
+  clear: both;
 }
 
 .header-container {
   top: 0px;
   width: 100%;
   position: fixed;
-  background-color: $mint-green;
+  background-color: $underdog-green;
   z-index: 1000;
-  opacity: 0.95;
+  opacity: 0.93;
 }
 
 .content {
@@ -46,6 +63,12 @@ html {
   padding: $content-padding;
   width: 80%;
   margin: 0 auto;
+}
+
+.content {
+  &.header, &.banner {
+    color: $white;
+  }
 }
 
 .banner, .menu, .about, .footer {
@@ -61,13 +84,47 @@ html {
   padding-top: 1em;
 
   a {
-    padding-left: 1.5em;
+    margin-left: 1.5em;
     font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
+
+  a:hover {
+    color: darken($white, 5%);
+    border-bottom: 2px solid $white;
+    padding-bottom: 0.5em;
+  }
+}
+
+a.button {
+  padding: 0.5em 1em;
+  border: 2px solid $white;
+
+  &:hover {
+    background-color: darken($underdog-green, 5%);
+    color: $white;
+  }
+}
+
+.banner a.button {
+  background-color: $plumb;
+
+  &:hover {
+    background-color: darken($plumb, 5%);
+  }
+}
+
+.details {
+  padding-top: 1.5em;
 }
 
 .details p {
   margin-bottom: 1em;
+}
+
+.drinks {
+  margin-top: 4px;
 }
 
 .header h1 {
@@ -81,3 +138,204 @@ html {
   visibility: hidden;
   transform: translateY(-$nav-offset);
 }
+
+.map {
+  height: 400px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1.3em;
+}
+
+h4 {
+  font-size: 1.75rem;
+}
+
+.category-title {
+  font-size: 1.25em;
+  margin-bottom: 44px;
+  text-transform: uppercase;
+  border-bottom: 1px solid $grey;
+  width: 100%;
+  margin: 0 auto 44px auto;
+  padding-bottom: .5em;
+}
+
+.dish {
+  margin: 0 auto 44px auto;
+}
+
+.entrees .dish {
+  width: 50%;
+  height: 7.25em;
+}
+
+.entrees .dish:nth-child(odd) {
+  float: left;
+  padding-right: 2em;
+}
+
+.entrees .dish:nth-child(even) {
+  float: right;
+  padding-left: 2em;
+}
+
+.sides {
+  float: left;
+  clear: both;
+  width: 50%;
+  padding-right: 2em;
+}
+
+.sauces {
+  float: right;
+  width: 50%;
+  padding-left: 2em;
+}
+
+.drinks {
+  float: right;
+  width: 50%;
+  padding-left: 2em;
+}
+
+.entrees, .drinks, .sides, .sauces {
+  font-weight: normal;
+}
+
+.description {
+  font-weight: 300;
+}
+
+.title {
+  float: left;
+  text-align: left;
+  margin-bottom: 17px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.description {
+  text-align: left;
+  clear: left;
+  padding-right: 4em;
+}
+
+.price {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  float: right;
+  letter-spacing: 1px;
+}
+
+.social {
+  color: $grey;
+  font-size: 1.5em;
+  margin: 0.25em;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.footer .copy {
+  margin-top: 1em;
+}
+
+@media (max-width: 1100px) {
+  .nav {
+    padding-top: 6px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .entrees .dish:nth-child(odd) {
+    float: none;
+    padding: 0;
+  }
+
+  .entrees .dish:nth-child(even) {
+    float: none;
+    padding: 0;
+  }
+
+  .entrees, .sides, .sauces, .drinks {
+    float: none;
+    width: 80%;
+    padding: 0;
+    margin: 0 auto 44px auto;
+  }
+
+  .entrees .dish {
+    margin: 0 auto 44px auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .details {
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    float: none;
+    margin: .5em auto 0 auto;
+  }
+
+  .entrees .dish {
+    height: auto;
+  }
+
+  .nav, .header h1 {
+    text-align: center;
+  }
+
+  .header h1 {
+    display: block;
+  }
+
+  .header-container {
+    position: static;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .entrees, .sides, .sauces, .drinks {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .content {
+    width: 95%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .map {
+    max-width: 100%;
+    height: 300px;
+  }
+}
+
