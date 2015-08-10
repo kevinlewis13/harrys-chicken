@@ -8,15 +8,10 @@ module.exports = React.createClass({
     return { restaurant: 'chicken', category: 'entrees' };
   },
 
-//maybe instead of the below, we could create four empty arrays, one for each category
-//we could then loop through the entire menu and push items to the appropriate arrays
-//then we'd have to have a render function for each category, so it might
-//be more overhead, but would help up organize the update forms section
   renderOrigMenuForms: function() {
       return _.map(this.props.menu, function(item) {
         var selectedRestaurant;
         var selectedCategory;
-        //to make unique refs for every name input
         var nameref = "name" + item._id;
 
         if (item.category === 'entrees') {
@@ -75,24 +70,21 @@ module.exports = React.createClass({
             </select>
           );
         }
-        //console.log(nameref);
         return (
-          //key is needed to stop the warnings
-          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
-            //this is where I'm trying to get a unique ref for everything. I also tried ref={nameref} (declared on line 15), then just went straight for the id
-            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
-            //if we do refs like this, it grabs the last form rendered, so whatever is at the bottom of the list
-            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title} ref={nameref}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
             <input name="description" type="text" defaultValue={item.description}></input>
               {selectedRestaurant}
               {selectedCategory}
-            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
-            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
-            <input type="submit" value="SUBMIT" />
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
           </form>
         );
       }, this);
-    //mapping statement to return form w/ inputs with vals of props of initial menu, save button, and delete button
   },
 
   handleDelete: function(item, evt) {
@@ -101,6 +93,7 @@ module.exports = React.createClass({
   },
 
   handleEdit: function(ide, evt) {
+    //<button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
     evt.preventDefault();
     console.log(ide);
     var nameref = "name" + ide;
@@ -129,7 +122,7 @@ module.exports = React.createClass({
   handleAdd: function(evt) {
     evt.preventDefault();
     var name = React.findDOMNode(this.refs.name).value.trim();
-    var price = parseFloat(React.findDOMNode(this.refs.price).value.trim());
+    var price = React.findDOMNode(this.refs.price).value.trim();
     var description = React.findDOMNode(this.refs.description).value.trim();
     var restaurant = this.state.restaurant;
     var category = this.state.category;
@@ -150,8 +143,8 @@ module.exports = React.createClass({
     return (
       <article className="slab form">
         <section className="content form">
-          <p>Add a new menu Item</p>
-          <form onSubmit={this.handleAdd}>
+          <label htmlFor="newItem">Add a new menu Item</label>
+          <form name="newItem" onSubmit={this.handleAdd}>
             <select name="restaurant" ref="restaurant" onChange={this.handleRestaurantChange}>
               <option value="chicken">Chicken Joint</option>
               <option value="coffee">Coffee Joint</option>
@@ -165,11 +158,11 @@ module.exports = React.createClass({
             <input required type="text" placeholder="item name" ref="name" />
             <input required type="text" placeholder="item price" ref="price" />
             <input type="text" placeholder="item description" ref="description" />
-            <input type="submit" value="Add menu item" />
+            <button type="submit">Add menu item</button>
           </form>
         </section>
         <section className="content form">
-          <p>Change items on the current menu</p>
+          <label htmlFor="updateItem">Change items on the current menu</label>
           <ul>
             {this.renderOrigMenuForms()}
           </ul>
