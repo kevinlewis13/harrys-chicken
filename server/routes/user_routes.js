@@ -1,7 +1,7 @@
 'use strict';
 
 var User = require('../models/User');
-var bodyparser = require('bodyparser');
+var bodyparser = require('body-parser');
 
 module.exports = function(router, passport) {
   router.use(bodyparser.json());
@@ -35,7 +35,7 @@ module.exports = function(router, passport) {
           res.status(500).json({msg: 'could not generate token to save'});
         }
 
-        res.json({token: token})
+        res.json({token: token});
       });
     });
   });

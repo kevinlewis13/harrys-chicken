@@ -37,7 +37,7 @@ userSchema.methods.generateToken = function(secret, callback) {
 
 userSchema.methods.checkPassword = function(password, callback) {
   bcrypt.compare(password, this.basic.password, function(err, res) {
-    return callback(err, res)
+    return callback(err, res);
   });
 };
 

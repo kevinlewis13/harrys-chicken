@@ -10,7 +10,7 @@ module.exports = function(passport) {
 
       if (!user) return done('wrong username or password');
 
-      User.checkPassword(password, function (err, res) {
+      user.checkPassword(password, function (err, res) {
         if (err) return done('database error checking password');
 
         if (!res) {

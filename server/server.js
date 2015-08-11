@@ -14,6 +14,7 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/harrys_chicken
 app.use(passport.initialize());
 require('./lib/passport_strategy')(passport);
 
+app.set('Access-Control-Allow-Origin', '*');
 
 require('./routes/menu_routes')(menuRoutes);
 require('./routes/auth_routes')(authRoutes);

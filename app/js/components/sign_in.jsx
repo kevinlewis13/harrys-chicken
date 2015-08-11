@@ -3,8 +3,13 @@
 var React = require('react');
 var cookie = require('react-cookie');
 var _ = require('lodash');
+var request = require('superagent');
+var Router = require('react-router');
+var Navigation = Router.Navigation;
 
 module.exports = React.createClass({
+  mixins: [Navigation],
+
   onClickHandler: function(e) {
     e.preventDefault();
 
@@ -34,10 +39,9 @@ module.exports = React.createClass({
           return console.log(err);
         }
 
-        cookie.save('eat', res.token);
-
-        console.log(cookie.load('eat'));
-      });
+        cookie.save('eat', res.body.token);
+        this.transitionTo('/admin');
+      }.bind(this));
   },
 
   render: function() {

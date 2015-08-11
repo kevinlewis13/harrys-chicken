@@ -26,7 +26,7 @@ module.exports = function(secret) {
 
         if (!user) {
           console.log('could not find user for that token');
-          return res.status(401)..json({msg: 'not authorized, could not find that user'});
+          return res.status(401).json({msg: 'not authorized, could not find that user'});
 
         }
 
