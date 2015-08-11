@@ -10,6 +10,7 @@ var ChickenApp = require('./chicken_app.jsx');
 var CoffeeApp = require('./coffee_app.jsx');
 var FourOhFour = require('./components/four_oh_four.jsx');
 var AdminApp = require('./admin_app.jsx');
+var SignIn = require('./components/sign_in.jsx');
 
 var Client = React.createClass({
   render: function() {
@@ -24,6 +25,7 @@ var routes = (
     <Route path="/chicken" handler={ChickenApp}/>
     <Route path="/coffee" handler={CoffeeApp}/>
     <Route path="/admin" handler={AdminApp}/>
+    <Route path="/admin/sign_in" handler={SignIn}/>
     <Redirect from="/" to="/chicken"/>
     <NotFoundRoute handler={FourOhFour}/>
   </Route>

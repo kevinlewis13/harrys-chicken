@@ -3,6 +3,7 @@
 var React = require('react');
 var request = require('superagent');
 var Admin = require('./components/form.jsx');
+var cookie = require('react-cookie');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -65,6 +66,8 @@ module.exports = React.createClass({
 
 
   render: function() {
+    console.log(this.state.token);
+
     return (
       <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}/>
     );
