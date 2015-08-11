@@ -9,19 +9,171 @@ module.exports = React.createClass({
   },
 
   renderEntrees: function() {
-
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'entrees') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
+            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="entrees">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
+            <input type="submit" value="SUBMIT" />
+          </form>
+        );
+      }
+    }, this);
   },
 
   renderSides: function() {
-
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'sides') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
+            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="sides">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
+            <input type="submit" value="SUBMIT" />
+          </form>
+        );
+      }
+    }, this);
   },
 
   renderSauces: function() {
-
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'sauces') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
+            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="sauces">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
+            <input type="submit" value="SUBMIT" />
+          </form>
+        );
+      }
+    }, this);
   },
 
   renderDrinks: function() {
-
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'drinks') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
+            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="drinks">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
+            <input type="submit" value="SUBMIT" />
+          </form>
+        );
+      }
+    }, this);
   },
 
   sepByCategory: function() {
@@ -30,7 +182,7 @@ module.exports = React.createClass({
     var sauces = [];
     var drinks = [];
 
-     return _.map(this.props.menu, function(item, index) {
+     _.map(this.props.menu, function(item, index) {
        console.log('here now');
        console.log(item.category);
       if(item.category === 'entrees') {
@@ -47,9 +199,9 @@ module.exports = React.createClass({
         drinks.push(item);
       }
 
+  });
+    console.log(entrees);
     this.setState({entrees: entrees, sides: sides, sauces: sauces, drinks: drinks});
-  }, this);
-
     //console.log(entrees);
   },
 
@@ -142,6 +294,7 @@ module.exports = React.createClass({
     this.props.delete(item);
   },
 
+  //this function is not currently used
   handleEdit: function(ide, evt) {
     evt.preventDefault();
     console.log(ide);
@@ -217,7 +370,20 @@ module.exports = React.createClass({
         <section className="content form">
           <p>Change items on the current menu</p>
           <ul>
-            {this.renderOrigMenuForms()}
+            <p>Entrees</p>
+            {this.renderEntrees()}
+          </ul>
+          <ul>
+            <p>Sides</p>
+            {this.renderSides()}
+          </ul>
+          <ul>
+            <p>Sauces</p>
+            {this.renderSauces()}
+          </ul>
+          <ul>
+            <p>Drinks</p>
+            {this.renderDrinks()}
           </ul>
         </section>
       </article>
