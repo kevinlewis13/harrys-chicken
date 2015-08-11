@@ -17,14 +17,20 @@
   },
   "homepage": "https://github.com/kevinlewis13/harrys-chicken",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.2",
+    "eat": "^0.1.1",
     "express": "^4.13.1",
-    "mongoose": "^4.0.7"
+    "mongoose": "^4.0.7",
+    "passport": "^0.2.2",
+    "passport-http": "^0.2.2"
   },
   "devDependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "chai": "^3.2.0",
     "chai-http": "^1.0.0",
     "del": "^1.2.0",
+    "eat": "^0.1.1",
     "gulp": "^3.9.0",
     "gulp-htmllint": "0.0.5",
     "gulp-jshint": "^1.11.2",
