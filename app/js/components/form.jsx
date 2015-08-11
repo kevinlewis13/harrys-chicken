@@ -5,15 +5,61 @@ var _ = require('lodash');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return { restaurant: 'chicken', category: 'entrees' };
+    return { entrees: [], sides: [], sauces: [], drinks: [], restaurant: 'chicken', category: 'entrees' };
   },
 
-//maybe instead of the below, we could create four empty arrays, one for each category
-//we could then loop through the entire menu and push items to the appropriate arrays
-//then we'd have to have a render function for each category, so it might
-//be more overhead, but would help up organize the update forms section
+  renderEntrees: function() {
+
+  },
+
+  renderSides: function() {
+
+  },
+
+  renderSauces: function() {
+
+  },
+
+  renderDrinks: function() {
+
+  },
+
+  sepByCategory: function() {
+    var entrees = [];
+    var sides = [];
+    var sauces = [];
+    var drinks = [];
+
+     return _.map(this.props.menu, function(item, index) {
+       console.log('here now');
+       console.log(item.category);
+      if(item.category === 'entrees') {
+        console.log(item.title);
+        return entrees.push(item);
+      }
+      if(item.category === 'sides') {
+        sides.push(item);
+      }
+      if(item.category === 'sauces') {
+        sauces.push(item);
+      }
+      if(item.category === 'drinks') {
+        drinks.push(item);
+      }
+
+    this.setState({entrees: entrees, sides: sides, sauces: sauces, drinks: drinks});
+  }, this);
+
+    //console.log(entrees);
+  },
+
+  componentDidMount: function() {
+    this.sepByCategory();
+    console.log('memememe');
+  },
+
   renderOrigMenuForms: function() {
-      return _.map(this.props.menu, function(item) {
+      return _.map(this.props.menu, function(item, index) {
         var selectedRestaurant;
         var selectedCategory;
         //to make unique refs for every name input
@@ -75,15 +121,12 @@ module.exports = React.createClass({
             </select>
           );
         }
-        //console.log(nameref);
         return (
-          //key is needed to stop the warnings
           <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
-            //this is where I'm trying to get a unique ref for everything. I also tried ref={nameref} (declared on line 15), then just went straight for the id
             <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
-            //if we do refs like this, it grabs the last form rendered, so whatever is at the bottom of the list
             <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
             <input name="description" type="text" defaultValue={item.description}></input>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
               {selectedCategory}
             <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
@@ -92,7 +135,6 @@ module.exports = React.createClass({
           </form>
         );
       }, this);
-    //mapping statement to return form w/ inputs with vals of props of initial menu, save button, and delete button
   },
 
   handleDelete: function(item, evt) {
@@ -120,7 +162,8 @@ module.exports = React.createClass({
     var description = form.querySelector('[name="description"]').value;
     var restaurant = form.querySelector('[name="restaurant"]').value;
     var category = form.querySelector('[name="category"]').value;
-    var updatedItem = {restaurant: restaurant, title: name, price: price, description: description, category: category};
+    var index = form.querySelector('[name="index"]').value - 1;
+    var updatedItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
     console.log(updatedItem);
 
     this.props.edit(id, updatedItem);
@@ -129,11 +172,12 @@ module.exports = React.createClass({
   handleAdd: function(evt) {
     evt.preventDefault();
     var name = React.findDOMNode(this.refs.name).value.trim();
-    var price = parseFloat(React.findDOMNode(this.refs.price).value.trim());
+    var price = React.findDOMNode(this.refs.price).value.trim();
     var description = React.findDOMNode(this.refs.description).value.trim();
     var restaurant = this.state.restaurant;
     var category = this.state.category;
-    var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category};
+    var index = React.findDOMNode(this.refs.index).value -1;
+    var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
     this.props.add(newItem);
 
   },
@@ -147,6 +191,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    console.log(this.state);
     return (
       <article className="slab form">
         <section className="content form">
@@ -165,6 +210,7 @@ module.exports = React.createClass({
             <input required type="text" placeholder="item name" ref="name" />
             <input required type="text" placeholder="item price" ref="price" />
             <input type="text" placeholder="item description" ref="description" />
+            <input type="text" placeholder="item index" ref="index" />
             <input type="submit" value="Add menu item" />
           </form>
         </section>
