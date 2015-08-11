@@ -7,7 +7,7 @@ module.exports = function(router) {
   router.use(bodyparser.json());
 
   router.get('/', function(req, res) {
-    Dish.find({}, function(err, data) {
+    Dish.find({}, null, { sort: { index: 1 } }, function(err, data) {
       if (err) {
         console.log(err);
         return res.status(500).json({msg: '500 Internal server error'});

@@ -8,6 +8,7 @@ var dishSchema = mongoose.Schema({
   price: { type: String, required: true },
   description: String,
   category: { type: String, required: true },
+  index: {type: Number}
 });
 
 module.exports = mongoose.model('Dish', dishSchema);

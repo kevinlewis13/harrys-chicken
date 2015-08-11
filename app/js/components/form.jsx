@@ -5,55 +5,13 @@ var _ = require('lodash');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return { restaurant: 'chicken', category: 'entrees' };
+    return { entrees: [], sides: [], sauces: [], drinks: [], restaurant: 'chicken', category: 'entrees' };
   },
 
-  renderOrigMenuForms: function() {
-      return _.map(this.props.menu, function(item) {
-        var selectedRestaurant;
-        var selectedCategory;
-        var nameref = "name" + item._id;
-
-        if (item.category === 'entrees') {
-          selectedCategory = (
-            <select name="category" ref="category" defaultValue="entrees">
-              <option value="entrees">Entree</option>
-              <option value="sides">Side</option>
-              <option value="sauces">Sauce</option>
-              <option value="drinks">Drink</option>
-            </select>
-          );
-        }
-        if (item.category === 'sides') {
-          selectedCategory = (
-            <select name="category" ref="category" defaultValue="sides">
-              <option value="entrees">Entree</option>
-              <option value="sides">Side</option>
-              <option value="sauces">Sauce</option>
-              <option value="drinks">Drink</option>
-            </select>
-          );
-        }
-        if (item.category === 'sauces') {
-          selectedCategory = (
-            <select name="category" ref="category" defaultValue="sauces">
-              <option value="entrees">Entree</option>
-              <option value="sides">Side</option>
-              <option value="sauces">Sauce</option>
-              <option value="drinks">Drink</option>
-            </select>
-          );
-        }
-        if (item.category === 'drinks') {
-          selectedCategory = (
-            <select name="category" ref="category" defaultValue="drinks">
-              <option value="entrees">Entree</option>
-              <option value="sides">Side</option>
-              <option value="sauces">Sauce</option>
-              <option value="drinks">Drink</option>
-            </select>
-          );
-        }
+  renderEntrees: function() {
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'entrees') {
         if (item.restaurant === 'chicken') {
           selectedRestaurant = (
             <select name="restaurant" ref="restaurant" defaultValue="chicken">
@@ -73,36 +31,166 @@ module.exports = React.createClass({
         return (
           <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
             <label htmlFor="name">Name</label>
-            <input name="name" required type="text" defaultValue={item.title} ref={nameref}></input>
+            <input name="name" required type="text" defaultValue={item.title}></input>
             <label htmlFor="price">Price</label>
             <input name="price" required type="text" defaultValue={item.price}></input>
             <label htmlFor="description">Description</label>
             <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
-              {selectedCategory}
+            <select name="category" ref="category" defaultValue="entrees">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
             <button type="submit">Save Changes</button>
             <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
           </form>
         );
-      }, this);
+      }
+    }, this);
+  },
+
+  renderSides: function() {
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'sides') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="sides">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
+          </form>
+        );
+      }
+    }, this);
+  },
+
+  renderSauces: function() {
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'sauces') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="sauces">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
+          </form>
+        );
+      }
+    }, this);
+  },
+
+  renderDrinks: function() {
+    var selectedRestaurant;
+    return _.map(this.props.menu, function(item, index) {
+      if (item.category === 'drinks') {
+        if (item.restaurant === 'chicken') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="chicken">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        if (item.restaurant === 'coffee') {
+          selectedRestaurant = (
+            <select name="restaurant" ref="restaurant" defaultValue="coffee">
+              <option value="chicken">Chicken Joint</option>
+              <option value="coffee">Coffee Joint</option>
+            </select>
+          );
+        }
+        return (
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
+            <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
+            <input name="index" type="text" defaultValue={item.index + 1}></input>
+              {selectedRestaurant}
+            <select name="category" ref="category" defaultValue="drinks">
+              <option value="entrees">Entree</option>
+              <option value="sides">Side</option>
+              <option value="sauces">Sauce</option>
+              <option value="drinks">Drink</option>
+            </select>
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
+          </form>
+        );
+      }
+    }, this);
   },
 
   handleDelete: function(item, evt) {
     evt.preventDefault();
     this.props.delete(item);
-  },
-
-  handleEdit: function(ide, evt) {
-    //<button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
-    evt.preventDefault();
-    console.log(ide);
-    var nameref = "name" + ide;
-    //just seeing what everything does
-    console.log(React.findDOMNode(this.refs.nameref));
-    console.log(React.findDOMNode(this.refs.ide));
-    console.log(React.findDOMNode(this.refs.newprice));
-    console.log(evt.target);
-
   },
 
   handleSubmitEdit: function(id, evt) {
@@ -113,7 +201,8 @@ module.exports = React.createClass({
     var description = form.querySelector('[name="description"]').value;
     var restaurant = form.querySelector('[name="restaurant"]').value;
     var category = form.querySelector('[name="category"]').value;
-    var updatedItem = {restaurant: restaurant, title: name, price: price, description: description, category: category};
+    var index = form.querySelector('[name="index"]').value - 1;
+    var updatedItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
     console.log(updatedItem);
 
     this.props.edit(id, updatedItem);
@@ -126,7 +215,8 @@ module.exports = React.createClass({
     var description = React.findDOMNode(this.refs.description).value.trim();
     var restaurant = this.state.restaurant;
     var category = this.state.category;
-    var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category};
+    var index = React.findDOMNode(this.refs.index).value -1;
+    var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
     this.props.add(newItem);
 
   },
@@ -140,6 +230,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    console.log(this.state);
     return (
       <article className="slab form">
         <section className="content form">
@@ -158,13 +249,27 @@ module.exports = React.createClass({
             <input required type="text" placeholder="item name" ref="name" />
             <input required type="text" placeholder="item price" ref="price" />
             <input type="text" placeholder="item description" ref="description" />
+            <input type="text" placeholder="item index" ref="index" />
             <button type="submit">Add menu item</button>
           </form>
         </section>
         <section className="content form">
           <label htmlFor="updateItem">Change items on the current menu</label>
           <ul>
-            {this.renderOrigMenuForms()}
+            <h3>Entrees</h3>
+            {this.renderEntrees()}
+          </ul>
+          <ul>
+            <h3>Sides</h3>
+            {this.renderSides()}
+          </ul>
+          <ul>
+            <h3>Sauces</h3>
+            {this.renderSauces()}
+          </ul>
+          <ul>
+            <h3>Drinks</h3>
+            {this.renderDrinks()}
           </ul>
         </section>
       </article>
