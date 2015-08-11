@@ -29,10 +29,14 @@ module.exports = React.createClass({
           );
         }
         return (
-          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
-            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
-            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
             <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
             <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
             <select name="category" ref="category" defaultValue="entrees">
@@ -41,9 +45,8 @@ module.exports = React.createClass({
               <option value="sauces">Sauce</option>
               <option value="drinks">Drink</option>
             </select>
-            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
-            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
-            <input type="submit" value="SUBMIT" />
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
           </form>
         );
       }
@@ -71,10 +74,14 @@ module.exports = React.createClass({
           );
         }
         return (
-          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
-            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
-            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
             <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
             <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
             <select name="category" ref="category" defaultValue="sides">
@@ -83,9 +90,8 @@ module.exports = React.createClass({
               <option value="sauces">Sauce</option>
               <option value="drinks">Drink</option>
             </select>
-            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
-            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
-            <input type="submit" value="SUBMIT" />
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
           </form>
         );
       }
@@ -113,10 +119,14 @@ module.exports = React.createClass({
           );
         }
         return (
-          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
-            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
-            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
             <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
             <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
             <select name="category" ref="category" defaultValue="sauces">
@@ -125,9 +135,8 @@ module.exports = React.createClass({
               <option value="sauces">Sauce</option>
               <option value="drinks">Drink</option>
             </select>
-            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
-            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
-            <input type="submit" value="SUBMIT" />
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
           </form>
         );
       }
@@ -155,10 +164,14 @@ module.exports = React.createClass({
           );
         }
         return (
-          <form key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
-            <input name="name" required type="text" defaultValue={item.title} ref={item._id}></input>
-            <input name="price" required type="text" defaultValue={item.price} ref="newprice"></input>
+          <form name="updateItem" key={item._id} onSubmit={this.handleSubmitEdit.bind(null, item._id)}>
+            <label htmlFor="name">Name</label>
+            <input name="name" required type="text" defaultValue={item.title}></input>
+            <label htmlFor="price">Price</label>
+            <input name="price" required type="text" defaultValue={item.price}></input>
+            <label htmlFor="description">Description</label>
             <input name="description" type="text" defaultValue={item.description}></input>
+            <label htmlFor="index">Index</label>
             <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
             <select name="category" ref="category" defaultValue="drinks">
@@ -167,9 +180,8 @@ module.exports = React.createClass({
               <option value="sauces">Sauce</option>
               <option value="drinks">Drink</option>
             </select>
-            <button onClick={this.handleEdit.bind(null, item._id)}>button to save changes</button>
-            <button onClick={this.handleDelete.bind(null, item._id)}>button to delete item altogether</button>
-            <input type="submit" value="SUBMIT" />
+            <button type="submit">Save Changes</button>
+            <button onClick={this.handleDelete.bind(null, item._id)}>Delete Item</button>
           </form>
         );
       }
@@ -373,19 +385,19 @@ module.exports = React.createClass({
         <section className="content form">
           <label htmlFor="updateItem">Change items on the current menu</label>
           <ul>
-            <p>Entrees</p>
+            <h3>Entrees</h3>
             {this.renderEntrees()}
           </ul>
           <ul>
-            <p>Sides</p>
+            <h3>Sides</h3>
             {this.renderSides()}
           </ul>
           <ul>
-            <p>Sauces</p>
+            <h3>Sauces</h3>
             {this.renderSauces()}
           </ul>
           <ul>
-            <p>Drinks</p>
+            <h3>Drinks</h3>
             {this.renderDrinks()}
           </ul>
         </section>
