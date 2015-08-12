@@ -3,10 +3,28 @@
 var React = require('react');
 var request = require('superagent');
 var Admin = require('./components/form.jsx');
+var cookie = require('react-cookie');
+var Router = require('react-router');
+var Navigation = Router.Navigation;
 
 module.exports = React.createClass({
+  mixins: [Navigation],
+
   getInitialState: function() {
     return { menu: [] };
+  },
+
+  componentWillMount: function() {
+    var token = cookie.load('eat');
+
+    if (!token) {
+      this.transitionTo('/admin/sign_in');
+    }
+  },
+
+  logout: function() {
+    cookie.remove('eat');
+    this.transitionTo('/');
   },
 
   componentDidMount: function() {
@@ -65,8 +83,14 @@ module.exports = React.createClass({
 
 
   render: function() {
+    console.log(this.state.token);
+
     return (
-      <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}/>
+      <section>
+        <a href="/">Home</a>
+        <a onClick={this.logout}>Logout</a>
+        <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}/>
+      </section>
     );
   }
 });

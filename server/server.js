@@ -2,17 +2,28 @@
 
 var express = require('express');
 var mongoose = require('mongoose');
+var passport = require('passport');
 var app = express();
 var menuRoutes = express.Router();
 var authRoutes = express.Router();
+var userRoutes = express.Router();
 
+process.env.APP_SECRET = process.env.APP_SECRET || 'changethischangethischangethis';
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/harrys_chicken_dev');
+
+app.use(passport.initialize());
+require('./lib/passport_strategy')(passport);
+
+app.set('Access-Control-Allow-Origin', '*');
 
 require('./routes/menu_routes')(menuRoutes);
 require('./routes/auth_routes')(authRoutes);
+require('./routes/user_routes')(userRoutes, passport);
+
 
 app.use('/api/menu', menuRoutes);
 app.use('/api/dish', authRoutes);
+app.use('/api/users', userRoutes);
 
 app.use(express.static(__dirname + '/../build'));
 
