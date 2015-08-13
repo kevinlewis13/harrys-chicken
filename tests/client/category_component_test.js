@@ -7,11 +7,47 @@ var CategoryComponent = require('./test_build/js/components/category.js');
 var expect = require('chai').expect;
 
 describe('simple component test', function() {
-  shallowRenderer.render(React.createElement(CategoryComponent));
-  var component = shallowRenderer.getRenderOutput();
+  shallowRenderer.render(React.createElement(CategoryComponent, {
+    categoryDishes: [
+      {
+        _id: 1,
+        restaurant: 'chicken',
+        title: 'test dish 1',
+        price: '1',
+        description: 'test 1',
+        category: 'entree',
+        index: 1
+      },
+      {
+        _id: 2,
+        restaurant: 'chicken',
+        title: 'test dish 2',
+        price: '2',
+        description: 'test 2',
+        category: 'entree',
+        index: 2
+      }
+    ]
+  }));
 
-  it('should render a component', function() {
+  it('should render a category component', function() {
+    var component = shallowRenderer.getRenderOutput();
+    var testDish1 = component.props.children[0];
+    var testDish2 = component.props.children[1];
+
     expect(component.type).to.eql('ul');
     expect(component).to.not.eql(null);
+    expect(testDish1.props.dish.restaurant).to.eql('chicken');
+    expect(testDish1.props.dish.title).to.eql('test dish 1');
+    expect(testDish1.props.dish.price).to.eql('1');
+    expect(testDish1.props.dish.description).to.eql('test 1');
+    expect(testDish1.props.dish.category).to.eql('entree');
+    expect(testDish1.props.dish.index).to.eql(1);
+    expect(testDish2.props.dish.restaurant).to.eql('chicken');
+    expect(testDish2.props.dish.title).to.eql('test dish 2');
+    expect(testDish2.props.dish.price).to.eql('2');
+    expect(testDish2.props.dish.description).to.eql('test 2');
+    expect(testDish2.props.dish.category).to.eql('entree');
+    expect(testDish2.props.dish.index).to.eql(2);
   });
 });
