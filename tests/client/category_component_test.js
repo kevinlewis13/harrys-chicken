@@ -6,7 +6,7 @@ var shallowRenderer = TestUtils.createRenderer();
 var CategoryComponent = require('./test_build/js/components/category.js');
 var expect = require('chai').expect;
 
-describe('simple component test', function() {
+describe('category component test', function() {
   shallowRenderer.render(React.createElement(CategoryComponent, {
     categoryDishes: [
       {

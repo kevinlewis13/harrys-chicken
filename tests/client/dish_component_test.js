@@ -3,11 +3,11 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 var shallowRenderer = TestUtils.createRenderer();
-var CategoryComponent = require('./test_build/js/components/dish.js');
+var DishComponent = require('./test_build/js/components/dish.js');
 var expect = require('chai').expect;
 
-describe('simple component test', function() {
-  shallowRenderer.render(React.createElement(CategoryComponent, {
+describe('dish component test', function() {
+  shallowRenderer.render(React.createElement(DishComponent, {
     dish: {
       _id: 1,
       restaurant: 'chicken',
