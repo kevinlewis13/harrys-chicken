@@ -14,7 +14,7 @@ describe('dish component test', function() {
       title: 'test dish',
       price: '1',
       description: 'test',
-      category: 'entree',
+      category: 'entrees',
       index: 1
     },
   }));

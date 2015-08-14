@@ -15,7 +15,7 @@ describe('category component test', function() {
         title: 'test dish 1',
         price: '1',
         description: 'test 1',
-        category: 'entree',
+        category: 'entrees',
         index: 1
       },
       {
@@ -24,7 +24,7 @@ describe('category component test', function() {
         title: 'test dish 2',
         price: '2',
         description: 'test 2',
-        category: 'entree',
+        category: 'entrees',
         index: 2
       }
     ]
@@ -41,13 +41,13 @@ describe('category component test', function() {
     expect(testDish1.props.dish.title).to.eql('test dish 1');
     expect(testDish1.props.dish.price).to.eql('1');
     expect(testDish1.props.dish.description).to.eql('test 1');
-    expect(testDish1.props.dish.category).to.eql('entree');
+    expect(testDish1.props.dish.category).to.eql('entrees');
     expect(testDish1.props.dish.index).to.eql(1);
     expect(testDish2.props.dish.restaurant).to.eql('chicken');
     expect(testDish2.props.dish.title).to.eql('test dish 2');
     expect(testDish2.props.dish.price).to.eql('2');
     expect(testDish2.props.dish.description).to.eql('test 2');
-    expect(testDish2.props.dish.category).to.eql('entree');
+    expect(testDish2.props.dish.category).to.eql('entrees');
     expect(testDish2.props.dish.index).to.eql(2);
   });
 });
