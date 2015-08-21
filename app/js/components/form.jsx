@@ -2,10 +2,38 @@
 
 var React = require('react');
 var _ = require('lodash');
+var $ = require('jquery');
 
 module.exports = React.createClass({
   getInitialState: function() {
     return { entrees: [], sides: [], sauces: [], drinks: [], restaurant: 'chicken', category: 'entrees' };
+  },
+
+  determineCategories: function() {
+    var chickenCategories = [
+      {display: "Entree", value: "entrees"},
+      {display: "Side", value: "sides"},
+      {display: "Drink", value: "drinks"},
+      {display: "Sauce", value: "sauces"}
+    ];
+
+    var coffeeCategories = [
+      {display: "Beverage", value: "beverages"},
+      {display: "Baked Good", value: "baked_goods"},
+      {display: "Extra",  value: "extras"}
+    ];
+
+    $("#parent_selector").change(function() {
+      var parent = $(this).val();
+
+      switch(parent) {
+        case 'chicken':
+          list(chickenCategories);
+          break;
+        case 'coffee':
+          list(coffeeCategories);
+      }
+    })
   },
 
   renderEntrees: function() {
@@ -229,6 +257,10 @@ module.exports = React.createClass({
     this.setState({restaurant: evt.target.value});
   },
 
+  componentDidMount: function() {
+    this.determineCategories();
+  },
+
   render: function() {
     console.log(this.state);
     return (
@@ -236,11 +268,11 @@ module.exports = React.createClass({
         <section className="content form">
           <label htmlFor="newItem">Add a new menu Item</label>
           <form name="newItem" onSubmit={this.handleAdd}>
-            <select name="restaurant" ref="restaurant" onChange={this.handleRestaurantChange}>
+            <select id="parent_selector" name="restaurant" ref="restaurant" onChange={this.handleRestaurantChange}>
               <option value="chicken">Chicken Joint</option>
               <option value="coffee">Coffee Joint</option>
             </select>
-            <select name="category" ref="category" onChange={this.handleCategoryChange}>
+            <select id="child_selector" name="category" ref="category" onChange={this.handleCategoryChange}>
               <option value="entrees">Entree</option>
               <option value="sides">Side</option>
               <option value="sauces">Sauce</option>

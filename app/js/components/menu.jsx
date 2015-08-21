@@ -7,7 +7,7 @@ var _ = require('lodash');
 module.exports = React.createClass({
   renderCategories: function() {
     var categoryGroups = this.groupByCategories();
-    var categoryNames = ['entrees', 'sides', 'sauces', 'drinks'];
+    var categoryNames = this.props.categories;
     var categoryTitle;
 
     return _.map(categoryNames, function(categoryName) {

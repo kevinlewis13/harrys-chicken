@@ -25,6 +25,9 @@ module.exports = React.createClass({
       socialInfo: {
         facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
         tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
+      },
+      menuInfo: {
+        categories: ['beverages', 'baked_goods', 'extras']
       }
     };
 
