@@ -51,7 +51,7 @@ describe('details component test', function() {
     expect(cityAndState).to.eql('Seattle, WA 98109');
   });
 
-  it('shoulr render hours details', function() {
+  it('should render hours details', function() {
     var hoursHeader = component.props.children[5];
     var hours = component.props.children[6];
 
