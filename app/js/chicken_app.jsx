@@ -25,14 +25,16 @@ module.exports = React.createClass({
       socialInfo: {
         facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
         tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
-      }
+      },
+      logoSource: './assets/harryschicken.svg'
     };
 
     return {
       menu: [],
       restaurantInfo: chickenDetails.restaurantInfo,
       bannerInfo: chickenDetails.bannerInfo,
-      socialInfo: chickenDetails.socialInfo
+      socialInfo: chickenDetails.socialInfo,
+      logoSource: chickenDetails.logoSource
     };
   },
 
@@ -55,7 +57,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <main className="main">
-        <Header headerInfo={this.state.restaurantInfo}/>
+        <Header headerInfo={this.state.restaurantInfo} logoSource={this.state.logoSource}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>
         <Menu menu={this.state.menu}/>

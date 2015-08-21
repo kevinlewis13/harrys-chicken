@@ -21,14 +21,17 @@ gulp.task('client', ['lint:client'], function() {
     .pipe(gulp.dest('./build/'));
 
   var copyFonts = gulp.src(['./app/styles/fonts/*'])
-      .pipe(gulp.dest('./build/fonts/'));
+    .pipe(gulp.dest('./build/fonts/'));
+
+  var copyAssets = gulp.src(['./app/assets/*'])
+    .pipe(gulp.dest('./build/assets/'));
 
   var build = gulp.src('./app/js/client.jsx')
-      .pipe(webpack({
-        module: { loaders: [{test: /\.jsx$/, loader: 'jsx-loader'}]},
-        output: { filename: 'bundle.js' }
-      }))
-      .pipe(gulp.dest('./build/'));
+    .pipe(webpack({
+      module: { loaders: [{test: /\.jsx$/, loader: 'jsx-loader'}]},
+      output: { filename: 'bundle.js' }
+    }))
+    .pipe(gulp.dest('./build/'));
 
   return merge(styles, copyHtml, copyFonts, build);
 });

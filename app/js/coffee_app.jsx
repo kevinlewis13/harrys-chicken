@@ -16,7 +16,7 @@ module.exports = React.createClass({
         name: 'Harry\'s Coffee Joint',
         phone: '206.938.9000',
         address: '6032 California Ave SW\nSeattle, WA 98136',
-        hours: 'Tuesday - Saturday, 9-3pm'
+        hours: 'Tuesday - Saturday, 9-3pm',
       },
       bannerInfo: {
         partner: 'Harry\'s Chicken Joint',
@@ -25,7 +25,8 @@ module.exports = React.createClass({
       socialInfo: {
         facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
         tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
-      }
+      },
+      logoSource: '../assets/harryscoffee.svg'
     };
 
     return {
@@ -55,7 +56,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <main className="main">
-        <Header headerInfo={this.state.restaurantInfo}/>
+        <Header headerInfo={this.state.restaurantInfo} logoSource={this.state.logoSource}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>
         <Menu menu={this.state.menu}/>
