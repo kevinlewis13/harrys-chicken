@@ -22,7 +22,9 @@ module.exports = React.createClass({
     }
   },
 
-  logout: function() {
+  logout: function(evt) {
+    evt.preventDefault();
+
     cookie.remove('eat');
     this.transitionTo('/');
   },
