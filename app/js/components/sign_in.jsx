@@ -10,8 +10,8 @@ var Navigation = Router.Navigation;
 module.exports = React.createClass({
   mixins: [Navigation],
 
-  onClickHandler: function(e) {
-    e.preventDefault();
+  onClickHandler: function(evt) {
+    evt.preventDefault();
 
     var user = {
       email: React.findDOMNode(this.refs.email).value,
