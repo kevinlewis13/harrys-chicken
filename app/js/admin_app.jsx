@@ -83,8 +83,6 @@ module.exports = React.createClass({
 
 
   render: function() {
-    console.log(this.state.token);
-
     return (
       <section>
         <a href="/">Home</a>
