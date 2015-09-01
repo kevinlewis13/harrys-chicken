@@ -22,7 +22,9 @@ module.exports = React.createClass({
     }
   },
 
-  logout: function() {
+  logout: function(evt) {
+    evt.preventDefault();
+
     cookie.remove('eat');
     this.transitionTo('/');
   },
@@ -43,9 +45,9 @@ module.exports = React.createClass({
       }.bind(this));
   },
 
-  deleteItem: function(item) {
+  deleteItem: function(id) {
     request
-      .del('/api/dish/' + item)
+      .del('/api/dish/' + id)
       .end(function(err, res) {
         if (err) {
           return console.log(err);
@@ -83,8 +85,6 @@ module.exports = React.createClass({
 
 
   render: function() {
-    console.log(this.state.token);
-
     return (
       <section>
         <a href="/">Home</a>

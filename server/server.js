@@ -20,7 +20,6 @@ require('./routes/menu_routes')(menuRoutes);
 require('./routes/auth_routes')(authRoutes);
 require('./routes/user_routes')(userRoutes, passport);
 
-
 app.use('/api/menu', menuRoutes);
 app.use('/api/dish', authRoutes);
 app.use('/api/users', userRoutes);
