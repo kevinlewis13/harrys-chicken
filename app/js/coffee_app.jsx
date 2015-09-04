@@ -35,7 +35,8 @@ module.exports = React.createClass({
       menu: [],
       restaurantInfo: coffeeDetails.restaurantInfo,
       bannerInfo: coffeeDetails.bannerInfo,
-      socialInfo: coffeeDetails.socialInfo
+      socialInfo: coffeeDetails.socialInfo,
+      menuInfo: coffeeDetails.menuInfo
     };
   },
 
@@ -61,7 +62,7 @@ module.exports = React.createClass({
         <Header headerInfo={this.state.restaurantInfo}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>
-        <Menu menu={this.state.menu}/>
+        <Menu menu={this.state.menu} categories={this.state.menuInfo.categories}/>
         <About/>
         <Footer socialInfo={this.state.socialInfo}/>
       </main>

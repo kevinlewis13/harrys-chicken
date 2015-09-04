@@ -21,6 +21,30 @@ body {
   font-weight: 300;
 }
 
+form {
+  background-color: $off-white;
+  padding: 50px;
+}
+
+input {
+
+}
+
+select {
+
+}
+
+button {
+  background-color: $underdog-green;
+  color: $off-white;
+  margin: 0.5em;
+  padding: 0.5em;
+
+  &:hover {
+    background-color: darken($underdog-green, 5%);
+  }
+}
+
 h1, h3, h4 {
   font-weight: 300;
 }
@@ -41,6 +65,10 @@ h1, h3, h4 {
 
   &.footer {
     background-color: $castle-greyskull;
+  }
+
+  &.form {
+    background-color: $mint-green;
   }
 }
 
@@ -96,7 +124,7 @@ h1, h3, h4 {
   }
 }
 
-a.button {
+.button {
   padding: 0.5em 1em;
   border: 2px solid $white;
 
@@ -106,7 +134,7 @@ a.button {
   }
 }
 
-.banner a.button {
+.banner .button {
   background-color: $plumb;
 
   &:hover {
@@ -169,29 +197,29 @@ h4 {
   margin: 0 auto 44px auto;
 }
 
-.entrees .dish {
+.entrees .dish, .beverages .dish {
   width: 50%;
   height: 7.25em;
 }
 
-.entrees .dish:nth-child(odd) {
+.entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
   float: left;
   padding-right: 2em;
 }
 
-.entrees .dish:nth-child(even) {
+.entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
   float: right;
   padding-left: 2em;
 }
 
-.sides {
+.sides, .baked_goods {
   float: left;
   clear: both;
   width: 50%;
   padding-right: 2em;
 }
 
-.sauces {
+.sauces, .extras {
   float: right;
   width: 50%;
   padding-left: 2em;
@@ -203,7 +231,7 @@ h4 {
   padding-left: 2em;
 }
 
-.entrees, .drinks, .sides, .sauces {
+.entrees, .drinks, .sides, .sauces, .beverages, .extras, .baked_goods {
   font-weight: normal;
 }
 
@@ -263,24 +291,24 @@ h4 {
     font-size: 1.5rem;
   }
 
-  .entrees .dish:nth-child(odd) {
+  .entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
     float: none;
     padding: 0;
   }
 
-  .entrees .dish:nth-child(even) {
+  .entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
     float: none;
     padding: 0;
   }
 
-  .entrees, .sides, .sauces, .drinks {
+  .entrees, .sides, .sauces, .drinks, .beverages, .extras, .baked_goods {
     float: none;
     width: 80%;
     padding: 0;
     margin: 0 auto 44px auto;
   }
 
-  .entrees .dish {
+  .entrees .dish, .beverages .dish {
     margin: 0 auto 44px auto;
     width: 100%;
   }

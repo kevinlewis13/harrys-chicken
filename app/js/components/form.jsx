@@ -9,32 +9,32 @@ module.exports = React.createClass({
     return { entrees: [], sides: [], sauces: [], drinks: [], restaurant: 'chicken', category: 'entrees' };
   },
 
-  determineCategories: function() {
-    var chickenCategories = [
-      {display: "Entree", value: "entrees"},
-      {display: "Side", value: "sides"},
-      {display: "Drink", value: "drinks"},
-      {display: "Sauce", value: "sauces"}
-    ];
-
-    var coffeeCategories = [
-      {display: "Beverage", value: "beverages"},
-      {display: "Baked Good", value: "baked_goods"},
-      {display: "Extra",  value: "extras"}
-    ];
-
-    $("#parent_selector").change(function() {
-      var parent = $(this).val();
-
-      switch(parent) {
-        case 'chicken':
-          list(chickenCategories);
-          break;
-        case 'coffee':
-          list(coffeeCategories);
-      }
-    })
-  },
+  // determineCategories: function() {
+  //   var chickenCategories = [
+  //     {display: "Entree", value: "entrees"},
+  //     {display: "Side", value: "sides"},
+  //     {display: "Drink", value: "drinks"},
+  //     {display: "Sauce", value: "sauces"}
+  //   ];
+  //
+  //   var coffeeCategories = [
+  //     {display: "Beverage", value: "beverages"},
+  //     {display: "Baked Good", value: "baked_goods"},
+  //     {display: "Extra",  value: "extras"}
+  //   ];
+  //
+  //   $("#parent_selector").change(function() {
+  //     var parent = $(this).val();
+  //
+  //     switch(parent) {
+  //       case 'chicken':
+  //         list(chickenCategories);
+  //         break;
+  //       case 'coffee':
+  //         list(coffeeCategories);
+  //     }
+  //   })
+  // },
 
   renderEntrees: function() {
     var selectedRestaurant;
@@ -63,7 +63,7 @@ module.exports = React.createClass({
             <label htmlFor="price">Price</label>
             <input name="price" required type="text" defaultValue={item.price}></input>
             <label htmlFor="description">Description</label>
-            <input name="description" type="text" defaultValue={item.description}></input>
+            <textarea rows="10" cols="50" name="description" defaultValue={item.description}></textarea>
             <label htmlFor="index">Index</label>
             <input name="index" type="text" defaultValue={item.index + 1}></input>
               {selectedRestaurant}
@@ -257,9 +257,9 @@ module.exports = React.createClass({
     this.setState({restaurant: evt.target.value});
   },
 
-  componentDidMount: function() {
-    this.determineCategories();
-  },
+  // componentDidMount: function() {
+  //   this.determineCategories();
+  // },
 
   render: function() {
     console.log(this.state);
@@ -277,10 +277,13 @@ module.exports = React.createClass({
               <option value="sides">Side</option>
               <option value="sauces">Sauce</option>
               <option value="drinks">Drink</option>
+              <option value="beverages">Beverage</option>
+              <option value="extras">Extra</option>
+              <option value="baked_goods">Baked Good</option>
             </select>
             <input required type="text" placeholder="item name" ref="name" />
             <input required type="text" placeholder="item price" ref="price" />
-            <input type="text" placeholder="item description" ref="description" />
+            <input type="textarea" placeholder="item description" ref="description" />
             <input type="text" placeholder="item index" ref="index" />
             <button type="submit">Add menu item</button>
           </form>
