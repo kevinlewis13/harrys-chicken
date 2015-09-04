@@ -11,7 +11,22 @@ module.exports = React.createClass({
   mixins: [Navigation],
 
   getInitialState: function() {
-    return { menu: [] };
+    return {
+      menu: [],
+      categoryOptions: [
+        {value: 'entrees', name: 'Entree'},
+        {value: 'sides', name: 'Side'},
+        {value: 'sauces', name: 'Sauce'},
+        {value: 'drinks', name: 'Drink'},
+        {value: 'beverages', name: 'Beverage'},
+        {value: 'pastries', name: 'Pastry'},
+        {value: 'extras', name: 'Extra'}
+      ],
+      restaurantOptions: [
+        {value: 'chicken', name: 'Chicken Joint'},
+        {value: 'coffee', name: 'Coffee Joint'}
+      ]
+    };
   },
 
   componentWillMount: function() {
@@ -89,7 +104,7 @@ module.exports = React.createClass({
       <section>
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
-        <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}/>
+        <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem} categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
       </section>
     );
   }
