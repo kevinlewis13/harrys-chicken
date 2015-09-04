@@ -3,24 +3,22 @@
 var React = require('react');
 var _ = require('lodash');
 var FormCategory = require('./form_category.jsx');
-var Input =require('./input.jsx');
+var Input = require('./input.jsx');
+var DropDown = require('./select.jsx');
 
 module.exports = React.createClass({
 
-  renderFormCategories: function() {
+  renderUpdateItemForms: function() {
     var formCategoryGroups = this.groupByCategories();
-    var formCategoryNames = [
-      'entrees', 'sides', 'sauces', 'drinks', 'beverages', 'pastries', 'extras'
-    ];
 
-    return _.map(formCategoryNames, function(formCategoryName) {
-      var formCategoryClass = formCategoryName + ' form-category';
+    return _.map(this.props.categoryOptions, function(category) {
+      var formCategoryClass = category.value + ' form-category';
 
       return (
-        <section key={formCategoryName} className={formCategoryClass}>
-          <h3>{formCategoryName}</h3>
-          <FormCategory formCategoryDishes={formCategoryGroups[formCategoryName]}
-            edit={this.handleSubmitEdit} delete={this.handleDelete}
+        <section key={category.value} className={formCategoryClass}>
+          <h3>{category.value}</h3>
+          <FormCategory categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions} formCategoryDishes={formCategoryGroups[category.value]}
+            submit={this.handleSubmit} delete={this.handleDelete}
           />
         </section>
       );
@@ -38,7 +36,7 @@ module.exports = React.createClass({
     this.props.delete(id);
   },
 
-  handleSubmitEdit: function(id, evt) {
+  handleSubmit: function(id, evt) {
     evt.preventDefault();
     var form = evt.target;
     var name = form.querySelector('[name="name"]').value;
@@ -47,52 +45,33 @@ module.exports = React.createClass({
     var restaurant = form.querySelector('[name="restaurant"]').value;
     var category = form.querySelector('[name="category"]').value;
     var index = form.querySelector('[name="index"]').value - 1;
-    var updatedItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
+    var item = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
 
-    this.props.edit(id, updatedItem);
-  },
-
-  handleAdd: function(evt) {
-    evt.preventDefault();
-    var form = evt.target;
-    var name = form.querySelector('[name="name"]').value;
-    var price = form.querySelector('[name="price"]').value;
-    var description = form.querySelector('[name="description"]').value;
-    var restaurant = form.querySelector('[name="restaurant"]').value;
-    var category = form.querySelector('[name="category"]').value;
-    var index = form.querySelector('[name="index"]').value - 1;
-    var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
-    // console.log(React.findDOMNode(this.refs.test).value.trim());
-    this.props.add(newItem);
-
+    if (id) {
+      return this.props.edit(id, item);
+    }
+    this.props.add(item);
   },
 
   render: function() {
+
     return (
       <article className="slab form">
         <section className="content form">
           <label htmlFor="newItem">Add a new menu Item</label>
-          <form name="newItem" onSubmit={this.handleAdd}>
-            <select name="restaurant" ref="restaurant" onChange={this.handleRestaurantChange}>
-              <option value="chicken">Chicken Joint</option>
-              <option value="coffee">Coffee Joint</option>
-            </select>
-            <select name="category" ref="category" onChange={this.handleCategoryChange}>
-              <option value="entrees">Entree</option>
-              <option value="sides">Side</option>
-              <option value="sauces">Sauce</option>
-              <option value="drinks">Drink</option>
-            </select>
+          <form name="newItem" onSubmit={this.handleSubmit.bind(null, null)}>
             <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
             <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
             <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
             <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
+            <DropDown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
+            <DropDown name="category" default="entrees" options={this.props.categoryOptions}/>
             <button type="submit">Add menu item</button>
           </form>
         </section>
         <section className="content form">
           <label htmlFor="updateItem">Change items on the current menu</label>
-          {this.renderFormCategories()}
+          {this.renderUpdateItemForms()}
         </section>
       </article>
     );
