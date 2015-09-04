@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var Input = require('./input.jsx');
 
 module.exports = React.createClass({
   handleSubmitEdit: function(id, evt) {
@@ -15,14 +16,10 @@ module.exports = React.createClass({
     return (
       <form name="updateItem" key={this.props.dish._id}
         onSubmit={this.handleSubmitEdit.bind(null, this.props.dish._id)}>
-        <label htmlFor="name">Name</label>
-        <input name="name" required type="text" defaultValue={this.props.dish.title}></input>
-        <label htmlFor="price">Price</label>
-        <input name="price" required type="text" defaultValue={this.props.dish.price}></input>
-        <label htmlFor="description">Description</label>
-        <input name="description" type="text" defaultValue={this.props.dish.description}></input>
-        <label htmlFor="index">Index</label>
-        <input name="index" type="text" defaultValue={this.props.dish.index + 1}></input>
+        <Input isRequired={true} labelName="Name" name="name" default={this.props.dish.title} placeholder="item name"/>
+        <Input isRequired={true} labelName="Price" name="price" default={this.props.dish.price} placeholder="item price"/>
+        <Input isRequired={false} labelName="Description" name="description" default={this.props.dish.description} placeholder="item description"/>
+        <Input isRequired={true} labelName="Menu Position" name="index" default={this.props.dish.index + 1} placeholder="item index"/>
         <select name="restaurant" ref="restaurant" defaultValue={this.props.dish.restaurant}>
           <option value="chicken">Chicken Joint</option>
           <option value="coffee">Coffee Joint</option>

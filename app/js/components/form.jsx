@@ -3,11 +3,9 @@
 var React = require('react');
 var _ = require('lodash');
 var FormCategory = require('./form_category.jsx');
+var Input =require('./input.jsx');
 
 module.exports = React.createClass({
-  getInitialState: function() {
-    return { restaurant: 'chicken', category: 'entrees' };
-  },
 
   renderFormCategories: function() {
     var formCategoryGroups = this.groupByCategories();
@@ -56,23 +54,17 @@ module.exports = React.createClass({
 
   handleAdd: function(evt) {
     evt.preventDefault();
-    var name = React.findDOMNode(this.refs.name).value.trim();
-    var price = React.findDOMNode(this.refs.price).value.trim();
-    var description = React.findDOMNode(this.refs.description).value.trim();
-    var restaurant = this.state.restaurant;
-    var category = this.state.category;
-    var index = React.findDOMNode(this.refs.index).value -1;
+    var form = evt.target;
+    var name = form.querySelector('[name="name"]').value;
+    var price = form.querySelector('[name="price"]').value;
+    var description = form.querySelector('[name="description"]').value;
+    var restaurant = form.querySelector('[name="restaurant"]').value;
+    var category = form.querySelector('[name="category"]').value;
+    var index = form.querySelector('[name="index"]').value - 1;
     var newItem = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
+    // console.log(React.findDOMNode(this.refs.test).value.trim());
     this.props.add(newItem);
 
-  },
-
-  handleCategoryChange: function(evt) {
-    this.setState({category: evt.target.value});
-  },
-
-  handleRestaurantChange: function(evt) {
-    this.setState({restaurant: evt.target.value});
   },
 
   render: function() {
@@ -91,10 +83,10 @@ module.exports = React.createClass({
               <option value="sauces">Sauce</option>
               <option value="drinks">Drink</option>
             </select>
-            <input required type="text" placeholder="item name" ref="name" />
-            <input required type="text" placeholder="item price" ref="price" />
-            <input type="text" placeholder="item description" ref="description" />
-            <input type="text" placeholder="item index" ref="index" />
+            <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
+            <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
+            <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
+            <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
             <button type="submit">Add menu item</button>
           </form>
         </section>
