@@ -12,10 +12,10 @@ module.exports = React.createClass({
     var formCategoryGroups = this.groupByCategories();
 
     return _.map(this.props.categoryOptions, function(category) {
-      var formCategoryClass = category.value + ' form-category';
+      // var formCategoryClass = category.value + ' form-category';
 
       return (
-        <section key={category.value} className={formCategoryClass}>
+        <section key={category.value} className="form-category">
           <h3>{category.value}</h3>
           <FormCategory categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions} formCategoryDishes={formCategoryGroups[category.value]}
             submit={this.handleSubmit} delete={this.handleDelete}
