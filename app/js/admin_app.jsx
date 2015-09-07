@@ -2,7 +2,7 @@
 
 var React = require('react');
 var request = require('superagent');
-var Admin = require('./components/form.jsx');
+var Admin = require('./components/admin/form.jsx');
 var cookie = require('react-cookie');
 var Router = require('react-router');
 var Navigation = Router.Navigation;
@@ -104,7 +104,8 @@ module.exports = React.createClass({
       <section>
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
-        <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem} categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
+        <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}
+          categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
       </section>
     );
   }

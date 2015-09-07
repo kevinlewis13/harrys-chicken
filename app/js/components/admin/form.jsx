@@ -17,7 +17,10 @@ module.exports = React.createClass({
       return (
         <section key={category.value} className={formCategoryClass}>
           <h3>{category.value}</h3>
-          <FormCategory categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions} formCategoryDishes={formCategoryGroups[category.value]}
+          <FormCategory
+            categoryOptions={this.props.categoryOptions}
+            restaurantOptions={this.props.restaurantOptions}
+            formCategoryDishes={formCategoryGroups[category.value]}
             submit={this.handleSubmit} delete={this.handleDelete}
           />
         </section>
