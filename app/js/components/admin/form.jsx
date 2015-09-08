@@ -14,13 +14,9 @@ module.exports = React.createClass({
     return _.map(this.props.categoryOptions, function(category) {
       return (
         <section key={category.value} className="form-category">
-          <h3>{category.value}</h3>
-          <FormCategory
-            categoryOptions={this.props.categoryOptions}
-            restaurantOptions={this.props.restaurantOptions}
-            formCategoryDishes={formCategoryGroups[category.value]}
-            submit={this.handleSubmit} delete={this.handleDelete}
-          />
+          <h3 className="form-category-title">{category.value}</h3>
+          <FormCategory categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions}
+            formCategoryDishes={formCategoryGroups[category.value]} submit={this.handleSubmit} delete={this.handleDelete}/>
         </section>
       );
     }, this);
