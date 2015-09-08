@@ -37,25 +37,29 @@ module.exports = React.createClass({
     this.props.delete(id);
   },
 
+  buildItem: function(form) {
+    return {
+      restaurant: form.querySelector('[name="restaurant"]').value,
+      title: form.querySelector('[name="name"]').value,
+      price: form.querySelector('[name="price"]').value,
+      description: form.querySelector('[name="description"]').value,
+      category: form.querySelector('[name="category"]').value,
+      index: form.querySelector('[name="index"]').value - 1
+    };
+  },
+
   handleSubmit: function(id, evt) {
     evt.preventDefault();
-    var form = evt.target;
-    var name = form.querySelector('[name="name"]').value;
-    var price = form.querySelector('[name="price"]').value;
-    var description = form.querySelector('[name="description"]').value;
-    var restaurant = form.querySelector('[name="restaurant"]').value;
-    var category = form.querySelector('[name="category"]').value;
-    var index = form.querySelector('[name="index"]').value - 1;
-    var item = {restaurant: restaurant, title: name, price: price, description: description, category: category, index: index};
+    var item = this.buildItem(evt.target);
 
     if (id) {
       return this.props.edit(id, item);
     }
+
     this.props.add(item);
   },
 
   render: function() {
-
     return (
       <article className="slab form">
         <section className="content form">
