@@ -46,16 +46,19 @@ h1, h3, h4, h5 {
 
 .toggle-edit-button, .save-button, .delete-button {
   border: 2px solid $grey;
-  margin: 0.5em 0.5em 0 0;
 
   &:hover {
     background-color: $off-white
   }
 }
 
-.toggle-edit-button {
+.toggle-edit-button, .delete-button {
   float: right;
-  margin: 0;
+  margin-left: 0.5em;
+}
+
+.save-button {
+  margin-top: 0.5em
 }
 
 .dish-edit-form {
