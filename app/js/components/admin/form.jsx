@@ -4,7 +4,7 @@ var React = require('react');
 var _ = require('lodash');
 var FormCategory = require('./form_category.jsx');
 var Input = require('./input.jsx');
-var DropDown = require('./select.jsx');
+var Dropdown = require('./dropdown.jsx');
 
 module.exports = React.createClass({
 
@@ -65,8 +65,8 @@ module.exports = React.createClass({
             <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
             <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
             <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
-            <DropDown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
-            <DropDown name="category" default="entrees" options={this.props.categoryOptions}/>
+            <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
+            <Dropdown name="category" default="entrees" options={this.props.categoryOptions}/>
             <button type="submit">Add menu item</button>
           </form>
         </section>

@@ -4,6 +4,10 @@ var React = require('react');
 var _ = require('lodash');
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    return { selected: this.props.default };
+  },
+
   renderOptions: function() {
     return _.map(this.props.options, function(option) {
       return (
@@ -12,9 +16,17 @@ module.exports = React.createClass({
     });
   },
 
+  handleChange: function(evt) {
+    this.setState({selected: evt.target.value});
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({selected: nextProps.default});
+  },
+
   render: function() {
     return (
-      <select name={this.props.name} defaultValue={this.props.default}>
+      <select name={this.props.name} value={this.state.selected} onChange={this.handleChange}>
         {this.renderOptions()}
       </select>
     );

@@ -2,7 +2,7 @@
 
 var React = require('react');
 var Input = require('./input.jsx');
-var DropDown = require('./select.jsx');
+var Dropdown = require('./dropdown.jsx');
 var $ = require('jquery');
 
 module.exports = React.createClass({
