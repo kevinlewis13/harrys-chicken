@@ -21,8 +21,46 @@ body {
   font-weight: 300;
 }
 
-h1, h3, h4 {
+h1, h3, h4, h5 {
   font-weight: 300;
+}
+
+.form-category {
+  h3 {
+    margin: 0.75em 0;
+  }
+}
+
+.dish-edit-header {
+  width: 50%;
+
+  h4 {
+    margin: 0;
+    display: inline;
+  }
+}
+
+.dish-edit-header {
+  padding: 0.5em 0;
+}
+
+.toggle-edit-button, .save-button, .delete-button {
+  border: 2px solid $grey;
+  margin: 0.5em 0.5em 0 0;
+
+  &:hover {
+    background-color: $off-white
+  }
+}
+
+.toggle-edit-button {
+  float: right;
+  margin: 0;
+}
+
+.dish-edit-form {
+  display: none;
+  margin: 1.5em 0;
 }
 
 .slab {
@@ -152,7 +190,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
 }
 
 .category-title {
