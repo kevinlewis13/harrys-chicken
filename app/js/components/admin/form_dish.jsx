@@ -32,7 +32,7 @@ module.exports = React.createClass({
     return (
       <section className="dish-edit-section" key={this.props.dish._id}>
         <header className="dish-edit-header">
-          <h4>{this.state.dish.index + 1}. {this.props.dish.title}</h4>
+          <h4>{index}. {this.props.dish.title}</h4>
           <button onClick={this.handleToggleEdit} className="toggle-edit-button">{buttonText}</button>
         </header>
         <form className="dish-edit-form" name="updateItem" key={this.props.dish._id}
@@ -40,7 +40,7 @@ module.exports = React.createClass({
           <Input isRequired={true} labelName="Name" name="name" default={this.state.dish.title} placeholder="item name"/>
           <Input isRequired={true} labelName="Price" name="price" default={this.state.dish.price} placeholder="item price"/>
           <Input isRequired={false} labelName="Description" name="description" default={this.state.dish.description} placeholder="item description"/>
-          <Input isRequired={true} labelName="Menu Position" name="index" default={this.state.dish.index + 1} placeholder="item index"/>
+          <Input isRequired={true} labelName="Menu Position" name="index" default={index} placeholder="item index"/>
           <DropDown name="restaurant" default={this.state.dish.restaurant} options={this.props.restaurantOptions} />
           <DropDown name="category" default={this.state.dish.category} options={this.props.categoryOptions} />
           <button className="save-button" type="submit">Save Changes</button>
