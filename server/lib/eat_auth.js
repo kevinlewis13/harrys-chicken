@@ -25,7 +25,6 @@ module.exports = function(secret) {
 
         if (!user) {
           return res.status(401).json({msg: '401 Not authorized'});
-
         }
 
         req.user = user;
