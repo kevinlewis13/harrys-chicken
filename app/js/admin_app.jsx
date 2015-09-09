@@ -63,6 +63,7 @@ module.exports = React.createClass({
   deleteItem: function(id) {
     request
       .del('/api/dish/' + id)
+      .set('eat', cookie.load('eat'))
       .end(function(err, res) {
         if (err) {
           return console.log(err);
@@ -76,6 +77,7 @@ module.exports = React.createClass({
     request
       .post('/api/dish')
       .send(item)
+      .set('eat', cookie.load('eat'))
       .end(function(err, res) {
         if (err) {
           return console.log(err);
@@ -89,6 +91,7 @@ module.exports = React.createClass({
     request
       .put('/api/dish/' + id)
       .send(item)
+      .set('eat', cookie.load('eat'))
       .end(function(err, res) {
         if (err) {
           return console.log(err);
