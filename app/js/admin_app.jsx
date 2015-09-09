@@ -12,6 +12,7 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
+      showAlert: false,
       menu: [],
       categoryOptions: [
         {value: 'entrees', name: 'Entree'},
@@ -70,6 +71,7 @@ module.exports = React.createClass({
         }
 
         this.loadMenu();
+        this.showSuccessAlert();
       }.bind(this));
   },
 
@@ -84,6 +86,7 @@ module.exports = React.createClass({
         }
 
         this.loadMenu();
+        this.showSuccessAlert();
       }.bind(this));
   },
 
@@ -98,17 +101,32 @@ module.exports = React.createClass({
         }
 
         this.loadMenu();
+        this.showSuccessAlert();
       }.bind(this));
   },
 
+  showSuccessAlert: function() {
+    this.setState({showAlert: true});
+
+    setTimeout(function() {
+      this.setState({showAlert: false});
+    }.bind(this), 1500);
+  },
 
   render: function() {
+    var overlayClass = this.state.showAlert ? 'overlay visible' : 'overlay hidden';
+
     return (
-      <section>
+      <section className="admin-section">
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
         <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}
           categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
+        <div className={overlayClass}>
+          <div className="modal-content">
+            <p>Operation Successful!</p>
+          </div>
+        </div>
       </section>
     );
   }
