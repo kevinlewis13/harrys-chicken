@@ -2,12 +2,12 @@
 
 var React = require('react');
 var request = require('superagent');
-var Header = require('./components/header.jsx');
-var Banner = require('./components/banner.jsx');
-var Info = require('./components/info.jsx');
-var Menu = require('./components/menu.jsx');
-var About = require('./components/about.jsx');
-var Footer = require('./components/footer.jsx');
+var Header = require('./components/site/header.jsx');
+var Banner = require('./components/site/banner.jsx');
+var Info = require('./components/site/info.jsx');
+var Menu = require('./components/site/menu.jsx');
+var About = require('./components/site/about.jsx');
+var Footer = require('./components/site/footer.jsx');
 
 module.exports = React.createClass({
   getInitialState: function() {
