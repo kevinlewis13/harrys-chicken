@@ -44,9 +44,7 @@ h1, h3, h4, h5 {
   padding: 0.5em 0;
 }
 
-.toggle-edit-button, .save-button, .delete-button {
-  border: 2px solid $grey;
-
+.toggle-edit-button, .save-button, .delete-button, .modal-button, .add-item-button {
   &:hover {
     background-color: $off-white
   }
