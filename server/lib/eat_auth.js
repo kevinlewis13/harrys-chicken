@@ -8,26 +8,23 @@ module.exports = function(secret) {
     var token = req.headers.eat || req.body.eat;
 
     if (!token) {
-      console.log('unauthorized, no token in request');
-      return res.status(401).json({msg: 'not authorized, no token in request'});
+      return res.status(401).json({msg: '401 Not authorized'});
     }
 
     eat.decode(token, secret, function(err, decoded) {
       if (err) {
         console.log(err);
-        return res.status(401).json({msg: 'not authorized, could not decode'});
+        return res.status(401).json({msg: '401 Not authorized'});
       }
 
       User.findOne({ _id: decoded.id }, function(err, user) {
         if (err) {
           console.log(err);
-          return res.status(401).json({msg: 'not authorized, error finding user'});
+          return res.status(500).json({msg: '500 Internal server error'});
         }
 
         if (!user) {
-          console.log('could not find user for that token');
-          return res.status(401).json({msg: 'not authorized, could not find that user'});
-
+          return res.status(401).json({msg: '401 Not authorized'});
         }
 
         req.user = user;

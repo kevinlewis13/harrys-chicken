@@ -8,8 +8,9 @@ module.exports = React.createClass({
   renderFormDish: function() {
     return _.map(this.props.formCategoryDishes, function(dish) {
       return (
-        <FormDish categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions} dish={dish} key={dish._id}
-          submit={this.props.submit} delete={this.props.delete}
+        <FormDish categoryOptions={this.props.categoryOptions}
+          restaurantOptions={this.props.restaurantOptions} dish={dish}
+          key={dish._id} submit={this.props.submit} delete={this.props.delete}
         />
       );
     }, this);

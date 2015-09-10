@@ -53,8 +53,101 @@ textarea {
   margin: 0 auto;
 }
 
-h1, h3, h4 {
+h1, h3, h4, h5 {
   font-weight: 300;
+}
+
+.form-category {
+  h3 {
+    margin: 0.75em 0;
+  }
+}
+
+.dish-edit-header {
+  width: 50%;
+
+  h4 {
+    margin: 0;
+    display: inline;
+  }
+}
+
+.dish-edit-header {
+  padding: 0.5em 0;
+}
+
+.toggle-edit-button, .save-button, .delete-button, .modal-button, .add-item-button {
+  border-radius: 10%;
+
+  &:hover {
+    background-color: darken($off-white, 10%);
+  }
+}
+
+.modal-button {
+  margin: 1em .75em 0 .75em;
+}
+
+.warning:hover {
+  background-color: darken(#cd4540, 10%);
+  color: $off-white;
+}
+
+.confirm:hover {
+  background-color: lighten(#79BD9A, 10%);
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align:center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+  position: relative;
+  top: 25%;
+  width: 20%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+.form-category-title {
+  text-transform: capitalize;
+}
+
+.toggle-edit-button, .delete-button {
+  float: right;
+  margin-left: 0.5em;
+}
+
+.save-button {
+  margin-top: 0.5em
+}
+
+.dish-edit-form {
+  display: none;
+  margin: 1.5em 0;
 }
 
 .slab {
@@ -184,7 +277,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
 }
 
 .category-title {
