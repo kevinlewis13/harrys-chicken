@@ -49,7 +49,7 @@ module.exports = React.createClass({
           <Input isRequired={true} labelName="Menu Position" name="index" value={index} placeholder="item index"/>
           <Dropdown name="restaurant" default={this.props.dish.restaurant} options={this.props.restaurantOptions}/>
           <Dropdown name="category" default={this.props.dish.category} options={this.props.categoryOptions}/>
-          <button className="save-button" type="submit">Save Changes</button>
+          <button className="save-button confirm" type="submit">Save Changes</button>
         </form>
       </section>
     );

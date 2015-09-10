@@ -12,6 +12,9 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
+      showAlert: false,
+      showConfirmDelete: false,
+      currentItem: null,
       menu: [],
       categoryOptions: [
         {value: 'entrees', name: 'Entree'},
@@ -60,6 +63,19 @@ module.exports = React.createClass({
       }.bind(this));
   },
 
+  handleConfirm: function() {
+    this.setState({showConfirmDelete: false});
+    this.deleteItem(this.state.currentItem);
+  },
+
+  handleCancel: function() {
+    this.setState({showConfirmDelete: false});
+  },
+
+  showDeleteModal: function(id) {
+    this.setState({showConfirmDelete: true, currentItem: id});
+  },
+
   deleteItem: function(id) {
     request
       .del('/api/dish/' + id)
@@ -84,6 +100,7 @@ module.exports = React.createClass({
         }
 
         this.loadMenu();
+        this.showSuccessAlert();
       }.bind(this));
   },
 
@@ -98,17 +115,40 @@ module.exports = React.createClass({
         }
 
         this.loadMenu();
+        this.showSuccessAlert();
       }.bind(this));
   },
 
+  showSuccessAlert: function() {
+    this.setState({showAlert: true});
+
+    setTimeout(function() {
+      this.setState({showAlert: false});
+    }.bind(this), 1500);
+  },
 
   render: function() {
+    var successOverlayClass = this.state.showAlert ? 'overlay visible' : 'overlay hidden';
+    var deleteOverlayClass = this.state.showConfirmDelete ? 'overlay visible' : 'overlay hidden';
+
     return (
-      <section>
+      <section className="admin-section">
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
-        <Admin menu={this.state.menu} add={this.addItem} delete={this.deleteItem} edit={this.editItem}
+        <Admin menu={this.state.menu} add={this.addItem} delete={this.showDeleteModal} edit={this.editItem}
           categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
+        <div className={successOverlayClass}>
+          <div className="modal-content">
+            <p>Operation Successful!</p>
+          </div>
+        </div>
+        <div className={deleteOverlayClass}>
+          <div className="modal-content">
+            <p>Are you sure you want to delete this item?</p>
+            <button onClick={this.handleConfirm} className="modal-button warning">Yes</button>
+            <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
+          </div>
+        </div>
       </section>
     );
   }
