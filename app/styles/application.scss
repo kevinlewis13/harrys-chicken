@@ -45,9 +45,24 @@ h1, h3, h4, h5 {
 }
 
 .toggle-edit-button, .save-button, .delete-button, .modal-button, .add-item-button {
+  border-radius: 10%;
+
   &:hover {
-    background-color: $off-white
+    background-color: darken($off-white, 10%);
   }
+}
+
+.modal-button {
+  margin: 1em .75em 0 .75em;
+}
+
+.warning:hover {
+  background-color: darken(#cd4540, 10%);
+  color: $off-white;
+}
+
+.confirm:hover {
+  background-color: lighten(#79BD9A, 10%);
 }
 
 .hidden {
@@ -83,10 +98,6 @@ h1, h3, h4, h5 {
   background-color: #fff;
   padding: 1em;
   text-align: center;
-}
-
-.modal-button {
-
 }
 
 .form-category-title {

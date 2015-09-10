@@ -67,7 +67,7 @@ module.exports = React.createClass({
             <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
             <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
             <Dropdown name="category" default="entrees" options={this.props.categoryOptions}/>
-            <button className="add-item-button" type="submit">Add item</button>
+            <button className="add-item-button confirm" type="submit">Add item</button>
           </form>
         </section>
         <section className="content form">
