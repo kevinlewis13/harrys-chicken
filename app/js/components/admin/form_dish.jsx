@@ -43,10 +43,13 @@ module.exports = React.createClass({
           <button className="toggle-edit-button" onClick={this.handleToggleEdit}>{buttonText}</button>
         </header>
         <form className="dish-edit-form" name="updateItem" onSubmit={this.handleSubmit.bind(null, this.props.dish._id)}>
+          <label className="textarea_label">Description
+            <textarea name="description" defaultValue={this.props.dish.description} rows="10" cols="50"></textarea>
+          </label>
           <Input isRequired={true} labelName="Name" name="name" value={this.props.dish.title} placeholder="item name"/>
           <Input isRequired={true} labelName="Price" name="price" value={this.props.dish.price} placeholder="item price"/>
-          <Input isRequired={false} labelName="Description" name="description" value={this.props.dish.description} placeholder="item description"/>
-          <Input isRequired={true} labelName="Menu Position" name="index" value={index} placeholder="item index"/>
+
+
           <Dropdown name="restaurant" default={this.props.dish.restaurant} options={this.props.restaurantOptions}/>
           <Dropdown name="category" default={this.props.dish.category} options={this.props.categoryOptions}/>
           <button className="save-button confirm" type="submit">Save Changes</button>
