@@ -21,19 +21,6 @@ body {
   font-weight: 300;
 }
 
-form {
-  background-color: $off-white;
-  padding: 50px;
-}
-
-input {
-
-}
-
-select {
-
-}
-
 h1, h3, h4, h5 {
   font-weight: 300;
 }
@@ -202,7 +189,7 @@ h1, h3, h4, h5 {
   }
 }
 
-.button {
+a.button {
   padding: 0.5em 1em;
   border: 2px solid $white;
 
@@ -212,7 +199,7 @@ h1, h3, h4, h5 {
   }
 }
 
-.banner .button {
+.banner a.button {
   background-color: $plumb;
 
   &:hover {
@@ -290,7 +277,7 @@ h4 {
   padding-left: 2em;
 }
 
-.sides, .baked_goods {
+.sides, .pastries {
   float: left;
   clear: both;
   width: 50%;
@@ -309,7 +296,7 @@ h4 {
   padding-left: 2em;
 }
 
-.entrees, .drinks, .sides, .sauces, .beverages, .extras, .baked_goods {
+.entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
   font-weight: normal;
 }
 
@@ -379,7 +366,7 @@ h4 {
     padding: 0;
   }
 
-  .entrees, .sides, .sauces, .drinks, .beverages, .extras, .baked_goods {
+  .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
     float: none;
     width: 80%;
     padding: 0;
@@ -428,7 +415,7 @@ h4 {
 }
 
 @media (max-width: 700px) {
-  .entrees, .sides, .sauces, .drinks {
+  .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
     width: 100%;
   }
 }
