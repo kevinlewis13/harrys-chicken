@@ -262,29 +262,29 @@ h4 {
   margin: 0 auto 44px auto;
 }
 
-.entrees .dish {
+.entrees .dish, .beverages .dish {
   width: 50%;
   height: 7.25em;
 }
 
-.entrees .dish:nth-child(odd) {
+.entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
   float: left;
   padding-right: 2em;
 }
 
-.entrees .dish:nth-child(even) {
+.entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
   float: right;
   padding-left: 2em;
 }
 
-.sides {
+.sides, .pastries {
   float: left;
   clear: both;
   width: 50%;
   padding-right: 2em;
 }
 
-.sauces {
+.sauces, .extras {
   float: right;
   width: 50%;
   padding-left: 2em;
@@ -296,7 +296,7 @@ h4 {
   padding-left: 2em;
 }
 
-.entrees, .drinks, .sides, .sauces {
+.entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
   font-weight: normal;
 }
 
@@ -356,24 +356,24 @@ h4 {
     font-size: 1.5rem;
   }
 
-  .entrees .dish:nth-child(odd) {
+  .entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
     float: none;
     padding: 0;
   }
 
-  .entrees .dish:nth-child(even) {
+  .entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
     float: none;
     padding: 0;
   }
 
-  .entrees, .sides, .sauces, .drinks {
+  .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
     float: none;
     width: 80%;
     padding: 0;
     margin: 0 auto 44px auto;
   }
 
-  .entrees .dish {
+  .entrees .dish, .beverages .dish {
     margin: 0 auto 44px auto;
     width: 100%;
   }
@@ -415,7 +415,7 @@ h4 {
 }
 
 @media (max-width: 700px) {
-  .entrees, .sides, .sauces, .drinks {
+  .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
     width: 100%;
   }
 }
