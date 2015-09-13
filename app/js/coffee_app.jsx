@@ -27,7 +27,7 @@ module.exports = React.createClass({
         tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
       },
       menuInfo: {
-        categories: ['beverages', 'baked_goods', 'extras']
+        categories: ['beverages', 'pastries', 'extras']
       }
     };
 
