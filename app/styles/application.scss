@@ -21,63 +21,86 @@ body {
   font-weight: 300;
 }
 
-select {
-  display: block;
-  margin-right: 1%;
-}
-
-.input_fields, .select_fields, .textarea_fields {
-  margin: 0 auto;
-  width: 50%;
-  padding: 2em;
-  clear: none;
-}
-.input_label, .textarea_label {
-
-  margin: 0 auto;
-  display: block;
-}
-
-.textarea_fields {
-  float: right;
-  clear: none;
-}
-
 label span {
   display: block;
-  margin: 0 auto;
 }
 
-textarea {
+form {
+  width: 100%;
+  background-color: inherit;
+  margin: 0;
+}
+
+.form-left {
+  width: 35%;
+  float: left;
+}
+
+.form-left label:last-child {
+  margin-bottom: .5em;
+}
+
+.form-right {
+  width: 48%;
+  float: left;
+}
+
+input, textarea, select {
+  line-height: 1.15;
+  font-size: 1em;
+  color: $grey;
+}
+
+input {
+  width: 70%;
+}
+
+select {
+  display: inline-block;
+  width: 48%;
+}
+
+.form-right select:last-child {
+  margin-left: 4%;
+}
+
+/* .save-button { */
+/*   clear: both; */
+/*   display: block; */
+/* } */
+
+.input-label, .textarea-label {
+  margin-bottom: .5em;
   display: block;
-  margin: 0 auto;
 }
 
 h1, h3, h4, h5 {
   font-weight: 300;
 }
 
-.form-category {
-  h3 {
-    margin: 0.75em 0;
-  }
+.form-category h3 {
+  margin: 0.75em 0;
+}
+
+.dish-edit-section {
+  overflow: hidden;
+  clear: both;
+  padding: 1em;
+  margin-bottom: 1em;
+  width: 60%;
+}
+
+.dish-edit-header h4 {
+  margin: 0;
+  display: inline;
 }
 
 .dish-edit-header {
-  width: 50%;
-
-  h4 {
-    margin: 0;
-    display: inline;
-  }
-}
-
-.dish-edit-header {
-  padding: 0.5em 0;
+  padding-bottom: 0.5em;
 }
 
 .toggle-edit-button, .save-button, .delete-button, .modal-button, .add-item-button {
-  border-radius: 10%;
+  border-radius: 3px;
 
   &:hover {
     background-color: darken($off-white, 10%);
@@ -109,6 +132,10 @@ h1, h3, h4, h5 {
   transition: all 0.3s ease;
 }
 
+.form-visible {
+  background-color: $off-white;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -136,18 +163,14 @@ h1, h3, h4, h5 {
   text-transform: capitalize;
 }
 
-.toggle-edit-button, .delete-button {
+.toggle-edit-button, .delete-button, .save-button {
   float: right;
   margin-left: 0.5em;
 }
 
-.save-button {
-  margin-top: 0.5em
-}
-
 .dish-edit-form {
   display: none;
-  margin: 1.5em 0;
+  margin-top: 1.5em;
 }
 
 .slab {

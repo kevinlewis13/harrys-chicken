@@ -16,7 +16,7 @@ module.exports = React.createClass({
         <section key={category.value} className="form-category">
           <h3 className="form-category-title">{category.value}</h3>
           <FormCategory categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions}
-            formCategoryDishes={formCategoryGroups[category.value]} submit={this.handleSubmit} delete={this.handleDelete}/>
+            formCategoryDishes={formCategoryGroups[category.value]} update={this.handleUpdateItem} delete={this.handleDelete}/>
         </section>
       );
     }, this);
@@ -44,13 +44,15 @@ module.exports = React.createClass({
     };
   },
 
-  handleSubmit: function(id, evt) {
+  handleUpdateItem: function(id, form) {
+    var item = this.buildItem(form);
+
+    return this.props.edit(id, item);
+  },
+
+  handleCreateItem: function(evt) {
     evt.preventDefault();
     var item = this.buildItem(evt.target);
-
-    if (id) {
-      return this.props.edit(id, item);
-    }
 
     this.props.add(item);
   },
@@ -60,7 +62,7 @@ module.exports = React.createClass({
       <article className="slab form">
         <section className="content form">
           <label htmlFor="newItem">Add a new menu Item</label>
-          <form name="newItem" onSubmit={this.handleSubmit.bind(null, null)}>
+          <form name="newItem" onSubmit={this.handleCreateItem}>
             <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
             <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
             <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>

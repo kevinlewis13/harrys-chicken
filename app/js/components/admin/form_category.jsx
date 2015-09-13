@@ -10,7 +10,7 @@ module.exports = React.createClass({
       return (
         <FormDish categoryOptions={this.props.categoryOptions}
           restaurantOptions={this.props.restaurantOptions} dish={dish}
-          key={dish._id} submit={this.props.submit} delete={this.props.delete}
+          key={dish._id} update={this.props.update} delete={this.props.delete}
         />
       );
     }, this);
