@@ -9,32 +9,39 @@ module.exports = React.createClass({
     return { entrees: [], sides: [], sauces: [], drinks: [], restaurant: 'chicken', category: 'entrees' };
   },
 
-  // determineCategories: function() {
-  //   var chickenCategories = [
-  //     {display: "Entree", value: "entrees"},
-  //     {display: "Side", value: "sides"},
-  //     {display: "Drink", value: "drinks"},
-  //     {display: "Sauce", value: "sauces"}
-  //   ];
-  //
-  //   var coffeeCategories = [
-  //     {display: "Beverage", value: "beverages"},
-  //     {display: "Baked Good", value: "baked_goods"},
-  //     {display: "Extra",  value: "extras"}
-  //   ];
-  //
-  //   $("#parent_selector").change(function() {
-  //     var parent = $(this).val();
-  //
-  //     switch(parent) {
-  //       case 'chicken':
-  //         list(chickenCategories);
-  //         break;
-  //       case 'coffee':
-  //         list(coffeeCategories);
-  //     }
-  //   })
-  // },
+  determineCategories: function() {
+    var chickenCategories = [
+      {display: "Entree", value: "entrees"},
+      {display: "Side", value: "sides"},
+      {display: "Drink", value: "drinks"},
+      {display: "Sauce", value: "sauces"}
+    ];
+
+    var coffeeCategories = [
+      {display: "Beverage", value: "beverages"},
+      {display: "Pastry", value: "pastries"},
+      {display: "Extra",  value: "extras"}
+    ];
+
+    $("#parent_selector").change(function() {
+      var parent = $(this).val();
+
+      switch(parent) {
+        case 'chicken':
+          list(chickenCategories);
+          break;
+        case 'coffee':
+          list(coffeeCategories);
+      }
+    });
+
+    function list(arrayList) {
+      $('#child_selector').html("");
+      $(arrayList).each(function(i) {
+        $('#child_selector').append('<option value="'+arrayList[i].value+'">'+arrayList[i].display+'</option>');
+      });
+    }
+  },
 
   renderEntrees: function() {
     var selectedRestaurant;
@@ -257,9 +264,9 @@ module.exports = React.createClass({
     this.setState({restaurant: evt.target.value});
   },
 
-  // componentDidMount: function() {
-  //   this.determineCategories();
-  // },
+  componentDidMount: function() {
+    this.determineCategories();
+  },
 
   render: function() {
     console.log(this.state);
