@@ -15,29 +15,40 @@ module.exports = React.createClass({
   },
 
   handleToggleEdit: function(evt) {
-    this.getForm(evt)
-      .slideToggle('fast', function() {
-        this.setState({editing: !this.state.editing});
-      }.bind(this)).parent().toggleClass('form-visible');
+    var $formEl = this.getForm(evt);
+
+    if (!this.state.editing) {
+      $formEl
+        .slideDown('fast', function() {
+          this.setState({editing: true});
+        }.bind(this)).parent().addClass('form-visible');
+    } else {
+      $formEl
+        .slideUp('fast', function() {
+          this.setState({editing: false});
+          $formEl.parent().removeClass('form-visible');
+        }.bind(this));
+    }
   },
 
   handleUpdate: function(id, evt) {
-    evt.preventDefault();
-    var form = this.getForm(evt)[0];
+    var item = this.props.buildItem(this.getForm(evt)[0]);
 
     this.handleToggleEdit(evt);
-    this.props.update(id, form);
+    this.props.update(id, item);
   },
 
-  handleDelete: function(id, evt) {
-    this.props.delete(id, evt);
+  handleDelete: function(id) {
+    this.props.delete(id);
   },
 
   handleFormAction: function(id, evt) {
+    evt.preventDefault();
+
     if (this.state.editing) {
       this.handleUpdate(id, evt);
     } else {
-      this.handleDelete(id, evt);
+      this.handleDelete(id);
     }
   },
 
