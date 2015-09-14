@@ -28,9 +28,9 @@ module.exports = React.createClass({
     });
   },
 
-  handleDelete: function(id, evt) {
+  handleDelete: function(dish, evt) {
     evt.preventDefault();
-    this.props.delete(id);
+    this.props.delete(dish);
   },
 
   buildItem: function(form) {

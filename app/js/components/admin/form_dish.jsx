@@ -27,8 +27,8 @@ module.exports = React.createClass({
       }.bind(this));
   },
 
-  handleDelete: function(id, evt) {
-    this.props.delete(id, evt);
+  handleDelete: function(dish, evt) {
+    this.props.delete(dish, evt);
   },
 
   render: function() {
@@ -39,7 +39,7 @@ module.exports = React.createClass({
       <section className="dish-edit-section" key={this.props.dish._id}>
         <header className="dish-edit-header">
           <h4>{index}. {this.props.dish.title}</h4>
-          <button className="delete-button" onClick={this.handleDelete.bind(null, this.props.dish._id)}>Delete</button>
+          <button className="delete-button" onClick={this.handleDelete.bind(null, this.props.dish)}>Delete</button>
           <button className="toggle-edit-button" onClick={this.handleToggleEdit}>{buttonText}</button>
         </header>
         <form className="dish-edit-form" name="updateItem" onSubmit={this.handleSubmit.bind(null, this.props.dish._id)}>
