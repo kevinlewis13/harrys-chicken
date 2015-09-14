@@ -30,25 +30,22 @@ module.exports = React.createClass({
     });
   },
 
-  handleDelete: function(id, evt) {
-    evt.preventDefault();
+  handleDelete: function(id) {
     this.props.delete(id);
   },
 
-  buildItem: function(form) {
+  buildItem: function(formEl) {
     return {
-      restaurant: form.querySelector('[name="restaurant"]').value,
-      title: form.querySelector('[name="name"]').value,
-      price: form.querySelector('[name="price"]').value,
-      description: form.querySelector('[name="description"]').value,
-      category: form.querySelector('[name="category"]').value,
-      index: form.querySelector('[name="index"]').value - 1
+      restaurant: formEl.querySelector('[name="restaurant"]').value,
+      title: formEl.querySelector('[name="name"]').value,
+      price: formEl.querySelector('[name="price"]').value,
+      description: formEl.querySelector('[name="description"]').value,
+      category: formEl.querySelector('[name="category"]').value,
+      index: formEl.querySelector('[name="index"]').value - 1
     };
   },
 
-  handleUpdateItem: function(id, form) {
-    var item = this.buildItem(form);
-
+  handleUpdateItem: function(id, item) {
     return this.props.edit(id, item);
   },
 
