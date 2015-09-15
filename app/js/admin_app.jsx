@@ -15,7 +15,8 @@ module.exports = React.createClass({
     return {
       showAlert: false,
       showConfirmDelete: false,
-      currentItem: null,
+      currentItemID: null,
+      currentItemTitle: null,
       menu: [],
       restaurantOptions: [
         {display: 'Chicken Joint', value: 'chicken'},
@@ -36,6 +37,7 @@ module.exports = React.createClass({
   },
 
   determineCategories: function() {
+    //i would like these to be referenced to state instead of redeclared here.
     var chickenCategories = [
       {display: "Entree", value: "entrees"},
       {display: "Side", value: "sides"},
@@ -70,8 +72,19 @@ module.exports = React.createClass({
         $(child).append('<option value="'+arrayList[i].value+'">'+arrayList[i].display+'</option>');
       });
     }
+    //this is SUPER funky in the amount of console.logs, but it does what I want it to, namely start the second selector out appropriately.
+    //previous code: list(this.state.chickenCategories, $('[name="category"]'));
 
-    list(this.state.chickenCategories, $('[name="category"]'));
+    $('[name="restaurant"]').each(function(index, element) {
+      if($(this).val() === 'chicken') {
+        console.log('if');
+        list(chickenCategories, $(this).siblings('[name="category"]'));
+      } else {
+        console.log('else');
+        list(coffeeCategories, $(this).siblings('[name="category"]'));
+      }
+    });
+
   },
 
   componentWillMount: function() {
@@ -107,7 +120,7 @@ module.exports = React.createClass({
 
   handleConfirm: function() {
     this.setState({showConfirmDelete: false});
-    this.deleteItem(this.state.currentItem._id);
+    this.deleteItem(this.state.currentItemID);
   },
 
   handleCancel: function() {
@@ -115,7 +128,7 @@ module.exports = React.createClass({
   },
 
   showDeleteModal: function(dish) {
-    this.setState({showConfirmDelete: true, currentItem: dish.title});
+    this.setState({showConfirmDelete: true, currentItemID: dish._id, currentItemTitle: dish.title});
   },
 
   deleteItem: function(id) {
@@ -186,7 +199,7 @@ module.exports = React.createClass({
         </div>
         <div className={deleteOverlayClass}>
           <div className="modal-content">
-            <p>Are you sure you want to delete the item: {this.state.currentItem}?</p>
+            <p>Are you sure you want to delete the item: {this.state.currentItemTitle}?</p>
             <button onClick={this.handleConfirm} className="modal-button warning">Yes</button>
             <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
           </div>
