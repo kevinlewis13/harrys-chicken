@@ -56,6 +56,10 @@ module.exports = React.createClass({
     this.props.add(item);
   },
 
+  componentDidMount: function() {
+    this.props.determine();
+  },
+
   render: function() {
     return (
       <article className="slab form">
@@ -67,7 +71,7 @@ module.exports = React.createClass({
             <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
             <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
             <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
-            <Dropdown name="category" default="entrees" options={this.props.categoryOptions}/>
+            <Dropdown name="category" default="entrees"/>
             <button className="add-item-button confirm" type="submit">Add item</button>
           </form>
         </section>

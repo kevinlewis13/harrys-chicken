@@ -52,6 +52,10 @@ module.exports = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    this.props.determine();
+  },
+
   render: function() {
     var index = this.props.dish.index + 1;
     var editButtonText = this.state.editing ? 'Cancel' : 'Edit';
