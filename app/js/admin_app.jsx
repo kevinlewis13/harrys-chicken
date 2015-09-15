@@ -63,6 +63,10 @@ module.exports = React.createClass({
           break;
         case 'coffee':
           list(coffeeCategories, child);
+          break;
+        default: //maybe a default case here could replace lines 79 - 87??
+          $(child).html('');
+          break;
       }
     });
 
@@ -74,13 +78,12 @@ module.exports = React.createClass({
     }
     //this is SUPER funky in the amount of console.logs, but it does what I want it to, namely start the second selector out appropriately.
     //previous code: list(this.state.chickenCategories, $('[name="category"]'));
-
     $('[name="restaurant"]').each(function(index, element) {
       if($(this).val() === 'chicken') {
-        console.log('if');
+        console.log('if', index);
         list(chickenCategories, $(this).siblings('[name="category"]'));
       } else {
-        console.log('else');
+        console.log('else', index);
         list(coffeeCategories, $(this).siblings('[name="category"]'));
       }
     });
