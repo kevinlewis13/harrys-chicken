@@ -19,7 +19,7 @@ module.exports = React.createClass({
     var type = this.props.type || 'text';
 
     return (
-      <label>{this.props.labelName}
+      <label className="input-label">{this.props.labelName}
         <input required={this.props.isRequired} name={this.props.name} type={type}
           placeholder={this.props.placeholder} value={this.state.value} onChange={this.handleChange}></input>
       </label>

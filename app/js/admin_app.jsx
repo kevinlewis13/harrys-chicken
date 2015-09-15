@@ -12,7 +12,7 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      showAlert: false,
+      showSuccessAlert: false,
       showConfirmDelete: false,
       currentItem: null,
       menu: [],
@@ -120,15 +120,15 @@ module.exports = React.createClass({
   },
 
   showSuccessAlert: function() {
-    this.setState({showAlert: true});
+    this.setState({showSuccessAlert: true});
 
     setTimeout(function() {
-      this.setState({showAlert: false});
+      this.setState({showSuccessAlert: false});
     }.bind(this), 1500);
   },
 
   render: function() {
-    var successOverlayClass = this.state.showAlert ? 'overlay visible' : 'overlay hidden';
+    var successOverlayClass = this.state.showSuccessAlert ? 'overlay visible' : 'overlay hidden';
     var deleteOverlayClass = this.state.showConfirmDelete ? 'overlay visible' : 'overlay hidden';
 
     return (

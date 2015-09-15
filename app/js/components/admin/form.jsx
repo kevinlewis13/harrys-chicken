@@ -15,8 +15,10 @@ module.exports = React.createClass({
       return (
         <section key={category.value} className="form-category">
           <h3 className="form-category-title">{category.value}</h3>
-          <FormCategory categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions}
-            formCategoryDishes={formCategoryGroups[category.value]} submit={this.handleSubmit} delete={this.handleDelete}/>
+          <FormCategory formCategoryDishes={formCategoryGroups[category.value]}
+            categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions}
+            update={this.handleUpdateItem} delete={this.handleDelete} buildItem={this.buildItem}
+          />
         </section>
       );
     }, this);
@@ -28,29 +30,28 @@ module.exports = React.createClass({
     });
   },
 
-  handleDelete: function(id, evt) {
-    evt.preventDefault();
+  handleDelete: function(id) {
     this.props.delete(id);
   },
 
-  buildItem: function(form) {
+  buildItem: function(formEl) {
     return {
-      restaurant: form.querySelector('[name="restaurant"]').value,
-      title: form.querySelector('[name="name"]').value,
-      price: form.querySelector('[name="price"]').value,
-      description: form.querySelector('[name="description"]').value,
-      category: form.querySelector('[name="category"]').value,
-      index: form.querySelector('[name="index"]').value - 1
+      restaurant: formEl.querySelector('[name="restaurant"]').value,
+      title: formEl.querySelector('[name="name"]').value,
+      price: formEl.querySelector('[name="price"]').value,
+      description: formEl.querySelector('[name="description"]').value,
+      category: formEl.querySelector('[name="category"]').value,
+      index: formEl.querySelector('[name="index"]').value - 1
     };
   },
 
-  handleSubmit: function(id, evt) {
+  handleUpdateItem: function(id, item) {
+    return this.props.edit(id, item);
+  },
+
+  handleCreateItem: function(evt) {
     evt.preventDefault();
     var item = this.buildItem(evt.target);
-
-    if (id) {
-      return this.props.edit(id, item);
-    }
 
     this.props.add(item);
   },
@@ -60,7 +61,7 @@ module.exports = React.createClass({
       <article className="slab form">
         <section className="content form">
           <label htmlFor="newItem">Add a new menu Item</label>
-          <form name="newItem" onSubmit={this.handleSubmit.bind(null, null)}>
+          <form name="newItem" onSubmit={this.handleCreateItem}>
             <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
             <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
             <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
