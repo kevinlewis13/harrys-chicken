@@ -15,8 +15,7 @@ module.exports = React.createClass({
     return {
       showSuccessAlert: false,
       showConfirmDelete: false,
-      currentItemID: null,
-      currentItemTitle: null,
+      itemToDelete: { _id: '', title: '' },
       menu: [],
       restaurantOptions: [
         {display: 'Chicken Joint', value: 'chicken'},
@@ -131,7 +130,7 @@ module.exports = React.createClass({
   },
 
   showDeleteModal: function(dish) {
-    this.setState({showConfirmDelete: true, currentItemID: dish._id, currentItemTitle: dish.title});
+    this.setState({showConfirmDelete: true, itemToDelete: dish});
   },
 
   deleteItem: function(id) {
@@ -202,7 +201,7 @@ module.exports = React.createClass({
         </div>
         <div className={deleteOverlayClass}>
           <div className="modal-content">
-            <p>Are you sure you want to delete the item: {this.state.currentItemTitle}?</p>
+            <p>Are you sure you want to delete {this.state.itemToDelete.title}?</p>
             <button onClick={this.handleConfirm} className="modal-button warning">Yes</button>
             <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
           </div>

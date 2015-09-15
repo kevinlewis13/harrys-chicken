@@ -31,24 +31,24 @@ module.exports = React.createClass({
     }
   },
 
-  handleUpdate: function(id, evt) {
-    var item = this.props.buildItem(this.getForm(evt)[0]);
+  handleUpdate: function(dish, evt) {
+    var updatedItem = this.props.buildItem(this.getForm(evt)[0]);
 
     this.handleToggleEdit(evt);
-    this.props.update(id, item);
+    this.props.update(dish._id, updatedItem);
   },
 
-  handleDelete: function(id) {
-    this.props.delete(id);
+  handleDelete: function(dish) {
+    this.props.delete(dish);
   },
 
-  handleFormAction: function(id, evt) {
+  handleFormAction: function(dish, evt) {
     evt.preventDefault();
 
     if (this.state.editing) {
-      this.handleUpdate(id, evt);
+      this.handleUpdate(dish, evt);
     } else {
-      this.handleDelete(id);
+      this.handleDelete(dish);
     }
   },
 
@@ -66,7 +66,7 @@ module.exports = React.createClass({
       <section className="dish-edit-section" key={this.props.dish._id}>
         <header className="dish-edit-header">
           <h4>{index}. {this.props.dish.title}</h4>
-          <button className={saveDeleteButtonClass} onClick={this.handleFormAction.bind(null, this.props.dish._id)}>{saveDeleteButtonText}</button>
+          <button className={saveDeleteButtonClass} onClick={this.handleFormAction.bind(null, this.props.dish)}>{saveDeleteButtonText}</button>
           <button className="toggle-edit-button" onClick={this.handleToggleEdit}>{editButtonText}</button>
         </header>
         <form className="dish-edit-form" name="updateItem">
