@@ -11,7 +11,7 @@ module.exports = React.createClass({
   renderOptions: function() {
     return _.map(this.props.options, function(option) {
       return (
-        <option key={option.value} value={option.value}>{option.name}</option>
+        <option key={option.value} value={option.value}>{option.display}</option>
       );
     });
   },

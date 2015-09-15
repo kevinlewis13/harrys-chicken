@@ -31,6 +31,10 @@ module.exports = React.createClass({
     this.props.delete(dish, evt);
   },
 
+  componentDidMount: function() {
+    this.props.determine();
+  },
+
   render: function() {
     var index = this.props.dish.index + 1;
     var buttonText = this.state.editing ? 'Cancel' : 'Edit';
@@ -48,7 +52,7 @@ module.exports = React.createClass({
           <Input isRequired={false} labelName="Description" name="description" value={this.props.dish.description} placeholder="item description"/>
           <Input isRequired={true} labelName="Menu Position" name="index" value={index} placeholder="item index"/>
           <Dropdown name="restaurant" default={this.props.dish.restaurant} options={this.props.restaurantOptions}/>
-          <Dropdown name="category" default={this.props.dish.category} options={this.props.categoryOptions}/>
+          <Dropdown name="category" default={this.props.dish.category}/>
           <button className="save-button confirm" type="submit">Save Changes</button>
         </form>
       </section>

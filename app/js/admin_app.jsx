@@ -6,6 +6,7 @@ var Admin = require('./components/admin/form.jsx');
 var cookie = require('react-cookie');
 var Router = require('react-router');
 var Navigation = Router.Navigation;
+var $ = require('jquery');
 
 module.exports = React.createClass({
   mixins: [Navigation],
@@ -16,20 +17,61 @@ module.exports = React.createClass({
       showConfirmDelete: false,
       currentItem: null,
       menu: [],
-      categoryOptions: [
-        {value: 'entrees', name: 'Entree'},
-        {value: 'sides', name: 'Side'},
-        {value: 'sauces', name: 'Sauce'},
-        {value: 'drinks', name: 'Drink'},
-        {value: 'beverages', name: 'Beverage'},
-        {value: 'pastries', name: 'Pastry'},
-        {value: 'extras', name: 'Extra'}
-      ],
       restaurantOptions: [
-        {value: 'chicken', name: 'Chicken Joint'},
-        {value: 'coffee', name: 'Coffee Joint'}
+        {display: 'Chicken Joint', value: 'chicken'},
+        {display: 'Coffee Joint', value: 'coffee'}
+      ],
+      chickenCategories: [
+        {display: "Entree", value: "entrees"},
+        {display: "Side", value: "sides"},
+        {display: "Drink", value: "drinks"},
+        {display: "Sauce", value: "sauces"}
+      ],
+      coffeeCategories: [
+        {display: "Beverage", value: "beverages"},
+        {display: "Pastry", value: "pastries"},
+        {display: "Extra",  value: "extras"}
       ]
     };
+  },
+
+  determineCategories: function() {
+    var chickenCategories = [
+      {display: "Entree", value: "entrees"},
+      {display: "Side", value: "sides"},
+      {display: "Drink", value: "drinks"},
+      {display: "Sauce", value: "sauces"}
+    ];
+
+    var coffeeCategories = [
+      {display: "Beverage", value: "beverages"},
+      {display: "Pastry", value: "pastries"},
+      {display: "Extra",  value: "extras"}
+    ];
+
+    $('[name="restaurant"]').change(function() {
+      var parent = $(this).val();
+      var child = $(this).siblings('[name="category"]');
+      //leaving this here because it logs out multiple times, so might need some fixing
+      console.log(child);
+
+      switch(parent) {
+        case 'chicken':
+          list(chickenCategories, child);
+          break;
+        case 'coffee':
+          list(coffeeCategories, child);
+      }
+    });
+
+    function list(arrayList, child) {
+      $(child).html("");
+      $(arrayList).each(function(i) {
+        $(child).append('<option value="'+arrayList[i].value+'">'+arrayList[i].display+'</option>');
+      });
+    }
+
+    list(this.state.chickenCategories, $('[name="category"]'));
   },
 
   componentWillMount: function() {
@@ -135,8 +177,8 @@ module.exports = React.createClass({
       <section className="admin-section">
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
-        <Admin menu={this.state.menu} add={this.addItem} delete={this.showDeleteModal} edit={this.editItem}
-          categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
+        <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories} delete={this.showDeleteModal} edit={this.editItem}
+          categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)} restaurantOptions={this.state.restaurantOptions}/>
         <div className={successOverlayClass}>
           <div className="modal-content">
             <p>Operation Successful!</p>
