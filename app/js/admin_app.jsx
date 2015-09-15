@@ -36,19 +36,8 @@ module.exports = React.createClass({
   },
 
   determineCategories: function() {
-    //i would like these to be referenced to state instead of redeclared here.
-    var chickenCategories = [
-      {display: "Entree", value: "entrees"},
-      {display: "Side", value: "sides"},
-      {display: "Drink", value: "drinks"},
-      {display: "Sauce", value: "sauces"}
-    ];
-
-    var coffeeCategories = [
-      {display: "Beverage", value: "beverages"},
-      {display: "Pastry", value: "pastries"},
-      {display: "Extra",  value: "extras"}
-    ];
+    var chickenCategories = this.state.chickenCategories;
+    var coffeeCategories = this.state.coffeeCategories;
 
     $('[name="restaurant"]').change(function() {
       var parent = $(this).val();
@@ -86,7 +75,6 @@ module.exports = React.createClass({
         list(coffeeCategories, $(this).siblings('[name="category"]'));
       }
     });
-
   },
 
   componentWillMount: function() {
