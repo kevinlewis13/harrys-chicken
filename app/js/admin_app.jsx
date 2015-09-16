@@ -110,7 +110,7 @@ module.exports = React.createClass({
 
   handleConfirm: function() {
     this.setState({showConfirmDelete: false});
-    this.deleteItem(this.state.currentItemID);
+    this.deleteItem(this.state.itemToDelete._id);
   },
 
   handleCancel: function() {
