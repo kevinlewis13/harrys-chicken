@@ -15,6 +15,7 @@ module.exports = React.createClass({
           <a className="social icon-facebook2" href={facebookUrl} target="_blank"></a>
           <a className="social icon-tumblr2" href={tumblrUrl} target="_blank"></a>
           <p className="copy">&copy; 2015 Harry's Chicken Joint, LLC</p>
+          <Link className="small_text" to={'/admin'}>Admin</Link>
         </footer>
       </article>
     );
