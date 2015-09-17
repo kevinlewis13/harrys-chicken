@@ -10,7 +10,7 @@ module.exports = React.createClass({
       return (
         <FormDish categoryOptions={this.props.categoryOptions} dish={dish} key={dish._id}
           restaurantOptions={this.props.restaurantOptions} update={this.props.update}
-          delete={this.props.delete} buildItem={this.props.buildItem}
+          delete={this.props.delete} buildItem={this.props.buildItem} determine={this.props.determine}
         />
       );
     }, this);

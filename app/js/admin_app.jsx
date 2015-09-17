@@ -6,6 +6,7 @@ var Admin = require('./components/admin/form.jsx');
 var cookie = require('react-cookie');
 var Router = require('react-router');
 var Navigation = Router.Navigation;
+var $ = require('jquery');
 
 module.exports = React.createClass({
   mixins: [Navigation],
@@ -14,22 +15,61 @@ module.exports = React.createClass({
     return {
       showSuccessAlert: false,
       showConfirmDelete: false,
-      currentItem: null,
+      itemToDelete: { _id: '', title: '' },
       menu: [],
-      categoryOptions: [
-        {value: 'entrees', name: 'Entree'},
-        {value: 'sides', name: 'Side'},
-        {value: 'sauces', name: 'Sauce'},
-        {value: 'drinks', name: 'Drink'},
-        {value: 'beverages', name: 'Beverage'},
-        {value: 'pastries', name: 'Pastry'},
-        {value: 'extras', name: 'Extra'}
-      ],
       restaurantOptions: [
-        {value: 'chicken', name: 'Chicken Joint'},
-        {value: 'coffee', name: 'Coffee Joint'}
+        {display: 'Chicken Joint', value: 'chicken'},
+        {display: 'Coffee Joint', value: 'coffee'}
+      ],
+      chickenCategories: [
+        {display: "Entree", value: "entrees"},
+        {display: "Side", value: "sides"},
+        {display: "Drink", value: "drinks"},
+        {display: "Sauce", value: "sauces"}
+      ],
+      coffeeCategories: [
+        {display: "Beverage", value: "beverages"},
+        {display: "Pastry", value: "pastries"},
+        {display: "Extra",  value: "extras"}
       ]
     };
+  },
+
+  determineCategories: function() {
+    var chickenCategories = this.state.chickenCategories;
+    var coffeeCategories = this.state.coffeeCategories;
+
+    $('[name="restaurant"]').change(function() {
+      var parent = $(this).val();
+      var child = $(this).siblings('[name="category"]');
+
+      switch(parent) {
+        case 'chicken':
+          list(chickenCategories, child);
+          break;
+        case 'coffee':
+          list(coffeeCategories, child);
+          break;
+        default:
+          $(child).html('');
+          break;
+      }
+    });
+
+    function list(arrayList, child) {
+      $(child).html("");
+      $(arrayList).each(function(i) {
+        $(child).append('<option value="'+arrayList[i].value+'">'+arrayList[i].display+'</option>');
+      });
+    }
+
+    $('[name="restaurant"]').each(function() {
+      if($(this).val() === 'chicken') {
+        list(chickenCategories, $(this).siblings('[name="category"]'));
+      } else {
+        list(coffeeCategories, $(this).siblings('[name="category"]'));
+      }
+    });
   },
 
   componentWillMount: function() {
@@ -65,15 +105,15 @@ module.exports = React.createClass({
 
   handleConfirm: function() {
     this.setState({showConfirmDelete: false});
-    this.deleteItem(this.state.currentItem);
+    this.deleteItem(this.state.itemToDelete._id);
   },
 
   handleCancel: function() {
     this.setState({showConfirmDelete: false});
   },
 
-  showDeleteModal: function(id) {
-    this.setState({showConfirmDelete: true, currentItem: id});
+  showDeleteModal: function(dish) {
+    this.setState({showConfirmDelete: true, itemToDelete: dish});
   },
 
   deleteItem: function(id) {
@@ -135,8 +175,8 @@ module.exports = React.createClass({
       <section className="admin-section">
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
-        <Admin menu={this.state.menu} add={this.addItem} delete={this.showDeleteModal} edit={this.editItem}
-          categoryOptions={this.state.categoryOptions} restaurantOptions={this.state.restaurantOptions}/>
+        <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories} delete={this.showDeleteModal} edit={this.editItem}
+          categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)} restaurantOptions={this.state.restaurantOptions}/>
         <div className={successOverlayClass}>
           <div className="modal-content">
             <p>Operation Successful!</p>
@@ -144,7 +184,7 @@ module.exports = React.createClass({
         </div>
         <div className={deleteOverlayClass}>
           <div className="modal-content">
-            <p>Are you sure you want to delete this item?</p>
+            <p>Are you sure you want to delete <span className="delete-title">{this.state.itemToDelete.title}</span> from the menu?</p>
             <button onClick={this.handleConfirm} className="modal-button warning">Yes</button>
             <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
           </div>

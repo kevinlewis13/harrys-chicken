@@ -15,7 +15,7 @@ module.exports = React.createClass({
       return (
         <section key={category.value} className="form-category">
           <h3 className="form-category-title">{category.value}</h3>
-          <FormCategory formCategoryDishes={formCategoryGroups[category.value]}
+          <FormCategory formCategoryDishes={formCategoryGroups[category.value]} determine={this.props.determine}
             categoryOptions={this.props.categoryOptions} restaurantOptions={this.props.restaurantOptions}
             update={this.handleUpdateItem} delete={this.handleDelete} buildItem={this.buildItem}
           />
@@ -30,8 +30,8 @@ module.exports = React.createClass({
     });
   },
 
-  handleDelete: function(id) {
-    this.props.delete(id);
+  handleDelete: function(dish) {
+    this.props.delete(dish);
   },
 
   buildItem: function(formEl) {
@@ -45,8 +45,8 @@ module.exports = React.createClass({
     };
   },
 
-  handleUpdateItem: function(id, item) {
-    return this.props.edit(id, item);
+  handleUpdateItem: function(id, updatedItem) {
+    return this.props.edit(id, updatedItem);
   },
 
   handleCreateItem: function(evt) {
@@ -54,6 +54,10 @@ module.exports = React.createClass({
     var item = this.buildItem(evt.target);
 
     this.props.add(item);
+  },
+
+  componentDidMount: function() {
+    this.props.determine();
   },
 
   render: function() {
@@ -67,7 +71,7 @@ module.exports = React.createClass({
             <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
             <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
             <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
-            <Dropdown name="category" default="entrees" options={this.props.categoryOptions}/>
+            <Dropdown name="category" default="entrees"/>
             <button className="add-item-button confirm" type="submit">Add item</button>
           </form>
         </section>
