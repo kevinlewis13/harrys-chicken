@@ -10,6 +10,7 @@ $plumb: #635f7d;
 $off-white: #eeeeee;
 $mint-green: darken(#9BB9B0, 10%);
 $underdog-green: #5f797d;
+$coffee-brown: #9D7D6E;
 $white: #f8f8f8;
 $slab-padding: 64px 0;
 $content-padding: 16px;
@@ -185,8 +186,12 @@ h1, h3, h4, h5 {
 }
 
 .slab {
-  &.banner {
+  &.banner.chicken {
     background-color: $underdog-green;
+  }
+
+  &.banner.coffee {
+    background-color: $coffee-brown;
   }
 
   &.info, &.about {
@@ -206,9 +211,17 @@ h1, h3, h4, h5 {
   top: 0px;
   width: 100%;
   position: fixed;
-  background-color: $underdog-green;
   z-index: 1000;
   opacity: 0.93;
+}
+
+.header-container {
+  &.chicken {
+    background-color: $underdog-green;
+  }
+  &.coffee {
+    background-color: $coffee-brown;
+  }
 }
 
 .content {
@@ -255,9 +268,16 @@ a.button {
   border: 2px solid $white;
 
   &:hover {
-    background-color: darken($underdog-green, 5%);
     color: $white;
   }
+}
+
+.chicken a.button:hover {
+  background-color: darken($underdog-green, 5%);
+}
+
+.coffee a.button:hover {
+  background-color: darken($coffee-brown, 5%);
 }
 
 .banner a.button {

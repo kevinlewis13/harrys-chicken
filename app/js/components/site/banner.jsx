@@ -5,12 +5,15 @@ var Router = require('react-router');
 var Link = Router.Link;
 
 module.exports = React.createClass({
+  mixins: [Router.State],
+
   render: function() {
+    var path = this.getPathname();
     var partner = this.props.bannerInfo.partner;
     var partnerUrl = this.props.bannerInfo.partnerUrl;
-
+    var bannerClass = path === '/chicken' ? ' slab banner chicken' : 'slab banner coffee';
     return (
-      <article className="slab banner">
+      <article className={bannerClass}>
         <span id="top" className="clear-header"></span>
         <section className="content banner">
           <h3>We're partnered with {partner}!</h3>
