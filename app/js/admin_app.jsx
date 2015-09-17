@@ -14,7 +14,9 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       showSuccessAlert: false,
-      showConfirmDelete: false,
+      showDeleteAlert: false,
+      showAuthErrorAlert: false,
+      showServerErrorAlert: false,
       itemToDelete: { _id: '', title: '' },
       menu: [],
       restaurantOptions: [
@@ -87,6 +89,11 @@ module.exports = React.createClass({
     this.transitionTo('/');
   },
 
+  rerouteToSignIn: function() {
+    cookie.remove('eat');
+    this.transitionTo('/admin/sign_in');
+  },
+
   componentDidMount: function() {
     this.loadMenu();
   },
@@ -104,16 +111,16 @@ module.exports = React.createClass({
   },
 
   handleConfirm: function() {
-    this.setState({showConfirmDelete: false});
+    this.setState({showDeleteAlert: false});
     this.deleteItem(this.state.itemToDelete._id);
   },
 
   handleCancel: function() {
-    this.setState({showConfirmDelete: false});
+    this.setState({showDeleteAlert: false});
   },
 
   showDeleteModal: function(dish) {
-    this.setState({showConfirmDelete: true, itemToDelete: dish});
+    this.setState({showDeleteAlert: true, itemToDelete: dish});
   },
 
   deleteItem: function(id) {
@@ -122,7 +129,7 @@ module.exports = React.createClass({
       .set('eat', cookie.load('eat'))
       .end(function(err, res) {
         if (err) {
-          return console.log(err);
+          return this.handleError(err, res);
         }
 
         this.loadMenu();
@@ -136,7 +143,7 @@ module.exports = React.createClass({
       .set('eat', cookie.load('eat'))
       .end(function(err, res) {
         if (err) {
-          return console.log(err);
+          return this.handleError(err, res);
         }
 
         this.loadMenu();
@@ -151,12 +158,24 @@ module.exports = React.createClass({
       .set('eat', cookie.load('eat'))
       .end(function(err, res) {
         if (err) {
-          return console.log(err);
+          return this.handleError(err, res);
         }
 
         this.loadMenu();
         this.showSuccessAlert();
       }.bind(this));
+  },
+
+  handleError: function(err, res) {
+    console.log(err);
+    if (res.status === 401) this.setState({showAuthErrorAlert: true});
+    if (res.status === 500) {
+      this.setState({showServerErrorAlert: true});
+
+      setTimeout(function() {
+        this.setState({showServerErrorAlert: false});
+      }.bind(this), 1500);
+    }
   },
 
   showSuccessAlert: function() {
@@ -169,7 +188,9 @@ module.exports = React.createClass({
 
   render: function() {
     var successOverlayClass = this.state.showSuccessAlert ? 'overlay visible' : 'overlay hidden';
-    var deleteOverlayClass = this.state.showConfirmDelete ? 'overlay visible' : 'overlay hidden';
+    var deleteOverlayClass = this.state.showDeleteAlert ? 'overlay visible' : 'overlay hidden';
+    var authErrorOverlayClass = this.state.showAuthErrorAlert ? 'overlay visible' : 'overlay hidden';
+    var serverErrorOverlayClass = this.state.showServerErrorAlert ? 'overlay visible' : 'overlay hidden';
 
     return (
       <section className="admin-section">
@@ -177,9 +198,20 @@ module.exports = React.createClass({
         <a onClick={this.logout}>Logout</a>
         <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories} delete={this.showDeleteModal} edit={this.editItem}
           categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)} restaurantOptions={this.state.restaurantOptions}/>
+        <div className={authErrorOverlayClass}>
+          <div className="modal-content">
+            <p>It looks like you've been logged out. Please sign back in</p>
+            <button onClick={this.rerouteToSignIn} className="modal-button">Sign in</button>
+          </div>
+        </div>
         <div className={successOverlayClass}>
           <div className="modal-content">
             <p>Operation Successful!</p>
+          </div>
+        </div>
+        <div className={serverErrorOverlayClass}>
+          <div className="modal-content">
+            <p>Oops there was a problem with the server! Please try again.</p>
           </div>
         </div>
         <div className={deleteOverlayClass}>
