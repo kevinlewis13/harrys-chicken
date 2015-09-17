@@ -74,9 +74,10 @@ select {
 /*   display: block; */
 /* } */
 
-.input-label, .textarea-label {
+label {
   margin-bottom: .5em;
   display: block;
+  clear: both;
 }
 
 h1, h3, h4, h5 {
@@ -85,6 +86,7 @@ h1, h3, h4, h5 {
 
 .form-category h3 {
   margin: 0.75em 0;
+  clear: both;
 }
 
 .dish-edit-section {
@@ -95,7 +97,7 @@ h1, h3, h4, h5 {
 }
 
 .content.form {
-  width: 60%;
+  width: 48%;
 }
 
 .delete-title {
@@ -147,6 +149,7 @@ h1, h3, h4, h5 {
 
 .form-visible {
   background-color: $off-white;
+  overflow: auto;
 }
 
 .overlay {
@@ -177,7 +180,7 @@ h1, h3, h4, h5 {
   text-transform: capitalize;
 }
 
-.toggle-edit-button, .delete-button, .save-button {
+.toggle-edit-button, .delete-button, .save-button, .add-item-button {
   float: right;
   margin-left: 0.5em;
 }
@@ -185,6 +188,10 @@ h1, h3, h4, h5 {
 .dish-edit-form {
   display: none;
   margin-top: 1.5em;
+}
+
+.content.form {
+  margin-bottom: 2em;
 }
 
 .slab {
@@ -356,14 +363,14 @@ h4 {
 }
 
 .entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
-  float: left;
-  padding-right: 2em;
-}
+                                 float: left;
+                                 padding-right: 2em;
+                               }
 
 .entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
-  float: right;
-  padding-left: 2em;
-}
+                                  float: right;
+                                  padding-left: 2em;
+                                }
 
 .sides, .pastries {
   float: left;
@@ -445,14 +452,14 @@ h4 {
   }
 
   .entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
-    float: none;
-    padding: 0;
-  }
+                                   float: none;
+                                   padding: 0;
+                                 }
 
   .entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
-    float: none;
-    padding: 0;
-  }
+                                    float: none;
+                                    padding: 0;
+                                  }
 
   .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
     float: none;

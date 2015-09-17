@@ -194,8 +194,12 @@ module.exports = React.createClass({
 
     return (
       <section className="admin-section">
-        <a href="/">Home</a>
-        <a onClick={this.logout}>Logout</a>
+        <header className="content header">
+          <nav className="nav">
+            <a href="/">Home</a>
+            <a onClick={this.logout}>Logout</a>
+          </nav>
+        </header>
         <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories} delete={this.showDeleteModal} edit={this.editItem}
           categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)} restaurantOptions={this.state.restaurantOptions}/>
         <div className={authErrorOverlayClass}>

@@ -64,9 +64,12 @@ module.exports = React.createClass({
     // <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
     return (
       <article className="slab form">
-        <section className="content form">
-          <label htmlFor="newItem">Add a new menu Item</label>
+        <section className="content form form-visible">
           <form name="newItem" onSubmit={this.handleCreateItem}>
+            <header className="dish-edit-header">
+              <h4>Add a new menu item</h4>
+              <button className="add-item-button confirm" type="submit">Add item</button>
+            </header>
             <div className="form-left">
               <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
               <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
@@ -79,11 +82,10 @@ module.exports = React.createClass({
               <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
               <Dropdown name="category" default="entrees"/>
             </div>
-            <button className="add-item-button confirm" type="submit">Add item</button>
           </form>
         </section>
         <section className="content form">
-          <label htmlFor="updateItem">Change items on the current menu</label>
+          <h4>Change items on the current menu</h4>
           {this.renderUpdateItemForms()}
         </section>
       </article>
