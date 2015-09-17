@@ -42,8 +42,6 @@ module.exports = React.createClass({
     $('[name="restaurant"]').change(function() {
       var parent = $(this).val();
       var child = $(this).siblings('[name="category"]');
-      //leaving this here because it logs out multiple times, so might need some fixing
-      console.log(child);
 
       switch(parent) {
         case 'chicken':
@@ -52,7 +50,7 @@ module.exports = React.createClass({
         case 'coffee':
           list(coffeeCategories, child);
           break;
-        default: //maybe a default case here could replace lines 79 - 87??
+        default:
           $(child).html('');
           break;
       }
@@ -64,14 +62,11 @@ module.exports = React.createClass({
         $(child).append('<option value="'+arrayList[i].value+'">'+arrayList[i].display+'</option>');
       });
     }
-    //this is SUPER funky in the amount of console.logs, but it does what I want it to, namely start the second selector out appropriately.
-    //previous code: list(this.state.chickenCategories, $('[name="category"]'));
-    $('[name="restaurant"]').each(function(index, element) {
+
+    $('[name="restaurant"]').each(function() {
       if($(this).val() === 'chicken') {
-        console.log('if', index);
         list(chickenCategories, $(this).siblings('[name="category"]'));
       } else {
-        console.log('else', index);
         list(coffeeCategories, $(this).siblings('[name="category"]'));
       }
     });
