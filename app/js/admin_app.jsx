@@ -6,6 +6,7 @@ var Admin = require('./components/admin/form.jsx');
 var cookie = require('react-cookie');
 var Router = require('react-router');
 var Navigation = Router.Navigation;
+var Modal = require('./components/admin/modal.jsx');
 var $ = require('jquery');
 
 module.exports = React.createClass({
@@ -13,10 +14,7 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      showSuccessAlert: false,
-      showDeleteAlert: false,
-      showAuthErrorAlert: false,
-      showServerErrorAlert: false,
+      showSuccessAlert: false, showDeleteAlert: false, showAuthErrorAlert: false, showServerErrorAlert: false,
       itemToDelete: { _id: '', title: '' },
       menu: [],
       restaurantOptions: [
@@ -35,6 +33,30 @@ module.exports = React.createClass({
         {display: "Extra",  value: "extras"}
       ]
     };
+  },
+
+  componentWillMount: function() {
+    var token = cookie.load('eat');
+
+    if (!token) {
+      this.transitionTo('/admin/sign_in');
+    }
+  },
+
+  componentDidMount: function() {
+    this.loadMenu();
+  },
+
+  logout: function(evt) {
+    evt.preventDefault();
+
+    cookie.remove('eat');
+    this.transitionTo('/');
+  },
+
+  rerouteToSignIn: function() {
+    cookie.remove('eat');
+    this.transitionTo('/admin/sign_in');
   },
 
   determineCategories: function() {
@@ -74,30 +96,6 @@ module.exports = React.createClass({
     });
   },
 
-  componentWillMount: function() {
-    var token = cookie.load('eat');
-
-    if (!token) {
-      this.transitionTo('/admin/sign_in');
-    }
-  },
-
-  logout: function(evt) {
-    evt.preventDefault();
-
-    cookie.remove('eat');
-    this.transitionTo('/');
-  },
-
-  rerouteToSignIn: function() {
-    cookie.remove('eat');
-    this.transitionTo('/admin/sign_in');
-  },
-
-  componentDidMount: function() {
-    this.loadMenu();
-  },
-
   loadMenu: function() {
     request
       .get('/api/menu')
@@ -110,45 +108,12 @@ module.exports = React.createClass({
       }.bind(this));
   },
 
-  handleConfirm: function() {
-    this.setState({showDeleteAlert: false});
-    this.deleteItem(this.state.itemToDelete._id);
-  },
-
-  handleCancel: function() {
-    this.setState({showDeleteAlert: false});
-  },
-
-  showDeleteModal: function(dish) {
-    this.setState({showDeleteAlert: true, itemToDelete: dish});
-  },
-
-  deleteItem: function(id) {
-    request
-      .del('/api/dish/' + id)
-      .set('eat', cookie.load('eat'))
-      .end(function(err, res) {
-        if (err) {
-          return this.handleError(err, res);
-        }
-
-        this.loadMenu();
-      }.bind(this));
-  },
-
   addItem: function(item) {
     request
       .post('/api/dish')
       .send(item)
       .set('eat', cookie.load('eat'))
-      .end(function(err, res) {
-        if (err) {
-          return this.handleError(err, res);
-        }
-
-        this.loadMenu();
-        this.showSuccessAlert();
-      }.bind(this));
+      .end(this.handleResponse);
   },
 
   editItem: function(id, item) {
@@ -156,26 +121,35 @@ module.exports = React.createClass({
       .put('/api/dish/' + id)
       .send(item)
       .set('eat', cookie.load('eat'))
-      .end(function(err, res) {
-        if (err) {
-          return this.handleError(err, res);
-        }
-
-        this.loadMenu();
-        this.showSuccessAlert();
-      }.bind(this));
+      .end(this.handleResponse);
   },
 
-  handleError: function(err, res) {
-    console.log(err);
-    if (res.status === 401) this.setState({showAuthErrorAlert: true});
-    if (res.status === 500) {
-      this.setState({showServerErrorAlert: true});
+  deleteItem: function(id) {
+    request
+      .del('/api/dish/' + id)
+      .set('eat', cookie.load('eat'))
+      .end(this.handleResponse);
+  },
 
-      setTimeout(function() {
-        this.setState({showServerErrorAlert: false});
-      }.bind(this), 1500);
+  handleResponse: function(err, res) {
+    if (err) {
+      switch(res.status) {
+        case 401:
+          this.setState({showAuthErrorAlert: true});
+          break;
+        case 500:
+          this.setState({showServerErrorAlert: true});
+
+          setTimeout(function() {
+            this.setState({showServerErrorAlert: false});
+          }.bind(this), 1500);
+      }
+
+      return console.log(err);
     }
+
+    this.loadMenu();
+    this.showSuccessAlert();
   },
 
   showSuccessAlert: function() {
@@ -186,41 +160,44 @@ module.exports = React.createClass({
     }.bind(this), 1500);
   },
 
+  showDeleteModal: function(dish) {
+    this.setState({showDeleteAlert: true, itemToDelete: dish});
+  },
+
+  handleConfirm: function() {
+    this.setState({showDeleteAlert: false});
+    this.deleteItem(this.state.itemToDelete._id);
+  },
+
+  handleCancel: function() {
+    this.setState({showDeleteAlert: false});
+  },
+
   render: function() {
-    var successOverlayClass = this.state.showSuccessAlert ? 'overlay visible' : 'overlay hidden';
-    var deleteOverlayClass = this.state.showDeleteAlert ? 'overlay visible' : 'overlay hidden';
-    var authErrorOverlayClass = this.state.showAuthErrorAlert ? 'overlay visible' : 'overlay hidden';
-    var serverErrorOverlayClass = this.state.showServerErrorAlert ? 'overlay visible' : 'overlay hidden';
+    var itemToDeleteHTML = (
+      <span key={this.state.itemToDelete._id} className="delete-title">
+        {this.state.itemToDelete.title}
+      </span>
+    );
 
     return (
       <section className="admin-section">
         <a href="/">Home</a>
         <a onClick={this.logout}>Logout</a>
-        <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories} delete={this.showDeleteModal} edit={this.editItem}
-          categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)} restaurantOptions={this.state.restaurantOptions}/>
-        <div className={authErrorOverlayClass}>
-          <div className="modal-content">
-            <p>It looks like you've been logged out. Please sign back in</p>
-            <button onClick={this.rerouteToSignIn} className="modal-button">Sign in</button>
-          </div>
-        </div>
-        <div className={successOverlayClass}>
-          <div className="modal-content">
-            <p>Operation Successful!</p>
-          </div>
-        </div>
-        <div className={serverErrorOverlayClass}>
-          <div className="modal-content">
-            <p>Oops there was a problem with the server! Please try again.</p>
-          </div>
-        </div>
-        <div className={deleteOverlayClass}>
-          <div className="modal-content">
-            <p>Are you sure you want to delete <span className="delete-title">{this.state.itemToDelete.title}</span> from the menu?</p>
-            <button onClick={this.handleConfirm} className="modal-button warning">Yes</button>
-            <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
-          </div>
-        </div>
+        <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories}
+          delete={this.showDeleteModal} edit={this.editItem}
+          categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)}
+          restaurantOptions={this.state.restaurantOptions}/>
+        <Modal visible={this.state.showAuthErrorAlert}
+          message="It looks like you've been logged out. Please sign back in."
+          confirmButton={{text: 'Sign In', action: this.rerouteToSignIn}}/>
+        <Modal visible={this.state.showSuccessAlert} message="Operation successful!"/>
+        <Modal visible={this.state.showServerErrorAlert}
+          message="Oops there was a problem with the server! Please try again."/>
+        <Modal visible={this.state.showDeleteAlert}
+          message={["Are you sure you want to delete ", itemToDeleteHTML, " from the menu?"]}
+          confirmButton={{text: 'Yes', action: this.handleConfirm, class: 'modal-button warning'}}
+          cancelButton={{text: 'Cancel', action: this.handleCancel}}/>
       </section>
     );
   }
