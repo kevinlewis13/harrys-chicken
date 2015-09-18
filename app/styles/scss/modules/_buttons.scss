@@ -1,0 +1,8 @@
+.button-link {
+  padding: 0.5em 1em;
+  border: 2px solid $white;
+
+  &:hover {
+    color: $white;
+  }
+}

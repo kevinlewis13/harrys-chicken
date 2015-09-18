@@ -1,0 +1,103 @@
+label span {
+  display: block;
+}
+
+form {
+  width: 100%;
+  background-color: inherit;
+  margin: 0;
+}
+
+.form-left {
+  width: 35%;
+  float: left;
+}
+
+.form-left label:last-child {
+  margin-bottom: .5em;
+}
+
+.form-right {
+  width: 48%;
+  float: left;
+}
+
+input, textarea, select {
+  line-height: 1.15;
+  font-size: 1em;
+  color: $grey;
+}
+
+input {
+  width: 70%;
+}
+
+select {
+  display: inline-block;
+  width: 48%;
+}
+
+.form-right select:last-child {
+  margin-left: 4%;
+}
+
+label {
+  margin-bottom: .5em;
+  display: block;
+  clear: both;
+}
+
+.dish-edit-header h4 {
+  margin: 0;
+  display: inline;
+}
+
+.dish-edit-header {
+  padding-bottom: 0.5em;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.form-category h3 {
+  margin: 0.75em 0;
+  clear: both;
+}
+
+.form-visible {
+  background-color: $off-white;
+  overflow: auto;
+}
+
+.form-category-title {
+  text-transform: capitalize;
+}
+
+.dish-edit-section {
+  overflow: hidden;
+  clear: both;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.content.form {
+  width: 48%;
+}
+
+.dish-edit-form {
+  display: none;
+  margin-top: 1.5em;
+}
+
+.content.form {
+  margin-bottom: 2em;
+}

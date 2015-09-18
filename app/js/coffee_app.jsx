@@ -58,7 +58,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <main className="main">
+      <main>
         <Header headerInfo={this.state.restaurantInfo}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>

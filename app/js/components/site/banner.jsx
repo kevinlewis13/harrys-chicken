@@ -17,7 +17,7 @@ module.exports = React.createClass({
         <span id="top" className="clear-header"></span>
         <section className="content banner">
           <h3>We're partnered with {partner}!</h3>
-          <Link className="button" to={partnerUrl}>Check out our sister site!</Link>
+          <Link className="button-link" to={partnerUrl}>Check out our sister site!</Link>
         </section>
       </article>
     );

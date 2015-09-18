@@ -23,11 +23,11 @@ module.exports = React.createClass({
       <div className={headerClass}>
         <header className="content header">
           <a onClick={this.handleClick.bind(null, '#top')}><h1>{name}</h1></a>
-          <nav className="nav">
+          <nav>
             <a onClick={this.handleClick.bind(null, '#location')}>Location</a>
             <a onClick={this.handleClick.bind(null, '#menu')}>Menu</a>
             <a onClick={this.handleClick.bind(null, '#about')}>About</a>
-            <a className="button" href={phoneLink}>{phone}</a>
+            <a className="button-link" href={phoneLink}>{phone}</a>
           </nav>
         </header>
       </div>

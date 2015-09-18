@@ -1,1 +1,105 @@
-$primary-color: #ffffff;
+// base colors
+$off-white: #eeeeee;
+$white: #f8f8f8;
+$grey: #495453;
+$plumb: #635f7d;
+$castle-greyskull: lighten(#929389, 5%);
+
+// chicken specific colors
+$chicken-accent: #5f797d;
+
+// coffee specific colors
+$coffee-accent: #9D7D6E;
+
+//unused colors
+$mint-green: darken(#9BB9B0, 10%);
+
+
+
+.header-container {
+  &.chicken {
+    background-color: $chicken-accent;
+  }
+  &.coffee {
+    background-color: $coffee-accent;
+  }
+}
+
+.toggle-edit-button, .save-button, .delete-button, .modal-button, .add-item-button {
+  border-radius: 3px;
+
+  &:hover {
+    background-color: darken($off-white, 10%);
+  }
+}
+
+.slab {
+  &.banner.chicken {
+    background-color: $chicken-accent;
+  }
+
+  &.banner.coffee {
+    background-color: $coffee-accent;
+  }
+
+  &.info, &.about {
+    background-color: $off-white;
+  }
+
+  &.footer {
+    background-color: $castle-greyskull;
+  }
+}
+
+.warning:hover {
+  background-color: darken(#cd4540, 10%);
+  color: $off-white;
+}
+
+.confirm:hover {
+  background-color: lighten(#79BD9A, 10%);
+}
+
+.content {
+  color: $grey;
+}
+
+header.content {
+  color: $white;
+}
+
+.banner.content {
+  color: $white;
+}
+
+.chicken .button-link {
+  background-color: $chicken-accent;
+  &:hover {
+    background-color: darken($chicken-accent, 5%);
+  }
+}
+
+.coffee .button-link:hover {
+  background-color: $coffee-accent;
+&:hover {
+  background-color: darken($coffee-accent, 5%);
+}
+}
+
+.banner .button-link {
+  background-color: $plumb;
+
+  &:hover {
+    background-color: darken($plumb, 5%);
+  }
+}
+
+.social {
+  color: $grey;
+  font-size: 1.5em;
+  margin: 0.25em;
+
+  &:hover {
+    color: $white;
+  }
+}

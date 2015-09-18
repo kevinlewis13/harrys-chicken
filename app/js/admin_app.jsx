@@ -193,9 +193,9 @@ module.exports = React.createClass({
     var serverErrorOverlayClass = this.state.showServerErrorAlert ? 'overlay visible' : 'overlay hidden';
 
     return (
-      <section className="admin-section">
-        <header className="content header">
-          <nav className="nav">
+      <main>
+        <header className="content">
+          <nav>
             <a href="/">Home</a>
             <a onClick={this.logout}>Logout</a>
           </nav>
@@ -225,7 +225,7 @@ module.exports = React.createClass({
             <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
           </div>
         </div>
-      </section>
+      </main>
     );
   }
 });

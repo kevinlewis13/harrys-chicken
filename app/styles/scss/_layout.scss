@@ -1,7 +1,125 @@
+$slab-padding: 64px 0;
+$content-padding: 16px;
+$nav-offset: 80px;
+
 .map {
   height: 400px;
 }
 
 form {
   margin-bottom: 3em;
+}
+
+.slab {
+  width: 100%;
+  padding: $slab-padding;
+}
+
+.about {
+  clear: both;
+}
+
+header {
+  padding: 0.5em 1em;
+}
+
+.header-container {
+  top: 0px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  opacity: 0.93;
+}
+
+.content {
+  padding: $content-padding;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
+                                 float: left;
+                                 padding-right: 2em;
+                               }
+
+.entrees .dish:nth-child(even), .beverages .dish:nth-child(even) {
+                                  float: right;
+                                  padding-left: 2em;
+                                }
+
+.sides, .pastries {
+  float: left;
+  clear: both;
+  width: 50%;
+  padding-right: 2em;
+}
+
+.sauces, .extras {
+  float: right;
+  width: 50%;
+  padding-left: 2em;
+}
+
+.drinks {
+  float: right;
+  width: 50%;
+  padding-left: 2em;
+}
+
+.dish {
+  margin: 0 auto 44px auto;
+}
+
+.entrees .dish, .beverages .dish {
+  width: 50%;
+  height: 7.25em;
+}
+
+.title {
+  float: left;
+  text-align: left;
+  margin-bottom: 17px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.description {
+  text-align: left;
+  clear: left;
+  padding-right: 4em;
+}
+
+.toggle-edit-button, .delete-button, .save-button, .add-item-button {
+  float: right;
+  margin-left: 0.5em;
+}
+
+.details {
+  padding-top: 1.5em;
+}
+
+.details p {
+  margin-bottom: 1em;
+}
+
+.drinks {
+  margin-top: 4px;
+}
+
+header h1 {
+  display: inline;
+}
+
+.clear-header {
+  display: block;
+  height: 76px;
+  margin-top: -76px;
+  visibility: hidden;
+  transform: translateY(-$nav-offset);
+}
+
+.footer .copy {
+  margin-top: 1em;
 }
