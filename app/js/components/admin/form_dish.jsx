@@ -77,7 +77,7 @@ module.exports = React.createClass({
           </div>
           <div className="form-right">
             <label className="textarea-label">Description
-              <textarea name="description" defaultValue={this.props.dish.description} rows="5" cols="43"></textarea>
+              <textarea name="description" defaultValue={this.props.dish.description} rows="5"></textarea>
             </label>
             <Dropdown name="restaurant" default={this.props.dish.restaurant} options={this.props.restaurantOptions}/>
             <Dropdown name="category" default={this.props.dish.category} options={this.props.categoryOptions}/>

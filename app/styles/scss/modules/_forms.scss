@@ -28,6 +28,9 @@ input, textarea, select {
   color: $grey;
 }
 
+textarea {
+  width: 100%
+}
 input {
   width: 70%;
 }
