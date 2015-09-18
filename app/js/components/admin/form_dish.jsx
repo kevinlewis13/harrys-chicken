@@ -3,6 +3,7 @@
 var React = require('react');
 var Input = require('./input.jsx');
 var Dropdown = require('./dropdown.jsx');
+var Textarea = require('./textarea.jsx');
 var $ = require('jquery');
 
 module.exports = React.createClass({
@@ -71,14 +72,13 @@ module.exports = React.createClass({
         </header>
         <form className="dish-edit-form" name="updateItem">
           <div className="form-left">
-            <Input isRequired={true} labelName="Name" name="name" value={this.props.dish.title} placeholder="item name"/>
-            <Input isRequired={true} labelName="Price" name="price" value={this.props.dish.price} placeholder="item price"/>
-            <Input isRequired={true} labelName="Menu Position" name="index" value={index} placeholder="item index"/>
+            <Input isRequired={true} labelName="Name" name="name" value={this.props.dish.title} placeholder="Item name"/>
+            <Input isRequired={true} labelName="Price" name="price" value={this.props.dish.price} placeholder="Item price"/>
+            <Input isRequired={true} labelName="Menu Position" name="index" value={index} placeholder="Item index"/>
           </div>
           <div className="form-right">
-            <label className="textarea-label">Description
-              <textarea name="description" defaultValue={this.props.dish.description} rows="5" cols="43"></textarea>
-            </label>
+            <Textarea labelName="Description" default={this.props.dish.description}
+              placeholderText="Item description" rows="5" cols="43"/>
             <Dropdown name="restaurant" default={this.props.dish.restaurant} options={this.props.restaurantOptions}/>
             <Dropdown name="category" default={this.props.dish.category} options={this.props.categoryOptions}/>
           </div>
