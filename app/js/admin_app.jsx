@@ -197,7 +197,7 @@ module.exports = React.createClass({
         <Modal visible={this.state.showDeleteAlert}
           message={["Are you sure you want to delete ", itemToDeleteHTML, " from the menu?"]}
           confirmButton={{text: 'Yes', action: this.handleConfirm, class: 'modal-button warning'}}
-          cancelButton={{text: 'Cancel', action: this.handleCancel}}/>
+          cancelButton={{text: 'No', action: this.handleCancel}}/>
       </section>
     );
   }
