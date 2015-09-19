@@ -15,8 +15,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       showSuccessAlert: false, showDeleteAlert: false, showAuthErrorAlert: false, showServerErrorAlert: false,
-      itemToDelete: { _id: '', title: '' },
-      menu: [],
+      itemToDelete: { _id: '', title: '' }, menu: [], operation: '',
       restaurantOptions: [
         {display: 'Chicken Joint', value: 'chicken'},
         {display: 'Coffee Joint', value: 'coffee'}
@@ -109,6 +108,8 @@ module.exports = React.createClass({
   },
 
   addItem: function(item) {
+    this.setState({operation: 'Create'});
+
     request
       .post('/api/dish')
       .send(item)
@@ -117,6 +118,8 @@ module.exports = React.createClass({
   },
 
   editItem: function(id, item) {
+    this.setState({operation: 'Update'});
+
     request
       .put('/api/dish/' + id)
       .send(item)
@@ -125,6 +128,8 @@ module.exports = React.createClass({
   },
 
   deleteItem: function(id) {
+    this.setState({operation: 'Delete'});
+
     request
       .del('/api/dish/' + id)
       .set('eat', cookie.load('eat'))
@@ -174,6 +179,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var successMessage = this.state.operation + ' successful!';
     var itemToDeleteHTML = (
       <span key={this.state.itemToDelete._id} className="delete-title">
         {this.state.itemToDelete.title}
@@ -191,7 +197,7 @@ module.exports = React.createClass({
         <Modal visible={this.state.showAuthErrorAlert}
           message="It looks like you've been logged out. Please sign back in."
           confirmButton={{text: 'Sign In', action: this.rerouteToSignIn}}/>
-        <Modal visible={this.state.showSuccessAlert} message="Operation successful!"/>
+        <Modal visible={this.state.showSuccessAlert} message={successMessage}/>
         <Modal visible={this.state.showServerErrorAlert}
           message="Oops there was a problem with the server! Please try again."/>
         <Modal visible={this.state.showDeleteAlert}
