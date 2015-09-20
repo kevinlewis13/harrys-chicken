@@ -181,7 +181,7 @@ module.exports = React.createClass({
   render: function() {
     var successMessage = this.state.operation + ' successful!';
     var itemToDeleteHTML = (
-      <span key={this.state.itemToDelete._id} className="delete-title">
+      <span key={this.state.itemToDelete._id} className="emphasis">
         {this.state.itemToDelete.title}
       </span>
     );
