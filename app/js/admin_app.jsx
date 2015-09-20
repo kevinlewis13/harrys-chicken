@@ -181,15 +181,19 @@ module.exports = React.createClass({
   render: function() {
     var successMessage = this.state.operation + ' successful!';
     var itemToDeleteHTML = (
-      <span key={this.state.itemToDelete._id} className="delete-title">
+      <span key={this.state.itemToDelete._id} className="emphasis">
         {this.state.itemToDelete.title}
       </span>
     );
 
     return (
-      <section className="admin-section">
-        <a href="/">Home</a>
-        <a onClick={this.logout}>Logout</a>
+      <main>
+        <header className="content">
+          <nav>
+            <a href="/">Home</a>
+            <a onClick={this.logout}>Logout</a>
+          </nav>
+        </header>
         <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories}
           delete={this.showDeleteModal} edit={this.editItem}
           categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)}
@@ -202,9 +206,9 @@ module.exports = React.createClass({
           message="Oops there was a problem with the server! Please try again."/>
         <Modal visible={this.state.showDeleteAlert}
           message={["Are you sure you want to delete ", itemToDeleteHTML, " from the menu?"]}
-          confirmButton={{text: 'Yes', action: this.handleConfirm, class: 'modal-button warning'}}
+          confirmButton={{text: 'Yes', action: this.handleConfirm, class: 'button warning'}}
           cancelButton={{text: 'No', action: this.handleCancel}}/>
-      </section>
+      </main>
     );
   }
 });

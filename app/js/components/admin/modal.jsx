@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
     if (this.props.confirmButton) {
       confirmButton = (
-        <button className={this.props.confirmButton.class || "modal-button"}
+        <button className={this.props.confirmButton.class || "button"}
           onClick={this.props.confirmButton.action}>{this.props.confirmButton.text}
         </button>
       );
@@ -26,7 +26,7 @@ module.exports = React.createClass({
 
     if (this.props.cancelButton) {
       cancelButton = (
-        <button className="modal-button cancel"
+        <button className="button"
           onClick={this.props.cancelButton.action}>{this.props.cancelButton.text}
         </button>
       );
