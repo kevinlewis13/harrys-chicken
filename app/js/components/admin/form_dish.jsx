@@ -61,7 +61,7 @@ module.exports = React.createClass({
     var index = this.props.dish.index + 1;
     var editButtonText = this.state.editing ? 'Cancel' : 'Edit';
     var saveDeleteButtonText = this.state.editing ? 'Save' : 'Delete';
-    var saveDeleteButtonClass = this.state.editing ? 'button confirm' : 'button';
+    var saveDeleteButtonClass = this.state.editing ? 'confirm' : '';
 
     return (
       <section className="dish-edit-section" key={this.props.dish._id}>

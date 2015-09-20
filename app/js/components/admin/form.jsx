@@ -68,7 +68,7 @@ module.exports = React.createClass({
           <form name="newItem" onSubmit={this.handleCreateItem}>
             <header className="dish-edit-header">
               <h4>Add a new menu item</h4>
-              <button className="button confirm" type="submit">Add item</button>
+              <button className="confirm" type="submit">Add item</button>
             </header>
             <div className="form-left">
               <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>

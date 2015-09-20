@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
     if (this.props.confirmButton) {
       confirmButton = (
-        <button className={this.props.confirmButton.class || "button"}
+        <button className={this.props.confirmButton.class || ""}
           onClick={this.props.confirmButton.action}>{this.props.confirmButton.text}
         </button>
       );
@@ -26,12 +26,12 @@ module.exports = React.createClass({
 
     if (this.props.cancelButton) {
       cancelButton = (
-        <button className="button"
+        <button
           onClick={this.props.cancelButton.action}>{this.props.cancelButton.text}
         </button>
       );
-    }
 
+    }
     return (
       <div className={overlayClass}>
         <div className="modal-content">
