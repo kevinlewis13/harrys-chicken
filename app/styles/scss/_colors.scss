@@ -25,7 +25,7 @@ $mint-green: darken(#9BB9B0, 10%);
   }
 }
 
-.toggle-edit-button, .save-button, .delete-button, .modal-button, .add-item-button {
+.button {
   border-radius: 3px;
 
   &:hover {

@@ -220,9 +220,9 @@ module.exports = React.createClass({
         </div>
         <div className={deleteOverlayClass}>
           <div className="modal-content">
-            <p>Are you sure you want to delete <span className="delete-title">{this.state.itemToDelete.title}</span> from the menu?</p>
-            <button onClick={this.handleConfirm} className="modal-button warning">Yes</button>
-            <button onClick={this.handleCancel} className="modal-button cancel">Cancel</button>
+            <p>Are you sure you want to delete <span className="emphasis">{this.state.itemToDelete.title}</span> from the menu?</p>
+            <button onClick={this.handleConfirm} className="button warning">Yes</button>
+            <button onClick={this.handleCancel} className="button">Cancel</button>
           </div>
         </div>
       </main>

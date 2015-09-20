@@ -60,14 +60,14 @@ module.exports = React.createClass({
     var index = this.props.dish.index + 1;
     var editButtonText = this.state.editing ? 'Cancel' : 'Edit';
     var saveDeleteButtonText = this.state.editing ? 'Save' : 'Delete';
-    var saveDeleteButtonClass = this.state.editing ? 'save-button confirm' : 'delete-button';
+    var saveDeleteButtonClass = this.state.editing ? 'button confirm' : 'button';
 
     return (
       <section className="dish-edit-section" key={this.props.dish._id}>
         <header className="dish-edit-header">
           <h4>{index}. {this.props.dish.title}</h4>
           <button className={saveDeleteButtonClass} onClick={this.handleFormAction.bind(null, this.props.dish)}>{saveDeleteButtonText}</button>
-          <button className="toggle-edit-button" onClick={this.handleToggleEdit}>{editButtonText}</button>
+          <button className="button" onClick={this.handleToggleEdit}>{editButtonText}</button>
         </header>
         <form className="dish-edit-form" name="updateItem">
           <div className="form-left">
