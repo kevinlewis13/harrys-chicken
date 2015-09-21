@@ -59,18 +59,6 @@ label {
   padding-bottom: 0.5em;
 }
 
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: all 0.3s ease;
-}
-
 .form-category h3 {
   margin: 0.75em 0;
   clear: both;

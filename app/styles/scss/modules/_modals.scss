@@ -10,6 +10,18 @@
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.75);
 }
+//this could be display none and block
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
 
 .modal-content {
   position: relative;
