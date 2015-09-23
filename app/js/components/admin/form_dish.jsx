@@ -64,7 +64,7 @@ module.exports = React.createClass({
     var saveDeleteButtonClass = this.state.editing ? 'confirm' : '';
 
     return (
-      <section className="dish-edit-section" key={this.props.dish._id}>
+      <section className="dish-form-wrapper" key={this.props.dish._id}>
         <header className="dish-edit-header">
           <h4>{index}. {this.props.dish.title}</h4>
           <button className={saveDeleteButtonClass} onClick={this.handleFormAction.bind(null, this.props.dish)}>{saveDeleteButtonText}</button>
