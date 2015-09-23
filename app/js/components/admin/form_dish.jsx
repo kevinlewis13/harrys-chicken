@@ -61,14 +61,14 @@ module.exports = React.createClass({
     var index = this.props.dish.index + 1;
     var editButtonText = this.state.editing ? 'Cancel' : 'Edit';
     var saveDeleteButtonText = this.state.editing ? 'Save' : 'Delete';
-    var saveDeleteButtonClass = this.state.editing ? 'save-button confirm' : 'delete-button';
+    var saveDeleteButtonClass = this.state.editing ? 'confirm' : '';
 
     return (
-      <section className="dish-edit-section" key={this.props.dish._id}>
+      <section className="dish-form-wrapper" key={this.props.dish._id}>
         <header className="dish-edit-header">
           <h4>{index}. {this.props.dish.title}</h4>
           <button className={saveDeleteButtonClass} onClick={this.handleFormAction.bind(null, this.props.dish)}>{saveDeleteButtonText}</button>
-          <button className="toggle-edit-button" onClick={this.handleToggleEdit}>{editButtonText}</button>
+          <button className="button" onClick={this.handleToggleEdit}>{editButtonText}</button>
         </header>
         <form className="dish-edit-form" name="updateItem">
           <div className="form-left">
@@ -78,7 +78,7 @@ module.exports = React.createClass({
           </div>
           <div className="form-right">
             <Textarea labelName="Description" default={this.props.dish.description}
-              placeholderText="Item description" rows="5" cols="43" name="description"/>
+              placeholderText="Item description" rows="5" name="description"/>
             <Dropdown name="restaurant" default={this.props.dish.restaurant} options={this.props.restaurantOptions}/>
             <Dropdown name="category" default={this.props.dish.category} options={this.props.categoryOptions}/>
           </div>

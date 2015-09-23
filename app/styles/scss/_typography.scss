@@ -2,6 +2,15 @@ html {
   font-size: 100%;
 }
 
+body {
+  font-size: 100%;
+  font-weight: 300;
+}
+
+h1, h3, h4, h5 {
+  font-weight: 300;
+}
+
 h1 {
   font-size: 2.5em;
 }
@@ -13,4 +22,46 @@ h3 {
 
 h4 {
   font-size: 1.75rem;
+}
+
+.small_text {
+  font-size: small;
+}
+
+.banner, .menu, .about, .footer {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1.3em;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+.entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
+  font-weight: normal;
+}
+
+.description {
+  font-weight: 300;
+}
+
+.price {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  float: right;
+  letter-spacing: 1px;
+}
+
+.emphasis {
+  font-weight: bold;
+  font-style: italic;
 }

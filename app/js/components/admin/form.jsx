@@ -61,22 +61,33 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    // <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
     return (
       <article className="slab form">
-        <section className="content form">
-          <label htmlFor="newItem">Add a new menu Item</label>
-          <form name="newItem" onSubmit={this.handleCreateItem}>
-            <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
-            <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
-            <Input placeholder="item description" isRequired={false} labelName="Description" name="description"/>
-            <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
-            <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
-            <Dropdown name="category" default="entrees"/>
-            <button className="add-item-button confirm" type="submit">Add item</button>
-          </form>
+        <section className="content form form-visible">
+          <section className="dish-form-wrapper">
+            <form name="newItem" onSubmit={this.handleCreateItem}>
+              <header className="dish-edit-header">
+                <h4>Add a new menu item</h4>
+                <button className="confirm" type="submit">Add item</button>
+              </header>
+              <div className="form-left">
+                <Input placeholder="item name" isRequired={true} labelName="Name" name="name"/>
+                <Input placeholder="item price" isRequired={true} labelName="Price" name="price"/>
+                <Input placeholder="item index" isRequired={true} labelName="Menu Position" name="index" />
+              </div>
+              <div className="form-right">
+                <label className="textarea-label">Description
+                  <textarea name="description" rows="5"></textarea>
+                </label>
+                <Dropdown name="restaurant" default="chicken" options={this.props.restaurantOptions}/>
+                <Dropdown name="category" default="entrees"/>
+              </div>
+            </form>
+          </section>
         </section>
         <section className="content form">
-          <label htmlFor="updateItem">Change items on the current menu</label>
+          <h4>Change items on the current menu</h4>
           {this.renderUpdateItemForms()}
         </section>
       </article>

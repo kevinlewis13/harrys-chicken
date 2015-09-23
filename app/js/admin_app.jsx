@@ -206,7 +206,7 @@ module.exports = React.createClass({
           message="Oops there was a problem with the server! Please try again."/>
         <Modal visible={this.state.showDeleteAlert}
           message={["Are you sure you want to delete ", itemToDeleteHTML, " from the menu?"]}
-          confirmButton={{text: 'Yes', action: this.handleConfirm, class: 'button warning'}}
+          confirmButton={{text: 'Yes', action: this.handleConfirm, class: 'warning'}}
           cancelButton={{text: 'No', action: this.handleCancel}}/>
       </main>
     );

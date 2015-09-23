@@ -14,18 +14,8 @@ $coffee-accent: #9D7D6E;
 //unused colors
 $mint-green: darken(#9BB9B0, 10%);
 
-
-
-.header-container {
-  &.chicken {
-    background-color: $chicken-accent;
-  }
-  &.coffee {
-    background-color: $coffee-accent;
-  }
-}
-
-.button {
+//styles
+button {
   border-radius: 3px;
 
   &:hover {
@@ -33,22 +23,20 @@ $mint-green: darken(#9BB9B0, 10%);
   }
 }
 
-.slab {
-  &.banner.chicken {
-    background-color: $chicken-accent;
-  }
+.chicken {
+  background-color: $chicken-accent;
+}
 
-  &.banner.coffee {
-    background-color: $coffee-accent;
-  }
+.coffee {
+  background-color: $coffee-accent;
+}
 
-  &.info, &.about {
-    background-color: $off-white;
-  }
+.info, .about {
+  background-color: $off-white;
+}
 
-  &.footer {
-    background-color: $castle-greyskull;
-  }
+.footer {
+  background-color: $castle-greyskull;
 }
 
 .warning:hover {
@@ -79,7 +67,7 @@ header.content {
   }
 }
 
-.coffee .button-link:hover {
+.coffee .button-link {
   background-color: $coffee-accent;
 &:hover {
   background-color: darken($coffee-accent, 5%);
