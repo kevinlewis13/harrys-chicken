@@ -17,7 +17,7 @@ module.exports = function(router, passport) {
     newUser.generateHash(req.body.password, newUser.generateSalt(), function(err, hash) {
       if (err) {
         console.log(err);
-        res.status(500).json({msg: 'could not generate hash'});
+        return res.status(500).json({msg: 'could not generate hash'});
       }
 
       newUser.basic.password = hash;
@@ -26,7 +26,7 @@ module.exports = function(router, passport) {
     newUser.save(function (err, user) {
       if (err) {
         console.log(err);
-        res.status(500).json({msg: 'could not save user'});
+        return res.status(500).json({msg: 'could not save user'});
       }
 
       user.generateToken(process.env.APP_SECRET, function(err, token) {
@@ -45,7 +45,7 @@ module.exports = function(router, passport) {
     req.user.generateToken(process.env.APP_SECRET, function (err, token) {
       if (err) {
         console.log(err);
-        res.status(500).json({msg: 'could not generate token to use'});
+        return res.status(500).json({msg: 'could not generate token to use'});
       }
 
       res.json({token: token});
