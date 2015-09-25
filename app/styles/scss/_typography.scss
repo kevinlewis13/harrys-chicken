@@ -1,14 +1,21 @@
+//default weight is 400 - only imported basic version. Not sure if
+//later font weight declarations are neccessary, but changed them from 300
+//bold and italic still seem to work without importing those specific
+//character sets. reset html font-size explicitly, otherwise way to huge.
+@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
+
 html {
-  font-size: 100%;
+  font-size: 16px;
 }
 
 body {
   font-size: 100%;
-  font-weight: 300;
+  font-weight: 400;
+  font-family: 'Libre Baskerville', serif;
 }
 
 h1, h3, h4, h5 {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 h1 {
@@ -50,7 +57,7 @@ h4 {
 }
 
 .description {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .price {
@@ -64,4 +71,8 @@ h4 {
 .emphasis {
   font-weight: bold;
   font-style: italic;
+}
+
+input, textarea, select, option {
+  font-family: inherit;
 }

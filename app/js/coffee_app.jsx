@@ -23,7 +23,7 @@ module.exports = React.createClass({
         partnerUrl: '/chicken'
       },
       socialInfo: {
-        facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
+        facebookUrl: 'https://www.facebook.com/Harryscoffeejoint',
         tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
       },
       menuInfo: {
