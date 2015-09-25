@@ -1,21 +1,18 @@
 //default weight is 400 - only imported basic version. Not sure if
 //later font weight declarations are neccessary, but changed them from 300
 //bold and italic still seem to work without importing those specific
-//character sets. reset html font-size explicitly, otherwise way to huge.
+//character sets. reset html font-size explicitly, otherwise way too huge.
+//hmmm, maybe not. went back to 100%. fonts are confusing.
+
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
 
 html {
-  font-size: 16px;
+  font-size: 100%;
 }
 
 body {
   font-size: 100%;
-  font-weight: 400;
   font-family: 'Libre Baskerville', serif;
-}
-
-h1, h3, h4, h5 {
-  font-weight: 400;
 }
 
 h1 {
@@ -39,6 +36,16 @@ h4 {
   text-align: center;
 }
 
+.title, .description {
+  text-align: left;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 h1 {
   font-size: 2.5rem;
 }
@@ -50,14 +57,6 @@ h3 {
 
 h4 {
   font-size: 1.25rem;
-}
-
-.entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
-  font-weight: normal;
-}
-
-.description {
-  font-weight: 400;
 }
 
 .price {
