@@ -5,11 +5,19 @@ $grey: #495453;
 $plumb: #635f7d;
 $castle-greyskull: lighten(#929389, 5%);
 
+
+//restaurant colors come from http://www.dalyspaint.com/aboutc2paint.html
+//can search for names. brine is color 235, raku is color 049
+
 // chicken specific colors
-$chicken-accent: #5f797d;
+$chicken-accent: #a5beb3;
+$salty-brine: #a5beb3;
+$original-chicken: #5f797d;
 
 // coffee specific colors
-$coffee-accent: #9D7D6E;
+$coffee-accent: #503a33;
+$raku: #503A33;
+$original-coffee: #9d7d6e;
 
 //unused colors
 $mint-green: darken(#9BB9B0, 10%);
