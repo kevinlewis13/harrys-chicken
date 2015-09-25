@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/kevinlewis13/harrys-chicken/issues"
   },
+  
   "homepage": "https://github.com/kevinlewis13/harrys-chicken",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
