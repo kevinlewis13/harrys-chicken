@@ -2,7 +2,7 @@
   "name": "harrys_chicken",
   "version": "0.1.0",
   "description": "Harry's Chicken Joint website revamp",
-  "main": "server/server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "gulp client",
@@ -17,9 +17,15 @@
   "bugs": {
     "url": "https://github.com/kevinlewis13/harrys-chicken/issues"
   },
-
   "homepage": "https://github.com/kevinlewis13/harrys-chicken",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.2",
+    "eat": "^0.1.1",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.7",
+    "passport": "^0.2.2",
+    "passport-http": "^0.2.2",
     "bcrypt-nodejs": "0.0.3",
     "chai": "^3.2.0",
     "chai-http": "^1.0.0",
