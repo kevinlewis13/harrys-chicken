@@ -46,13 +46,17 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <form>
-        <label htmlFor="email">Email</label>
-        <input type="email" ref="email" placeholder="Email"/>
-        <label htmlFor="password">Password</label>
-        <input type="password" ref="password" placeholder="Password"/>
-        <button type="submit" onClick={this.onClickHandler}>Sign In</button>
-      </form>
+      <section className="sign-in">
+        <form className="form-visible">
+          <label htmlFor="email">Email</label>
+          <input type="email" ref="email" placeholder="you@example.com"/>
+          <label htmlFor="password">Password</label>
+          <input type="password" ref="password" placeholder="supersecret"/>
+          <button type="submit" onClick={this.onClickHandler}>Sign In</button>
+          <h4>Not an admin of this site?</h4>
+          <p>Take me back <a href="/">HOME</a></p>
+        </form>
+      </section>
     );
   }
 });
