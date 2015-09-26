@@ -31,6 +31,10 @@ button {
   }
 }
 
+.sign-in {
+  color: $grey;
+}
+
 .sign-in button {
   background-color: lighten(#79BD9A, 10%);
 
@@ -39,8 +43,8 @@ button {
   }
 }
 
-.sign-in {
-  color: $grey;
+.sign-in a {
+  color: darken(#79BD9A, 10%);
 }
 
 .chicken {
