@@ -80,6 +80,39 @@ label {
   margin-bottom: 1em;
 }
 
+.sign-in {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.sign-in h4 {
+  margin-top: 1.5em;
+  padding: 1em;
+  border-top: 1px solid;
+}
+
+.sign-in h4, .sign-in p {
+  text-align: center;
+}
+
+.sign-in .form-visible {
+  text-align: left;
+  padding: 1.5em;
+}
+
+.sign-in button {
+  margin: 0.5em 0 0 0;
+  float: none;
+}
+
+.sign-in input {
+  display: block;
+  width: 100%;
+  line-height: 35px;
+  margin-bottom: 0.5em;
+  padding-left: 0.3em;
+}
+
 .content.form {
   width: 48%;
   margin-bottom: 2em;
