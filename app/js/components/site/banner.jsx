@@ -17,8 +17,7 @@ module.exports = React.createClass({
       <article className={bannerClass}>
         <span id="top" className="clear-header"></span>
         <section className="content banner">
-          <h3>Smoked and skillet-fried</h3>
-          <Link className="button-link" to={partnerUrl}>We also are now serving coffee in the mornings! Check it out!</Link>
+          <h3>"Smoked and skillet-fried."</h3>
         </section>
       </article>
     );
