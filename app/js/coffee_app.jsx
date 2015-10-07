@@ -16,7 +16,7 @@ module.exports = React.createClass({
         name: 'Harry\'s Coffee Joint',
         phone: '206.938.9000',
         address: '6032 California Ave SW\nSeattle, WA 98136',
-        hours: 'Tuesday - Saturday, 9-3pm'
+        hours: 'Monday - Friday, 7-2pm'
       },
       bannerInfo: {
         partner: 'Harry\'s Chicken Joint',

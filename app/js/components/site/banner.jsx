@@ -12,14 +12,27 @@ module.exports = React.createClass({
     var partner = this.props.bannerInfo.partner;
     var partnerUrl = this.props.bannerInfo.partnerUrl;
     var bannerClass = path === '/chicken' ? ' slab banner chicken' : 'slab banner coffee';
+    if (path === '/chicken') {
     return (
       <article className={bannerClass}>
         <span id="top" className="clear-header"></span>
         <section className="content banner">
-          <h3>We're partnered with {partner}!</h3>
-          <Link className="button-link" to={partnerUrl}>Check out our sister site!</Link>
+          <h3>Smoked and skillet-fried</h3>
+          <Link className="button-link" to={partnerUrl}>We also are now serving coffee in the mornings! Check it out!</Link>
         </section>
       </article>
     );
+  }
+    if (path === '/coffee') {
+      return (
+        <article className={bannerClass}>
+          <span id="top" className="clear-header"></span>
+          <section className="content banner">
+            <h3></h3>
+            <Link className="button-link" to={partnerUrl}>We also are now serving coffee in the mornings! Check it out!</Link>
+          </section>
+        </article>
+      );
+  }
   }
 });
