@@ -20,7 +20,8 @@ module.exports = React.createClass({
       },
       bannerInfo: {
         partner: 'Harry\'s Coffee Joint',
-        partnerUrl: '/coffee'
+        partnerUrl: '/coffee',
+        partnerAbbrev: 'coffee'
       },
       socialInfo: {
         facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
@@ -59,7 +60,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <main>
-        <Header headerInfo={this.state.restaurantInfo}/>
+        <Header headerInfo={this.state.restaurantInfo} partnerInfo={this.state.bannerInfo}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>
         <Menu menu={this.state.menu} categories={this.state.menuInfo.categories}/>

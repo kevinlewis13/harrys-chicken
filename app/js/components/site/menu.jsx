@@ -30,14 +30,22 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (
-      <article className="slab menu">
-        <section className="content menu">
-          <span id="menu" className="clear-header"></span>
-          <h3>Our Menu</h3>
-          <ul>{this.renderCategories()}</ul>
-        </section>
-      </article>
-    );
+    if(this.props.categories.length > 1) {
+      return (
+        <article className="slab menu">
+          <section className="content menu">
+            <span id="menu" className="clear-header"></span>
+            <h3>Our Menu</h3>
+            <ul>{this.renderCategories()}</ul>
+          </section>
+        </article>
+      );
+    } else {
+      return (
+          <section className="content">
+            <ul>{this.renderCategories()}</ul>
+          </section>
+      );
+    }
   }
 });

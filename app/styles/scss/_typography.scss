@@ -71,6 +71,12 @@ h4 {
   font-size: 1.125em;
 }
 
+.banner h3 {
+  font-size: 1.75em;
+  font-style: italic;
+  margin-top: 1em;
+}
+
 .emphasis {
   font-weight: bold;
   font-style: italic;
@@ -78,10 +84,6 @@ h4 {
 
 .details h4 {
   font-weight: bold;
-}
-
-.banner h3 {
-  font-style: italic;
 }
 
 input, textarea, select, option {

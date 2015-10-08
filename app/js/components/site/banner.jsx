@@ -3,6 +3,7 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var Menu = require('./menu.jsx');
 
 module.exports = React.createClass({
   mixins: [Router.State],
@@ -27,8 +28,8 @@ module.exports = React.createClass({
         <article className={bannerClass}>
           <span id="top" className="clear-header"></span>
           <section className="content banner">
-            <h3></h3>
-            <Link className="button-link" to={partnerUrl}>We also are now serving coffee in the mornings! Check it out!</Link>
+            <h3>"Slogan goes here"</h3>
+            <Menu menu={this.props.menu} categories={this.props.bannerInfo.category} />
           </section>
         </article>
       );

@@ -3,6 +3,7 @@
 var React = require('react');
 var $ = require('jquery');
 var Router = require('react-router');
+var Link = Router.Link;
 
 module.exports = React.createClass({
   mixins: [Router.State],
@@ -16,6 +17,8 @@ module.exports = React.createClass({
     var path = this.getPathname();
     var name = this.props.headerInfo.name;
     var phone = this.props.headerInfo.phone;
+    var partner = this.props.partnerInfo.partnerAbbrev;
+    var partnerUrl = this.props.partnerInfo.partnerUrl;
     var phoneLink = 'tel:+' + phone.split('.').join('');
     var headerClass = path === '/chicken' ? ' header-container chicken' : 'header-container coffee';
 
@@ -24,6 +27,7 @@ module.exports = React.createClass({
         <header className="content header">
           <a onClick={this.handleClick.bind(null, '#top')}><h1>{name}</h1></a>
           <nav>
+            <Link to={partnerUrl}>{partner}</Link>
             <a onClick={this.handleClick.bind(null, '#location')}>Location</a>
             <a onClick={this.handleClick.bind(null, '#menu')}>Menu</a>
             <a onClick={this.handleClick.bind(null, '#about')}>About</a>

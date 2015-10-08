@@ -29,7 +29,8 @@ module.exports = React.createClass({
       coffeeCategories: [
         {display: "Beverage", value: "beverages"},
         {display: "Pastry", value: "pastries"},
-        {display: "Extra",  value: "extras"}
+        {display: "Extra",  value: "extras"},
+        {display: "Special", value: "specials"}
       ]
     };
   },

@@ -8,6 +8,10 @@ $nav-offset: 80px;
   padding: $slab-padding;
 }
 
+.slab.banner {
+  padding-bottom: 0px;
+}
+
 .content {
   padding: $content-padding;
   width: 80%;
@@ -27,6 +31,13 @@ header h1 {
   display: inline;
 }
 
+.about p {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
 .clear-header {
   display: block;
   height: 76px;
@@ -44,9 +55,7 @@ header h1 {
 }
 
 //banner
-.banner h3 {
-  font-size: 1.75em;
-}
+
 
 //info
 .map {
@@ -89,7 +98,7 @@ header h1 {
   margin: 0 auto 44px auto;
 }
 
-.entrees .dish, .beverages .dish {
+.entrees .dish, .beverages .dish, .banner .dish, .banner .category-title {
   width: 50%;
 }
 
