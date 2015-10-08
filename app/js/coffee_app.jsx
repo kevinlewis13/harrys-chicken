@@ -26,14 +26,15 @@ module.exports = React.createClass({
         facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
         tumblrUrl: 'http://harryschickenjointseattle.tumblr.com/'
       },
-      logoSource: '../assets/harryscoffee.svg'
+      logoSource: './assets/harryscoffee.svg'
     };
 
     return {
       menu: [],
       restaurantInfo: coffeeDetails.restaurantInfo,
       bannerInfo: coffeeDetails.bannerInfo,
-      socialInfo: coffeeDetails.socialInfo
+      socialInfo: coffeeDetails.socialInfo,
+      logoSource: coffeeDetails.logoSource
     };
   },
 
