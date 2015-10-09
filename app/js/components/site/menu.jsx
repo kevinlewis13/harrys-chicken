@@ -42,7 +42,7 @@ module.exports = React.createClass({
       );
     } else {
       return (
-          <section className="content">
+          <section>
             <ul>{this.renderCategories()}</ul>
           </section>
       );

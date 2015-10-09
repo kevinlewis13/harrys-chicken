@@ -40,16 +40,24 @@ nav {
 
 @media (max-width: 1100px) {
   .clear-header {
-    height: 52px;
-    margin-top: -52px;
+    height: 90px;
+    margin-top: -90px;
+  }
+
+  header.content {
+    padding-bottom: 1em;
   }
 
   nav {
     padding-top: 6px;
+    text-align: center;
+    float: none;
   }
 
   header h1 {
     font-size: 1.5rem;
+    text-align: center;
+    display: block;
   }
 
   .entrees .dish:nth-child(odd), .beverages .dish:nth-child(odd) {
@@ -69,7 +77,7 @@ nav {
     margin: 0 auto 44px auto;
   }
 
-  .entrees .dish, .beverages .dish {
+  .entrees .dish, .beverages .dish, .banner .dish, .banner .category-title {
     margin: 0 auto 44px auto;
     width: 100%;
   }
@@ -77,8 +85,8 @@ nav {
 
 @media (max-width: 1024px) {
   .clear-header {
-    height: 0;
-    margin-top: -0;
+    height: 90px;
+    margin-top: -90px;
   }
 
   .details {
@@ -90,6 +98,15 @@ nav {
   nav {
     float: none;
     margin: .5em auto 0 auto;
+  }
+
+  .clear-header {
+    height: 0;
+    margin-top: -0;
+  }
+
+  nav a {
+    margin-left: 1em;
   }
 
   .entrees .dish {
@@ -104,14 +121,19 @@ nav {
     display: block;
   }
 
+  header.content {
+    width: 100%;
+  }
+
   .header-container {
     position: static;
+    float: right;
     opacity: 1;
   }
 }
 
 @media (max-width: 700px) {
-  .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras {
+  .entrees, .drinks, .sides, .sauces, .beverages, .pastries, .extras, .specials {
     width: 100%;
   }
 }
