@@ -48,7 +48,7 @@ module.exports = React.createClass({
     var token = cookie.load('eat');
 
     if(token) {
-      this.transitonTo('/admin');
+      this.transitionTo('/admin');
     }
   },
 
