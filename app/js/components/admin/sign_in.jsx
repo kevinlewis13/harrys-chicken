@@ -44,6 +44,14 @@ module.exports = React.createClass({
       }.bind(this));
   },
 
+  componentWillMount: function() {
+    var token = cookie.load('eat');
+
+    if(token) {
+      this.transitionTo('/admin');
+    }
+  },
+
   render: function() {
     return (
       <section className="sign-in">

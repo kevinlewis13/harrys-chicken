@@ -20,7 +20,6 @@ module.exports = React.createClass({
 
     return (
       <section className="details large-4 large-offset-2 medium-12 small-12 columns">
-        <h3>Our Deets</h3>
         <h4>Phone</h4>
         <p>{phone}</p>
         <h4>Address</h4>

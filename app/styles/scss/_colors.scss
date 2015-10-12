@@ -26,7 +26,7 @@ $mint-green: darken(#9BB9B0, 10%);
 button {
   border-radius: 3px;
 
-  &:hover {
+  &:hover, &:active {
     background-color: darken($off-white, 10%);
   }
 }
@@ -38,7 +38,7 @@ button {
 .sign-in button {
   background-color: lighten(#79BD9A, 10%);
 
-  &:hover {
+  &:hover, &:active {
     background-color: #79BD9A
   }
 }
@@ -63,12 +63,12 @@ button {
   background-color: $castle-greyskull;
 }
 
-.warning:hover {
+.warning:hover, .warning:active {
   background-color: darken(#cd4540, 10%);
   color: $off-white;
 }
 
-.confirm:hover {
+.confirm:hover, .confirm:active {
   background-color: lighten(#79BD9A, 10%);
 }
 
@@ -80,20 +80,20 @@ header.content {
   color: $white;
 }
 
-.banner.content {
+.banner .content {
   color: $white;
 }
 
 .chicken .button-link {
   background-color: $chicken-accent;
-  &:hover {
+  &:hover, &:active {
     background-color: darken($chicken-accent, 5%);
   }
 }
 
 .coffee .button-link {
   background-color: $coffee-accent;
-&:hover {
+&:hover, &:active {
   background-color: darken($coffee-accent, 5%);
 }
 }
@@ -101,7 +101,7 @@ header.content {
 .banner .button-link {
   background-color: $plumb;
 
-  &:hover {
+  &:hover, &:active {
     background-color: darken($plumb, 5%);
   }
 }
@@ -111,7 +111,7 @@ header.content {
   font-size: 1.5em;
   margin: 0.25em;
 
-  &:hover {
+  &:hover, &:active {
     color: $white;
   }
 }

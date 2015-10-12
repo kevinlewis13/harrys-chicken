@@ -16,11 +16,12 @@ module.exports = React.createClass({
         name: 'Harry\'s Chicken Joint',
         phone: '206.938.9000',
         address: '6032 California Ave SW\nSeattle, WA 98136',
-        hours: 'Tuesday - Saturday, 4-8pm'
+        hours: 'Tuesday - Thursday, 5-8pm\nFriday - Saturday, 4-8pm'
       },
       bannerInfo: {
         partner: 'Harry\'s Coffee Joint',
-        partnerUrl: '/coffee'
+        partnerUrl: '/coffee',
+        partnerAbbrev: 'coffee'
       },
       socialInfo: {
         facebookUrl: 'https://www.facebook.com/pages/Harrys-Chicken-Joint/459035090821127',
@@ -59,7 +60,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <main>
-        <Header headerInfo={this.state.restaurantInfo}/>
+        <Header headerInfo={this.state.restaurantInfo} partnerInfo={this.state.bannerInfo}/>
         <Banner bannerInfo={this.state.bannerInfo}/>
         <Info restaurantInfo={this.state.restaurantInfo}/>
         <Menu menu={this.state.menu} categories={this.state.menuInfo.categories}/>

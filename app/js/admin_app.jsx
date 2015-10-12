@@ -29,7 +29,8 @@ module.exports = React.createClass({
       coffeeCategories: [
         {display: "Beverage", value: "beverages"},
         {display: "Pastry", value: "pastries"},
-        {display: "Extra",  value: "extras"}
+        {display: "Extra",  value: "extras"},
+        {display: "Special", value: "specials"}
       ]
     };
   },
@@ -188,12 +189,15 @@ module.exports = React.createClass({
 
     return (
       <main>
+        <div className="admin coffee">
         <header className="content">
+          <h1>Admin</h1>
           <nav>
             <a href="/">Home</a>
             <a onClick={this.logout}>Logout</a>
           </nav>
         </header>
+        </div>
         <Admin menu={this.state.menu} add={this.addItem} determine={this.determineCategories}
           delete={this.showDeleteModal} edit={this.editItem}
           categoryOptions={this.state.chickenCategories.concat(this.state.coffeeCategories)}

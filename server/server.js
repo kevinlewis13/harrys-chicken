@@ -3,6 +3,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var path = require('path');
 var app = express();
 var menuRoutes = express.Router();
 var authRoutes = express.Router();
@@ -27,7 +28,7 @@ app.use('/api/users', userRoutes);
 app.use(express.static(__dirname + '/../build'));
 
 app.all('*', function(req, res) {
-  res.status(404).json({msg: 'page not found'});
+  res.sendFile(path.join(__dirname, '/../build/index.html'));
 });
 
 app.listen(process.env.PORT || 3000, function() {
