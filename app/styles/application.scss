@@ -24,6 +24,14 @@ nav {
   }
 }
 
+.about a {
+  font-style: italic;
+
+  &:hover, &:active {
+    border-bottom: 2px solid $grey;
+  }
+}
+
 .category-title {
   font-size: 1.25em;
   margin-bottom: 44px;

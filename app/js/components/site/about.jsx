@@ -31,8 +31,9 @@ module.exports = React.createClass({
             <span id="about" className="clear-header"></span>
             <h3>About Us</h3>
             <p>Harry's Coffee Joint is operated by Catherine and Jared, two kids who love making coffee as much as they love drinking it.</p>
-            <p>We  proudly serve an espresso blend roasted by Vashon Coffee Company (link) prepared on a Slayer (link) machine, as well as a rotating selection of their single origin coffees for brewed coffee.  On top of that, we roast our own beans in house available as pour over and cold brew.</p>
-            <p>stop by and stay a while or get drinks and pastries to go.</p>
+            <p>We  proudly serve an espresso blend roasted by <a href="http://vashoncoffee.com/">Vashon Coffee Company</a> prepared on a <a href="http://www.slayerespresso.com/">Slayer machine,</a> as well as a rotating selection of their single origin coffees for brewed coffee.</p>
+            <p>On top of that, we roast our own beans in house available as pour over and cold brew.</p>
+            <p>Stop by and stay a while or get drinks and pastries to go.</p>
           </section>
         </article>
       );
