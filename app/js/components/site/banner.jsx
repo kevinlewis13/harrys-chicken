@@ -23,12 +23,13 @@ module.exports = React.createClass({
       </article>
     );
   }
+    // leaving the empty h3 in for spacing purposes, until a slogan is decided upon.
     if (path === '/coffee') {
       return (
         <article className={bannerClass}>
           <span id="top" className="clear-header"></span>
           <section className="content banner">
-            <h3>"Slogan goes here"</h3>
+            <h3></h3>
             <Menu menu={this.props.menu} categories={this.props.bannerInfo.category} />
           </section>
         </article>
